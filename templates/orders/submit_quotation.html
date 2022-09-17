@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Submit Quotation{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h3>Submit your Quotation</h3>
+    <p></p>
+
+<form method="post">
+    {{ quotation_form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Submit"></p>
+</form>
+</div>
+
+{% endblock %}

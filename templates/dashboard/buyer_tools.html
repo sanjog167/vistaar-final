@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+
+{% load static %}
+
+{% block style %}
+    <style>
+        .nav-tabs .nav-item button:focus,
+        .nav-tabs .nav-item button.active {
+            color: seagreen;
+            font-weight: 700;
+            border-bottom: 2px solid seagreen;
+        }
+        @media only screen and (max-width:768px) {
+            #post_buy_require .card .banner {
+                width: 95%;
+            }
+        }
+    </style>
+{% endblock %}
+
+    {% block content %}
+    <!-- Content Start -->
+    <div class="container dashboard py-3">
+        <div class="row">
+            <!-- Sidebar Nav -->
+            {% include 'dashboard/sidebar.html' %}
+
+            <div class="col-9 bg-light">
+                <div class="container p-0">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <ul class="nav nav-tabs overflow-x" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link px-1 border-0 fs-6 mx-1 active" id="post_buy_require-tab"
+                                        data-bs-toggle="tab" data-bs-target="#post_buy_require" type="button" role="tab"
+                                        aria-controls="post_buy_require" aria-selected="true">Post Buy
+                                        Requirement</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link px-1 border-0 fs-6 mx-1" id="service_for_business-tab"
+                                        data-bs-toggle="tab" data-bs-target="#service_for_business" type="button"
+                                        role="tab" aria-controls="service_for_business" aria-selected="false">Service
+                                        for Business
+                                        Growth</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link px-1 border-0 fs-6 mx-1" id="manage_require-tab"
+                                        data-bs-toggle="tab" data-bs-target="#manage_require" type="button" role="tab"
+                                        aria-controls="manage_require" aria-selected="false">Manage
+                                        Requirement</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link px-1 border-0 fs-6 mx-1" id="product_of_interest-tab"
+                                        data-bs-toggle="tab" data-bs-target="#product_of_interest" type="button"
+                                        role="tab" aria-controls="product_of_interest" aria-selected="false">Product of
+                                        Interest</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link px-1 border-0 fs-6 mx-1" id="recommanded_category-tab"
+                                        data-bs-toggle="tab" data-bs-target="#recommanded_category" type="button"
+                                        role="tab" aria-controls="recommanded_category"
+                                        aria-selected="false">Recommanded
+                                        Categories</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link px-1 border-0 fs-6 mx-1" id="past_search-tab"
+                                        data-bs-toggle="tab" data-bs-target="#past_search" type="button" role="tab"
+                                        aria-controls="past_search" aria-selected="false">Past Searches</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="post_buy_require" role="tabpanel"
+                                    aria-labelledby="post_buy_require-tab">
+                                    <div class="container py-3">
+                                        <div class="py-5 rounded"
+                                            style="background: url(../../image/banahahah.jpg) center; background-size: cover; ">
+                                            <div class="card bannner mx-auto" style="width: 70%;">
+                                                <div
+                                                    class="card-footer py-3 border-0 d-md-flex justify-content-center d-block">
+                                                    <div class="text-center flex-sm-fill">
+                                                        <h1 class="fs-5">Tell Us What You Need</h1>
+                                                        <form method="post" action="">
+                                                            <div class="form-floating mb-3">
+                                                                <input type="email" class="form-control"
+                                                                    id="floatingInput" placeholder="name@example.com">
+                                                                <label for="floatingInput">Enter Product</label>
+                                                            </div>
+                                                            <button type="submit"
+                                                                class="btn my-2 btn-sm btn-primary">Get
+                                                                Quotes</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="border-start border-3  ms-2 ps-2">
+                                                        <h1 class="fs-5">Your Contact Information</h1>
+                                                        <p class="mb-1">Aditya</p>
+                                                        <span>+977-980409266</span>
+                                                        <br>
+                                                        <strong>paritesh2020@gmail.com</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-md-flex align-items-center my-3">
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <div
+                                                    class="d-flex border border-secondary px-2 my-2 rounded py-1 align-items-center mx-1">
+                                                    <img src="../../image/icon/drug&medcine.svg" height="40" width="40"
+                                                        alt="">
+                                                    <span class="ms-1">Drug & Medicine</span>
+                                                </div>
+                                            </a>
+
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <div
+                                                    class="d-flex border border-secondary px-2 my-2 rounded py-1 align-items-center mx-1">
+                                                    <img src="../../image/icon/hospital.svg" height="40" width="40"
+                                                        alt="">
+                                                    <span class="ms-1">Hospital & Diagonistic</span>
+                                                </div>
+                                            </a>
+
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <div
+                                                    class="d-flex border border-secondary px-2 my-2 rounded py-1 align-items-center mx-1">
+                                                    <img src="../../image/icon/agriculture.svg" height="40" width="40"
+                                                        alt="">
+                                                    <span class="ms-1">Food & Agriculture</span>
+                                                </div>
+                                            </a>
+
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <div
+                                                    class="d-flex border border-secondary px-2 my-2 rounded py-1 align-items-center mx-1">
+                                                    <img src="../../image/icon/factory.svg" height="40" width="40"
+                                                        alt="">
+                                                    <span class="ms-1">Industrial Supplier</span>
+                                                </div>
+                                            </a>
+
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <div
+                                                    class="d-flex border border-secondary px-2 my-2 rounded py-1 align-items-center mx-1">
+                                                    <span class="fs-6 mx-2">View All Categories</span>
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="my-2 border-top border-3 border-success">
+                                            <h5>Product Details</h5>
+                                            <div class="row">
+                                                <div class="col-md-4 my-3">
+                                                    <div
+                                                        class="d-flex align-items-center shadow-sm border border-light rounded">
+                                                        <a href="../../image/product/product-2.png" target="_blank">
+                                                            <img src="../../image/product/product-2.png" width="150"
+                                                                style="height: 150px; object-fit:cover;"
+                                                                class="img-fluid" alt="">
+                                                        </a>
+                                                        <div class="px-1">
+                                                            <a href="#" class="text-decoration-none text-success">
+                                                                <p class="fs-5 fw-bold m-0">Face Mask</p>
+                                                            </a>
+                                                            <a href="#" class="text-decoration-none text-dark">
+                                                                <p class="mb-0">3ply </p>
+                                                            </a>
+                                                            <a href="#" class="text-decoration-none text-dark">
+                                                                <address class="mb-0">Desposable Face Mask</address>
+                                                            </a>
+                                                            <a href="#" class="text-decoration-none text-dark">
+                                                                <small>NRS. 95</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="service_for_business" role="tabpanel"
+                                    aria-labelledby="service_for_business-tab">
+                                    ...</div>
+                                <div class="tab-pane fade" id="manage_require" role="tabpanel"
+                                    aria-labelledby="manage_require-tab">
+                                    ...</div>
+                                <div class="tab-pane fade" id="product_of_interest" role="tabpanel"
+                                    aria-labelledby="product_of_interest-tab">
+                                    ...</div>
+                                <div class="tab-pane fade" id="recommanded_category" role="tabpanel"
+                                    aria-labelledby="recommanded_category-tab">
+                                    ...</div>
+                                <div class="tab-pane fade" id="past_search" role="tabpanel"
+                                    aria-labelledby="past_search-tab">
+                                    ...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content End -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

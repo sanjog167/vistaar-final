@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div id="postRequire_LgModal" tabindex="-1"
+    aria-labelledby="postRequire_LgModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="postRequire_LgModalLabel">Post your Requirements</h5>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-signup" role="tabpanel"
+                                aria-labelledby="pills-signup-tab">
+                                <div class="card border-0">
+                                    <div class="highlight ps-sm-3 pt-sm-4 text-center">
+                                        {% if messages %}
+                                        {% for message in messages %}
+                                        <p>
+                                            {{ message }}
+                                        </p>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="POST" action="{% url 'post_requirements' %}">
+                                            {% csrf_token %}
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control shadow-none" id="floatingName"
+                                                    name="product" placeholder="name@example.com" required>
+                                                <label for="floatingName">Product</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control shadow-none" id="floatingName"
+                                                    name="quantity" placeholder="name@example.com" required>
+                                                <label for="floatingName">Quantity</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control shadow-none" id="floatingEmail"
+                                                    name="description" placeholder="name@example.com">
+                                                <label for="floatingEmail">Description</label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" class="btn btn-primary" value="Post">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

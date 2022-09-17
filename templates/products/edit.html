@@ -1,0 +1,463 @@
+{% extends "perm.html" %}
+{% load static %}
+{% block title %} Edit your product {% endblock %}
+
+{% block style %}
+
+
+
+/* -other Product Card --------------------------------------*/
+        .other-product .box-card {
+            background-color: white;
+            position: relative;
+            padding: 10px;
+            border-radius: 5px;
+            width: 205px;
+            margin: 10px auto;
+        }
+        section.other-product .box-card {
+            margin: 10px 5px;
+            width: 214px;
+            border: 2px solid #ddd;
+        }
+        .other-product .box-card .title {
+            padding-bottom: 5px;
+        }
+
+        .other-product .box-card .imgBx {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .other-product .box-card .imgBx img{
+            height: 150px;
+            object-fit: cover;
+        }
+        .other-product .box-card .content .price {
+            font-size: 12px;
+        }
+
+        .other-product .box-card .content .order a {
+            color: white;
+        }
+
+        .other-product .box-card .content .supplier {
+            font-size: 13px;
+            line-height: 17px;
+        }
+        
+
+        /* Responsive ------------------ */
+        @media (max-width:425px) {
+            section.other-product .box-card {
+                width: 80vw;
+                margin-top: 15px;
+            }
+
+            section.other-product .box-card {
+                width: 80vw;
+                margin-top: 15px;
+            }
+        }
+
+		.drop-zone {
+			max-width: 100%;
+			height: 200px;
+			padding: 2px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			font-family: "Quicksand", sans-serif;
+			font-weight: 500;
+			font-size: 20px;
+			cursor: pointer;
+			color: #cccccc;
+			border: 2px dashed #efefee;
+			border-radius: 10px;
+
+		}
+
+		.drop-zone.small {
+			height: 100px;
+		}
+
+		.drop-zone.active {
+			border: 1px solid #009578;
+		}
+
+		.drop-zone__input {
+			display: none;
+		}
+
+		.drop-zone__prompt {
+			font-size: 12px;
+		}
+
+		.drop-zone__thumb {
+			width: 100%;
+			height: 100%;
+			border-radius: 10px;
+			overflow: hidden;
+			background-color: #cccccc;
+			background-size: cover;
+			position: relative;
+			object-position: center;
+			object-fit: cover;
+		}
+
+		.drop-zone__thumb::after {
+			content: attr(data-label);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding: 5px 0;
+			color: #ffffff;
+			background: rgba(0, 0, 0, 0.75);
+			font-size: 14px;
+			text-align: center;
+		}
+
+		#error {
+			color: darkred;
+		}
+
+		#list {
+			list-style: none;
+			padding: 0;
+			margin: 2px 0;
+			display: flex;
+			flex-wrap: wrap;
+
+		}
+
+		#list li {
+			background: lightgray;
+			display: flex;
+			justify-content: space-between;
+			width: fit-content;
+			padding: 5px;
+			margin: 3px;
+			border-radius: 3px;
+		}
+
+		#list li a {
+			color: white;
+			text-decoration: none;
+			margin-left: 5px;
+			font-family: Arial, Helvetica, sans-serif;
+			background: black;
+			padding: 0 5px;
+			border-radius: 3px;
+		}
+		.form-select .current{
+			line-height: 40px;
+		}
+
+        .ck-editor__editable_inline {
+            min-height: 200px;
+        }
+
+{% endblock %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<!-- Product Form Start -->
+	<section class="add-product">
+		<div class="container py-3">
+			<div class="highlight ps-sm-3 pt-sm-4 text-center">
+				{% if messages %}
+				{% for message in messages %}
+				<p>
+					{{ message }}
+				</p>
+				{% endfor %}
+				{% else %}
+	
+				{% endif %}
+			</div>
+			<form action="">
+				<div class="row">
+					<div class="col-lg-6">
+						<!-- Product Name -->
+						<div class="mb-3">
+							<label for="product-name" class="form-label">Product Name</label>
+							<span class="badge bg-light rounded-circle text-muted">!</span>
+							<input type="text" class="form-control rounded-0" id="product-name" aria-describedby="name" name="product-name" value="{{product}}">
+							<div id="name" class="form-text text-muted">
+								Do not exceed 20 characters when entering the product name.
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-8">
+								<!-- Category -->
+								<label for="" class="form-label">
+									<span>Category</span>
+									<span class="badge bg-light rounded-circle text-muted">!</span>
+								</label>
+								<div class="mb-3">
+									<select class="form-select w-100 rounded-0" aria-label="Default select example" name="category">
+										{% for c in cat %}
+										<option value ="{{c.id}}" {% if product.category == c %}selected{% endif %}>{{c}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<!-- Sub category  -->
+								<label for="" class="form-label">
+									<span>Sub Category</span>
+									<span class="badge bg-light rounded-circle text-muted">!</span>
+								</label>
+								<div class="mb-3">
+									<select class="form-select w-100 rounded-0" aria-label="Default select example" name="sub-category">
+										{% for c in subcat %}
+										<option value="{{c.id}}" {% if product.category == c %}selected{% endif %}>{{c}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+						
+						<label for="min-qty" class="form-label">
+							<span>Minimum Order Quantity</span>
+							<span class="badge bg-light rounded-circle text-muted">!</span>
+						</label>
+						<div class="form-group">
+							<input type="text" class="form-control w-100 rounded-0" id="min-qty" name="min-qty" value="{{product.minimun_order_quantity}}">
+						</div>
+						<!-- Description -->
+						<label for="description" class="form-label">
+							Description
+							<span class="badge bg-light rounded-circle text-muted">!</span>
+						</label>
+						<div class="mb-3">
+							
+							<textarea class="form-control" id="description" rows="5"
+								aria-describedby="description" name="description" value="{{product.description | safe}}"></textarea>
+							<div id="description" class="form-text">
+							</div>
+						</div>
+
+						<button type="submit" class="btn">Save Product</button>
+					</div>
+					<div class="col-lg-6">
+						<!-- Product Images -->
+						<!--div class="mb-3">
+							<label for="images" class="form-label">
+								Product Images
+							</label>
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="drop-zone my-1">
+										<span class="drop-zone__prompt">
+											<p class="m-0">
+												<i class="far fa-image"></i>
+											</p>
+											Drop file here or click to upload
+										</span>
+										<input type="file" name="image1" class="drop-zone__input">
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="drop-zone my-1">
+										<span class="drop-zone__prompt">
+											<p class="m-0">
+												<i class="far fa-image"></i>
+											</p>
+											Drop file here or click to upload
+										</span>
+										<input type="file" name="image2" class="drop-zone__input">
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="drop-zone small mb-1">
+										<span class="drop-zone__prompt">
+											<p class="m-0">
+												<i class="far fa-image"></i>
+											</p>
+											Drop file here or click to upload
+										</span>
+										<input type="file" name="image3" class="drop-zone__input">
+									</div>
+									<div class="drop-zone small mt-1">
+										<span class="drop-zone__prompt">
+											<p class="m-0">
+												<i class="far fa-image"></i>
+											</p>
+											Drop file here or click to upload
+										</span>
+										<input type="file" name="image4" class="drop-zone__input">
+									</div>
+								</div>
+							</div>
+						</div-->
+						<!-- Product Date -->
+						<!-- <div class="mb-3">
+							<label for="date" class="form-label">Product Date</label>
+							<input type="date" class="form-control rounded-0" id="date">
+						</div> -->
+						<!-- Price -->
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="min_price" class="form-label">
+									<span>Minimum Price</span>
+									<span class="badge bg-light rounded-circle text-muted">!</span>
+								</label>
+								<input list="min" class="form-control w-100 rounded-0" style="outline: none; color: #666;
+								border: 1px solid #ccc; padding: 3px;" id="min_price" name="min-price" value="{{product.price}}">
+								<datalist id="min">
+									<option value="1000">
+									<option value="2000">
+									<option value="3000">
+									<option value="4000">
+									<option value="5000">
+								</datalist>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="max_price" class="form-label">
+									<span>Maximum Price</span>
+								</label>
+								<input list="max" class="form-control w-100 rounded-0" style="outline: none; color: #666;
+								border: 1px solid #ccc; padding: 3px;" id="max_price" name="max-price" value="{{product.max_price}}">
+								<datalist id="max">
+									<option value="10000">
+									<option value="20000">
+									<option value="30000">
+									<option value="40000">
+									<option value="50000">
+								</datalist>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+	<!-- Product Form End -->
+</form>
+	{% endblock %}
+
+	{% block script %}
+	<!-- CK Editor 5 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+	<!-- Custom -->
+	<script>
+		document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+			const dropZoneElement = inputElement.closest(".drop-zone");
+
+			dropZoneElement.addEventListener("click", (e) => {
+				inputElement.click();
+			});
+
+			inputElement.addEventListener("change", (e) => {
+				if (inputElement.files.length) {
+					updateThumbnail(dropZoneElement, inputElement.files[0]);
+				}
+			});
+
+			dropZoneElement.addEventListener("dragover", (e) => {
+				e.preventDefault();
+				dropZoneElement.classList.add("active");
+			});
+
+			["dragleave", "dragend"].forEach((type) => {
+				dropZoneElement.addEventListener(type, (e) => {
+					dropZoneElement.classList.remove("active");
+				});
+			});
+
+			dropZoneElement.addEventListener("drop", (e) => {
+				e.preventDefault();
+
+				if (e.dataTransfer.files.length) {
+					inputElement.files = e.dataTransfer.files;
+					updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+				}
+
+				dropZoneElement.classList.remove("active");
+			});
+		});
+
+		/**
+		 * Updates the thumbnail on a drop zone element.
+		 *
+		 * @param {HTMLElement} dropZoneElement
+		 * @param {File} file
+		 */
+		function updateThumbnail(dropZoneElement, file) {
+			let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+
+			// First time - remove the prompt
+			if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+				dropZoneElement.querySelector(".drop-zone__prompt").remove();
+			}
+
+			// First time - there is no thumbnail element, so lets create it
+			if (!thumbnailElement) {
+				thumbnailElement = document.createElement("div");
+				thumbnailElement.classList.add("drop-zone__thumb");
+				dropZoneElement.appendChild(thumbnailElement);
+			}
+
+			thumbnailElement.dataset.label = file.name;
+
+			// Show thumbnail for image files
+			if (file.type.startsWith("image/")) {
+				const reader = new FileReader();
+
+				reader.readAsDataURL(file);
+				reader.onload = () => {
+					thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+				};
+			} else {
+				thumbnailElement.style.backgroundImage = null;
+			}
+		}
+
+		// Add Size
+		function addMore() {
+			document.getElementById('error').innerHTML = "";
+			let size = document.getElementById('size').value;
+			if (size == '') {
+				// not value input
+				document.getElementById('error').innerHTML = "Please enter the value";
+			} else {
+
+				let list = document.getElementById('list');//select list
+				let li = document.createElement('li');//create list
+				li.textContent = size;
+				let a = document.createElement('a');//for deleting box
+				a.textContent = "x";
+				a.href = "javascript:void(0)";
+				a.className = "remove";
+
+				// Input Value From This input
+				const ip = document.createElement('input')
+				ip.name = 'sizes[]'
+				ip.value = size;
+				ip.hidden = true;
+				li.appendChild(a);
+				li.appendChild(ip);
+				list.appendChild(li);
+			}
+			document.getElementById('size').value = "";
+		}
+
+		let btn = document.getElementById('list');
+		btn.addEventListener('click', function (e) {
+			let list = document.getElementById('list');
+			let li = e.target.parentNode;
+			list.removeChild(li);
+		});
+	</script>
+
+{% endblock %}

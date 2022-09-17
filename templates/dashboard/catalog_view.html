@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+{% load static %}
+
+    <!-- Content Start -->
+    <div class="container dashboard py-3">
+        <div class="row">
+            <!-- Sidebar Nav -->
+            {% include 'dashboard/sidebar.html' %}
+
+            <div class="col-9 bg-light">
+                <div class="container">
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <nav>
+                                <div class="nav nav-tabs flex-column flex-md-row" id="nav-tab" role="tablist">
+                                    <button class="nav-link me-1 active fw-bold" id="nav-catalog_view-tab"
+                                        data-bs-toggle="tab" data-bs-target="#nav-catalog_view" type="button" role="tab"
+                                        aria-controls="nav-catalog_view" aria-selected="true">Your
+                                        Catalog
+                                        Views</button>
+                                    <button class="nav-link fw-bold" id="nav-my_activity-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-my_activity" type="button" role="tab"
+                                        aria-controls="nav-my_activity" aria-selected="false">My Activity</button>
+                                </div>
+                            </nav>
+
+                            <div class="card-body p-0">
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-catalog_view" role="tabpanel"
+                                        aria-labelledby="nav-catalog_view-tab">
+                                        <div class="my-3">
+                                            <p class="mb-1">These Buyer Visited Your Product Pages. Contact them to get
+                                                more
+                                                business.</p>
+                                            <div class="dropdown">
+                                                <button
+                                                    class="btn btn-sm border border-success shadow-none dropdown-toggle"
+                                                    type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    Filter By Time
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                    <li><button class="dropdown-item" type="button">Action</button></li>
+                                                    <li><button class="dropdown-item" type="button">Another
+                                                            action</button></li>
+                                                    <li><button class="dropdown-item" type="button">Something else
+                                                            here</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="card my-3">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-3 my-3">
+                                                        <h1 class="fs-5">Jitendra</h1>
+                                                        <p class="mb-0">
+                                                            <i class="fas fa-map-marker-alt text-success"
+                                                                style="width: 20px;"></i>
+                                                            <span>Dharan, Sunsari</span>
+                                                        </p>
+                                                        <p>
+                                                            <i class="fas fa-history text-success"
+                                                                style="width: 20px;"></i>
+                                                            <span>27-Apr-2021</span> at
+                                                            <span>10:47 am</span>
+                                                        </p>
+                                                        <p class="text-muted">Pages Viewed</p>
+                                                        <div>
+                                                            <div>
+                                                                <img src="../../image/product/product-7.png" width="50"
+                                                                    alt="">
+                                                            </div>
+                                                            <a href="#" class="text-decoration-none fw-bold">MT TMT
+                                                                Pilas
+                                                                Class</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5 my-3">
+                                                        <p class="ps-2 fw-bold">Buyers Details</p>
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Member Since</td>
+                                                                    <td>3+ Years</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Requirement Till Now</td>
+                                                                    <td>4</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Products Of Interest</td>
+                                                                    <td>Electric Socket, Wire</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Available</td>
+                                                                    <td>
+                                                                        <a href="#"
+                                                                            class="text-dark text-decoration-none">
+                                                                            <span>
+                                                                                <i
+                                                                                    class="fas fa-mobile-alt text-success"></i>
+                                                                                Mobile
+                                                                            </span>
+                                                                        </a>
+                                                                        <a href="#"
+                                                                            class="text-dark text-decoration-none">
+                                                                            <span>
+                                                                                <i
+                                                                                    class="fas fa-envelope-open-text text-success"></i>
+                                                                                Email
+                                                                            </span>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="text-center">
+                                                            <a href="#" class="btn btn-outline-success btn-sm">
+                                                                <i class="fas fa-id-card-alt"></i>
+                                                                View
+                                                                Contact
+                                                                Number
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 my-3">
+                                                        <form action="">
+                                                            <p class="fw-bold">Send an instant message</p>
+
+                                                            <div class="form-group mb-3">
+                                                                <textarea id="" class="form-control"
+                                                                    placeholder="Intrested in this Product" name=""
+                                                                    rows="3"></textarea>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-success"> <i
+                                                                    class="fas fa-paper-plane"></i> Send
+                                                                Message</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-my_activity" role="tabpanel"
+                                        aria-labelledby="nav-my_activity-tab">
+                                        My Activity View
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content End -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

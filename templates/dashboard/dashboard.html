@@ -1,0 +1,233 @@
+{% extends "perm.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+{% block style %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+{% endblock %}
+
+{% load static %}
+
+<div class="container dashboard py-3">        
+    {% if current_profile.linked %}
+    
+    {% elif current_profile.account_type == 'Supplier' %}
+    <a href="{% url "register_supplier" %}">
+        <h1>Get Verified as a {{ current_profile.account_type }}</h1>
+    
+    {% elif current_profile %}
+    <a href="{% url "edit" %}">
+        <h1>Complete your profile!</h1>
+        <h3>Let us know whether you are a retailer or a supplier</h3>
+    </a>
+    {% endif %}
+    {% if not current_profile.email_verified %}
+    <a href="{% url "edit" %}">
+        <h1>Verify your email address</h1>
+        <h3>Send verification email</h3>
+    </a>
+    {% endif %}
+    
+
+    <p></p>
+    
+    <!--------------------------------------------------------------------->
+    
+    <div class="row">
+        <!-- Sidebar Nav -->
+        {% include 'dashboard/sidebar.html' %}
+
+        <!-- Content -->
+        <div class="col-9 px-0 bg-light">
+            <div class="container">
+                <div class="row px-0">
+                    <div class="col-lg-4 my-3">
+                        <div class="bg-white shadow-sm rounded">
+                            <div class="d-flex shadow-sm">
+                                <div class="bg-primary d-flex align-items-center px-2 rounded-left">
+                                    <i class="fas fa-hand-holding-usd text-light" style="font-size: 40px;"></i>
+                                </div>
+                                <div class="text-center w-100">
+                                    {% if request.user.supplier.verified %}
+                                    <h1 class="mb-0 text-muted fs-3">{{leads_count}}</h1>
+                                    {% else %}
+                                    <h1 class="mb-0 text-muted fs-3">0</h1>
+                                    {% endif %}
+                                    <p class="mb-0 text-uppercase">Relevant Buyleads</p>
+                                </div>
+                            </div>
+                            <div class="list-group mt-2">
+                                {% for l in leads %}
+                                {% if request.user.supplier.verified and request.user.supplier == l.seller %}
+                                <a href="#" class="list-group-item list-group-item-action border-0 border-bottom"
+                                    aria-current="true">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-0 fw-bold" style="font-size: 16px;">{{l.buyer.profile}}</h5>
+                                        <small>3 days ago</small>
+                                    </div>
+                                    <p class="mt-0 mb-1" style="font-size: 11px;">
+                                        <small class="">{{l.seller.street}}, {{l.seller.city}}</small>
+                                    </p>
+                                    <strong style="font-size: 14px;">{{l.get_message}}</strong>
+                                </a>
+                                {% endif %}
+                                {% if not request.user.supplier.verified %}
+                                <p class="p-2">Please <a href="{% url 'register_supplier' %}">verify</a> to see the leads.</p>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <a href="{% url 'buy_leads' %}" class="text-decoration-none fw-bold">
+                                <div class="text-center py-1">View All</div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 my-3">
+                        <div class=" bg-white shadow-sm rounded">
+                            <div class="d-flex shadow-sm">
+                                <div class="bg-danger d-flex align-items-center px-2 rounded-left">
+                                    <i class="fas fa-comment-dots text-light" style="font-size: 40px;"></i>
+                                </div>
+                                <div class="text-center w-100">
+                                    <p class="mb-0 text-uppercase">My Trending Products</p>
+                                </div>
+                            </div>
+                            <div class="list-group mt-2">
+                                {% for product in trending %}
+                                {% if request.user.supplier.verified %}
+                                <a href="#" class="list-group-item list-group-item-action border-0 border-bottom"
+                                    aria-current="true">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-0 fw-bold" style="font-size: 16px;">{{product.product_name}}</h5>
+                                        <small>Views : {{product.clicks}}</small>
+                                    </div>
+
+                                    <p class="mt-0 mb-1" style="font-size: 11px;"><small class="">{{m.seller.street}}, {{m.seller.city}}</small>
+                                    </p>
+
+                                    <strong style="font-size: 14px;">{{m.get_message}}</strong>
+                                </a>
+                                {% endif %}
+                                {% if not request.user.supplier.verified %}
+                                <p class="p-2">Please <a href="{% url 'register_supplier' %}">verify</a> to see your trending products.</p>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <a href="{% url 'manage_products' %}" class="text-decoration-none fw-bold">
+                                <div class="text-center py-1">
+                                    View All
+                                </div>
+                            </a>
+                        </div> 
+                    </div>
+                    <div class="col-lg-4 my-3">
+                        <div class="bg-white shadow-sm rounded">
+                            <div class="d-flex shadow-sm">
+                                <div class="bg-success d-flex align-items-center px-2 rounded-left">
+                                    <i class="fas fa-id-card-alt text-light" style="font-size: 40px;"></i>
+                                </div>
+                                <div class="text-center w-100">
+                                    <p class="mb-0 text-uppercase">Catalog Views</p>
+                                </div>
+                            </div>
+                            <div class="list-group mt-2">
+                                <img src="{% static "image/premium.svg" %}" alt="" height="250px">
+                            </div>
+                            <!-- <a href="#" class="text-decoration-none fw-bold">
+                                <div class="text-center py-1">
+                                    SUBSCRIBE PREMIUM TO UNLOCK
+                                </div>
+                            </a> -->
+                        </div>
+                    </div>
+                    
+                </div>
+                        <div class="row px-0">
+            <div class="col-lg-7 my-3">
+                <!-- Bar Chart Content -->
+                <div class="chart p-3 shadow-sm rounded">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <div class="col-lg-4 my-3">
+                <!-- PolarArea Chart Content -->
+                <div class="chart p-3 shadow-sm rounded">
+                    <canvas id="social"></canvas>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+        
+        
+
+    </div>
+</div>
+<!-- Content End -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <!-- Chart js link -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var social = document.getElementById('social').getContext('2d');
+
+
+        // Bar Chart Content ------------------------------------
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september',
+                    'october', 'november', 'december'
+                ],
+                datasets: [{
+                    label: 'Monthly Views',
+                    data: [100, 150, 80, 90, 75, 25, 120, 99, 56, 118, 101, 87],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 100, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                }]
+            },
+            options: {
+                rasponsive: true,
+            }
+        });
+
+        // PolarArea Chart Content ----------------------------------------------
+        var social_ = new Chart(social, {
+            type: 'polarArea',
+            data: {
+                labels: ['Views', 'Leads', 'Conversions'],
+                datasets: [{
+                    label: 'No. of Votes',
+                    data: [1200, 1900, 3000],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                }]
+            },
+            options: {
+                responsive: true,
+            }
+        });
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}

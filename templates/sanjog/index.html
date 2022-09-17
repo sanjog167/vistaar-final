@@ -1,0 +1,1239 @@
+{% extends "sanjog/header.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div id="header"></div>
+        <main class="main"> 
+          
+            <img src="{% static "assets/images/b1.png" %}" alt="">
+            <!-- End of .intro-section -->
+
+            <div class="container">
+
+                <h2 class="title text-left text-capitalize mb-5 mt-5 appear-animate d-sm-none">Popular Categories</h2>
+                <div class="swiper-container swiper-theme appear-animate viewed-products mb-7 mt-sm-2" data-swiper-options="{
+                    'spaceBetween': 20,
+                    'slidesPerView': 2,
+                    'breakpoints': {
+                        '576': {
+                            'slidesPerView': 2
+                        },
+                        '768': {
+                            'slidesPerView': 5
+                        },
+                        '992': {
+                            'slidesPerView': 6
+                        },
+                        '1200': {
+                            'slidesPerView': 8
+                        }
+                    }
+                }">
+                    <div class="swiper-wrapper row cols-xl-8 cols-lg-6 cols-md-4 cols-2">
+                        {% for cat in fcategories %}
+                        <div class="swiper-slide product-wrap">
+                            <div class="product text-center product-absolute">
+                                <figure class="product-media">
+                                    <a href="">
+                                        <img src="{{cat.image.url}}" alt="Category image"
+                                            width="300" height="338" style="background-color: #fff" />
+                                    </a>
+                                </figure>
+                                <h4 class="product-name">
+                                    <a href="{% url 'products:category_detail' id=cat.id slug=cat.slug %}">{{cat}}</a>
+                                </h4>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                </div>
+
+
+                <div class="container">
+                <div class="swiper-container swiper-theme icon-box-wrapper appear-animate br-sm mt-6 mb-10"
+                    data-swiper-options="{
+                  
+                    'slidesPerView': 2,
+          
+                    'breakpoints': {
+                        '576': {
+                            'slidesPerView': 2
+                        },
+                        '768': {
+                            'slidesPerView': 3
+                        },
+                        '1200': {
+                            'slidesPerView': 4
+                        }
+                    }
+                }">
+                    <div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
+                        <div class="swiper-slide icon-box icon-box-side text-dark flex-column">
+                            <span class="icon-box-icon icon-shipping">
+                                <img src="https://cfn-cms-prod.tradeling.com/Delivery_Shipment_Packages_699255acb8.svg" class="w-40">
+                            </span>
+                            <div class="icon-box-content text-center">
+                                <h4 class="icon-box-title mt-3">700k+ international SKUs</h4>
+                                <p class="text-default">Get access to suppliers from 20+ countries.</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide icon-box icon-box-side text-dark flex-column">
+                            <span class="icon-box-icon icon-payment">
+                                <img src="https://cfn-cms-prod.tradeling.com/money_banknote_handshake_8323907764.svg" class="w-40">
+
+                            </span>
+                            <div class="icon-box-content text-center">
+                                <h4 class="icon-box-title mt-3">Easy pay & simple invoicing</h4>
+                                <p class="text-default">Enjoy streamlined invoicing and pay with card.
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide icon-box icon-box-side text-dark flex-column icon-box-money">
+                            <span class="icon-box-icon icon-money">
+                                <img src="https://cfn-cms-prod.tradeling.com/margins_ab93c40484.svg" class="w-40">
+                            </span>
+                            <div class="icon-box-content text-center">
+                                <h4 class="icon-box-title mt-3">Increase your margins</h4>
+                                <p class="text-default">Source directly from suppliers, at low wholesale prices.
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide icon-box icon-box-side text-dark flex-column icon-box-chat">
+                            <span class="icon-box-icon icon-chat">
+                                <img src="{% static "assets/images/heads.png" %}" class="w-40">
+
+                            </span>
+                            <div class="icon-box-content text-center">
+                                <h4 class="icon-box-title mt-3">Customer Support</h4>
+                                <p class="text-default">Call or email us 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- End of Iocn Box Wrapper -->
+
+                <div class="container">
+                <div class="title-link-wrapper mb-3 appear-animate">
+                    <h2 class="title title-deals mb-1">TRENDING PRODUCTS</h2>
+               
+                    <a href="#" class="font-weight-bold ls-25 btn btn-primary btn-outline-green">View All<i
+                            class="fa fa-chevron-right" style="font-weight: 500; margin-left: 10px;"></i></a>
+                </div>
+                </div>
+                <!-- End of .title-link-wrapper -->
+
+                <div class="container">
+                <div class="swiper-container swiper-theme product-deals-wrapper appear-animate mb-7 mproducts"
+                    data-swiper-options="{
+                    'spaceBetween': 20,
+                    'slidesPerView': 2,
+                    'loop': true,
+                    'breakpoints': {
+                        '576': {
+                            'slidesPerView': 3
+                        },
+                        '768': {
+                            'slidesPerView': 4
+                        },
+                        '992': {
+                            'slidesPerView': 5
+                        },
+                        '1400': {
+                            'slidesPerView': 6
+                        }
+                    }
+                }">
+                    <div class="swiper-wrapper row cols-lg-5 cols-md-4 cols-2">
+                        {% for p in trending %}
+                        <div class="swiper-slide product-wrap">
+                            <div class="product text-center">
+                                <figure class="product-media">
+                                    <a href="{{p.get_absolute_url}}">
+                                        <img src="{{p.image.url}}" alt="Product"
+                                            width="300" height="338">
+                                        <img src="{{p.image.url}}" alt="Product"
+                                            width="300" height="338">
+                                    </a>
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-cart w-icon-cart"
+                                            title="Add to cart"></a>
+                                        <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                            title="Add to wishlist"></a>
+                                        <a href="#" class="btn-product-icon btn-quickview w-icon-search"
+                                            title="Quickview"></a>
+                                        <a href="#" class="btn-product-icon btn-compare w-icon-compare"
+                                            title="Add to Compare"></a>
+                                    </div>
+                              
+                                </figure>
+                                <div class="product-details">
+                                    <h4 class="product-name"><a href="{{p.get_absolute_url}}">{{p.product_name}}</a></h4>
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings" style="width: 100%;"></span>
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div>
+                                        <a href="categorypage.html" class="rating-reviews">(3 Reviews)</a>
+                                    </div>
+                                    {% if p.price != 0 %}
+                                    <div class="product-price">
+                                        <ins class="new-price">Rs. {{p.price}}{% if p.max_price and p.max_price != 0 %} - Rs. {{ p.max_price }}{% endif %}</ins>
+                                    </div>
+                                    {% else %}
+                                    <div class="product-price">
+                                        <ins class="new-price">Ask for Price</ins>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                  
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                </div>
+                <!-- End of Product Deals Warpper -->
+
+                <div class="container">
+                <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
+                    <div class="col-md-6 mb-4">
+                        <div class="banner banner-fixed br-sm">
+                            <figure>
+                                <img src="{% static "assets/images/sb1.png" %}" alt="Category Banner"
+                                    width="640" height="200" style="background-color: #25282D;" />
+                            </figure>
+  
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="banner banner-fixed br-sm">
+                            <figure>
+                                <img src="{% static "assets/images/sb2.png" %}" alt="Category Banner"
+                                    width="640" height="200" style="background-color: #eeedec;" />
+                            </figure>
+                     
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- End of Category Wrapper -->
+
+        
+                <!-- End of .title-link-wrapper -->
+                <div class="container">
+                <div class="products_with_image">
+                    <div class="row">
+                        <div class="col-lg-3 p-0" style="padding:0">
+                            <img src="{% static "assets/images/np2.jpg" %}" class="mr-3" style="height: 83%">
+                        </div>
+                        <div class="col-lg-9 p-0" style="padding:0">
+                            <div class="swiper-container swiper-theme product-deals-wrapper appear-animate mb-7"
+                            data-swiper-options="{
+                            'spaceBetween': 20,
+                            'slidesPerView': 2,
+                            'loop': true,
+                            'breakpoints': {
+                                '576': {
+                                    'slidesPerView': 3
+                                },
+                                '768': {
+                                    'slidesPerView': 4
+                                },
+                                '992': {
+                                    'slidesPerView': 4
+                                },
+                                '1400': {
+                                    'slidesPerView': 4
+                                }
+                            }
+                        }">
+                            <div class="swiper-wrapper row cols-lg-5 cols-md-4 cols-2">
+                                {% for p in cat2 %}
+                                <div class="swiper-slide product-wrap">
+                                    <div class="product text-center">
+                                        <figure class="product-media">
+                                            <a href="{{p.get_absolute_url}}">
+                                                <img src="{{p.image.url}}" alt="Product"
+                                                    width="300" height="338">
+                                                <img src="{{p.image.url}}" alt="Product"
+                                                    width="300" height="338">
+                                            </a>
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-cart w-icon-cart"
+                                                    title="Add to cart"></a>
+                                                <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                                    title="Add to wishlist"></a>
+                                                <a href="#" class="btn-product-icon btn-quickview w-icon-search"
+                                                    title="Quickview"></a>
+                                                <a href="#" class="btn-product-icon btn-compare w-icon-compare"
+                                                    title="Add to Compare"></a>
+                                            </div>
+                                      
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name"><a href="{{p.get_absolute_url}}">{{p}}</a></h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 100%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                                <a href="{{p.get_absolute_url}}" class="rating-reviews">(3 Reviews)</a>
+                                            </div>
+                                            {% if p.price != 0 %}
+                                            <div class="product-price">
+                                                <ins class="new-price">Rs. {{p.price}}{% if p.max_price and p.max_price != 0 %} - Rs. {{ p.max_price }}{% endif %}</ins>
+                                            </div>
+                                            {% else %}
+                                            <div class="product-price">
+                                                <ins class="new-price">Ask for Price</ins>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                             
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        </div>
+                    </div>
+                 
+               
+
+                </div>
+                </div>
+
+                <div class="container">
+                <div class="products_with_image">
+                    <div class="row">
+                        <div class="col-lg-3 p-0" style="padding:0">
+                            <img src="{% static "assets/images/np3.PNG" %}" class="mr-3" style="    height: 70%;
+                            width: 100%;
+                            object-position: top;
+                        ">
+                        </div>
+                        <div class="col-lg-9 p-0" style="padding:0">
+                            <div class="swiper-container swiper-theme product-deals-wrapper appear-animate mb-7"
+                            data-swiper-options="{
+                            'spaceBetween': 20,
+                            'slidesPerView': 2,
+                            'loop': true,
+                            'breakpoints': {
+                                '576': {
+                                    'slidesPerView': 3
+                                },
+                                '768': {
+                                    'slidesPerView': 4
+                                },
+                                '992': {
+                                    'slidesPerView': 4
+                                },
+                                '1400': {
+                                    'slidesPerView': 4
+                                }
+                            }
+                        }">
+                            <div class="swiper-wrapper row cols-lg-5 cols-md-4 cols-2">
+                                {% for p in cat1 %}
+                                <div class="swiper-slide product-wrap">
+                                    <div class="product text-center">
+                                        <figure class="product-media">
+                                            <a href="{{p.get_absolute_url}}">
+                                                <img src="{{p.image.url}}" alt="Product"
+                                                    width="300" height="338">
+                                                <img src="{{p.image.url}}" alt="Product"
+                                                    width="300" height="338">
+                                            </a>
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-cart w-icon-cart"
+                                                    title="Add to cart"></a>
+                                                <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
+                                                    title="Add to wishlist"></a>
+                                                <a href="#" class="btn-product-icon btn-quickview w-icon-search"
+                                                    title="Quickview"></a>
+                                                <a href="#" class="btn-product-icon btn-compare w-icon-compare"
+                                                    title="Add to Compare"></a>
+                                            </div>
+                                      
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name"><a href="{{p.get_absolute_url}}">{{p}}</a></h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 100%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                                <a href="{{p.get_absolute_url}}" class="rating-reviews">(3 Reviews)</a>
+                                            </div>
+                                            {% if p.price != 0 %}
+                                            <div class="product-price">
+                                                <ins class="new-price">Rs. {{p.price}}{% if p.max_price and p.max_price != 0 %} - Rs. {{ p.max_price }}{% endif %}</ins>
+                                            </div>
+                                            {% else %}
+                                            <div class="product-price">
+                                                <ins class="new-price">Ask for Price</ins>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                             
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        </div>
+                    </div>
+                 
+               
+
+                </div>
+                </div>
+
+                <div class="container">
+
+                </div>
+
+
+
+                <div class="quotes_section">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <h3 class="text-white mb-10">Nepal’s Best Sourcing Marketplace</h3>
+                            <div class="row">
+                                <div class="col-lg-6 col-6">
+                                    <p class="fs-17">21,42,278+ <br>
+                                        RFQs in 7 days
+                                        </p>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <p class="fs-17">21,42,278+ <br>
+                                        RFQs in 7 days
+                                        </p>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <p class="fs-17 ml-30 mt-3">21,42,278+ <br>
+                                        RFQs in 7 days
+                                        </p>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <p class="fs-17 ml-30 mt-3">21,42,278+ <br>
+                                        RFQs in 7 days
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <form class="bg-white pt-6 pl-3 pb-6 pr-3">
+                                <h3 class=" mb-6 font-main-color">One Request Multiple Quotes.</h3>
+                                <div class="form-group">
+                               
+                                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                </div>
+
+                                <div class="form-row mt-7">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                   
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                              </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                   
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+                         
+                                <a href="{% url 'post_requirements' %}"><button type="submit" class="btn btn-primary btn-outline-green mt-7 w-100 b-999">Request Quoation</button></a>
+
+                              
+                              </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+              
+
+              
+         
+            <!-- End of Container -->
+        </main>
+        <!-- End of Main -->
+
+        <!-- Start of Footer -->
+   
+        <!-- End of Footer -->
+    </div>
+    <!-- End of .page-wrapper -->
+
+    <!-- Start of Sticky Footer -->
+    <div class="stick_footer">
+        <div class="mb-toolbar">
+          <div>
+              <ul class="toolbar-grid m-0">
+              <li>
+                  <a href="">
+                    <img src="{% static "assets/images/home.png" %}" class="w-20" alt="Home">
+                      <p class="m-0">Home</p>
+                  </a>
+              </li>
+              <li data-toggle="modal" data-target="#myModal">
+                <a href="javascript:void(0)"> 
+                    <img src="{% static "assets/images/categories (1).png" %}" class="w-20" alt="Categories">
+                    <p class="m-0">Categories</p> 
+                </a>
+            </li>
+              <li data-toggle="modal" data-target="#myModal">
+                  <a href="javascript:void(0)"> 
+                      <i class="fa fa-search"></i>
+                      <p class="m-0">Search</p> 
+                  </a>
+              </li>
+              <li>
+                  <a href="">
+                    <img src="{% static "assets/images/message.png" %}" class="w-20" alt="Messages">
+                      <p class="m-0">Messages</p>
+                  </a>
+              </li>
+                            <li>
+                         <a href="">
+                            <img src="{% static "assets/images/user (1).png" %}" class="w-20" alt="Profile">
+                      <p class="m-0">Profile</p> 
+                  </a>
+                  
+              </li>
+        
+              
+          </ul>
+          </div>
+      </div>
+      </div>
+    <!-- End of Sticky Footer -->
+
+    <!-- Start of Scroll Top -->
+    <a id="scroll-top" class="scroll-top d-none" href="#top" title="Top" role="button"> <i class="w-icon-angle-up"></i> <svg
+            version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <circle id="progress-indicator" fill="transparent" stroke="#000000" stroke-miterlimit="10" cx="35" cy="35"
+                r="34" style="stroke-dasharray: 16.4198, 400;"></circle>
+        </svg> </a>
+    <!-- End of Scroll Top -->
+
+    <!-- Start of Mobile Menu -->
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-menu-overlay"></div>
+        <!-- End of .mobile-menu-overlay -->
+
+        <a href="#" class="mobile-menu-close"><i class="close-icon"></i></a>
+        <!-- End of .mobile-menu-close -->
+
+        <div class="mobile-menu-container scrollable">
+   
+            <!-- End of Search Form -->
+            <div class="tab">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a href="#main-menu" class="nav-link active">Main Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#categories" class="nav-link">Categories</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="main-menu">
+                    <ul class="mobile-menu">
+                        <li><a href="demo2.html">Home</a></li>
+                        <li>
+                            <a href="shop-banner-sidebar.html">Post Your Requirements</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Shop Pages</a>
+                                    <ul>
+                                        <li><a href="shop-banner-sidebar.html">Banner With Sidebar</a></li>
+                                        <li><a href="shop-boxed-banner.html">Boxed Banner</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Full Width Banner</a></li>
+                                        <li><a href="shop-horizontal-filter.html">Horizontal Filter<span
+                                                    class="tip tip-hot">Hot</span></a></li>
+                                        <li><a href="shop-off-canvas.html">Off Canvas Sidebar<span
+                                                    class="tip tip-new">New</span></a></li>
+                                        <li><a href="shop-infinite-scroll.html">Infinite Ajax Scroll</a></li>
+                                        <li><a href="shop-right-sidebar.html">Right Sidebar</a></li>
+                                        <li><a href="shop-both-sidebar.html">Both Sidebar</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Shop Layouts</a>
+                                    <ul>
+                                        <li><a href="shop-grid-3cols.html">3 Columns Mode</a></li>
+                                        <li><a href="shop-grid-4cols.html">4 Columns Mode</a></li>
+                                        <li><a href="shop-grid-5cols.html">5 Columns Mode</a></li>
+                                        <li><a href="shop-grid-6cols.html">6 Columns Mode</a></li>
+                                        <li><a href="shop-grid-7cols.html">7 Columns Mode</a></li>
+                                        <li><a href="shop-grid-8cols.html">8 Columns Mode</a></li>
+                                        <li><a href="shop-list.html">List Mode</a></li>
+                                        <li><a href="shop-list-sidebar.html">List Mode With Sidebar</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Product Pages</a>
+                                    <ul>
+                                        <li><a href="product-variable.html">Variable Product</a></li>
+                                        <li><a href="product-featured.html">Featured &amp; Sale</a></li>
+                                        <li><a href="product-accordion.html">Data In Accordion</a></li>
+                                        <li><a href="product-section.html">Data In Sections</a></li>
+                                        <li><a href="product-swatch.html">Image Swatch</a></li>
+                                        <li><a href="product-extended.html">Extended Info</a>
+                                        </li>
+                                        <li><a href="product-without-sidebar.html">Without Sidebar</a></li>
+                                        <li><a href="product-video.html">360<sup>o</sup> &amp; Video<span
+                                                    class="tip tip-new">New</span></a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Product Layouts</a>
+                                    <ul>
+                                        <li><a href="categorypage.html">Default<span
+                                                    class="tip tip-hot">Hot</span></a></li>
+                                        <li><a href="product-vertical.html">Vertical Thumbs</a></li>
+                                        <li><a href="product-grid.html">Grid Images</a></li>
+                                        <li><a href="product-masonry.html">Masonry</a></li>
+                                        <li><a href="product-gallery.html">Gallery</a></li>
+                                        <li><a href="product-sticky-info.html">Sticky Info</a></li>
+                                        <li><a href="product-sticky-thumb.html">Sticky Thumbs</a></li>
+                                        <li><a href="product-sticky-both.html">Sticky Both</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="vendor-dokan-store.html">Tools</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Store Listing</a>
+                                    <ul>
+                                        <li><a href="vendor-dokan-store-list.html">Store listing 1</a></li>
+                                        <li><a href="vendor-wcfm-store-list.html">Store listing 2</a></li>
+                                        <li><a href="vendor-wcmp-store-list.html">Store listing 3</a></li>
+                                        <li><a href="vendor-wc-store-list.html">Store listing 4</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Vendor Store</a>
+                                    <ul>
+                                        <li><a href="vendor-dokan-store.html">Vendor Store 1</a></li>
+                                        <li><a href="vendor-wcfm-store-product-grid.html">Vendor Store 2</a></li>
+                                        <li><a href="vendor-wcmp-store-product-grid.html">Vendor Store 3</a></li>
+                                        <li><a href="vendor-wc-store-product-grid.html">Vendor Store 4</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>hi</p>
+                            {% if request.user.profile.account_type == 'Retailier' %}
+                            <a href="{% url 'register_supplier' %}">Become A Seller</a>
+                            {% endif %}
+								{% if request.user.is_authenticated %}
+                                <li>Hi, {{ request.user.first_name }}</li>
+								{% else %}
+								<li><i class="ti-power-off"></i><a href="{% url "register" %}">Sign-up</a></li>
+								{% endif %}
+                            <ul>
+                                <li><a href="blog.html">Classic</a></li>
+                                <li><a href="blog-listing.html">Listing</a></li>
+                                <li>
+                                    <a href="">Grid</a>
+                                    <ul>
+                                        <li><a href="blog-grid-2cols.html">Grid 2 columns</a></li>
+                                        <li><a href="blog-grid-3cols.html">Grid 3 columns</a></li>
+                                        <li><a href="blog-grid-4cols.html">Grid 4 columns</a></li>
+                                        <li><a href="blog-grid-sidebar.html">Grid sidebar</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Masonry</a>
+                                    <ul>
+                                        <li><a href="blog-masonry-2cols.html">Masonry 2 columns</a></li>
+                                        <li><a href="blog-masonry-3cols.html">Masonry 3 columns</a></li>
+                                        <li><a href="blog-masonry-4cols.html">Masonry 4 columns</a></li>
+                                        <li><a href="blog-masonry-sidebar.html">Masonry sidebar</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Mask</a>
+                                    <ul>
+                                        <li><a href="blog-mask-grid.html">Blog mask grid</a></li>
+                                        <li><a href="blog-mask-masonry.html">Blog mask masonry</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="post-single.html">Single Post</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="about-us.html">Our Blogs</a>
+                            <ul>
+
+                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="become-a-vendor.html">Become A Vendor</a></li>
+                                <li><a href="contact-us.html">Contact Us</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="faq.html">FAQs</a></li>
+                                <li><a href="error-404.html">Error 404</a></li>
+                                <li><a href="coming-soon.html">Coming Soon</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="my-account.html">My Account</a></li>
+                            </ul>
+                        </li>
+                 
+                    </ul>
+                </div>
+                <div class="tab-pane" id="categories">
+                    <ul class="mobile-menu">
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                              Fashion
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="#">Women</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">New Arrivals</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Best Sellers</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Trending</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Clothing</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Shoes</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Bags</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Accessories</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Jewlery &
+                                                Watches</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Men</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">New Arrivals</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Best Sellers</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Trending</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Clothing</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Shoes</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Bags</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Accessories</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Jewlery &
+                                                Watches</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                              Home & Garden
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="#">Bedroom</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Beds, Frames &
+                                                Bases</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Dressers</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Nightstands</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Kid's Beds &
+                                                Headboards</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Armoires</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Living Room</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Coffee Tables</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Chairs</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Tables</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Futons & Sofa
+                                                Beds</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Cabinets &
+                                                Chests</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Office</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Office Chairs</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Desks</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Bookcases</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">File Cabinets</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Breakroom
+                                                Tables</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Kitchen & Dining</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Dining Sets</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Kitchen Storage
+                                                Cabinets</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Bashers Racks</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Dining Chairs</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Dining Room
+                                                Tables</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Bar Stools</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                              Electronics
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="#">Laptops &amp; Computers</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Desktop
+                                                Computers</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Monitors</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Laptops</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Hard Drives &amp;
+                                                Storage</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Computer
+                                                Accessories</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">TV &amp; Video</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">TVs</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Home Audio
+                                                Speakers</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Projectors</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Media Streaming
+                                                Devices</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Digital Cameras</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Digital SLR
+                                                Cameras</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Sports & Action
+                                                Cameras</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Camera Lenses</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Photo Printer</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Digital Memory
+                                                Cards</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Cell Phones</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Carrier Phones</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Unlocked Phones</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Phone & Cellphone
+                                                Cases</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Cellphone
+                                                Chargers</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                              Furniture
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="#">Furniture</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Sofas & Couches</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Armchairs</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Bed Frames</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Beside Tables</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Dressing Tables</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Lighting</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Light Bulbs</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Lamps</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Celling Lights</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Wall Lights</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Bathroom
+                                                Lighting</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Home Accessories</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Decorative
+                                                Accessories</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Candals &
+                                                Holders</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Home Fragrance</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Mirrors</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Clocks</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Garden & Outdoors</a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth-banner.html">Garden
+                                                Furniture</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Lawn Mowers</a>
+                                        </li>
+                                        <li><a href="shop-fullwidth-banner.html">Pressure
+                                                Washers</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">All Garden
+                                                Tools</a></li>
+                                        <li><a href="shop-fullwidth-banner.html">Outdoor Dining</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                             Healthy & Beauty
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                            Gift Ideas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                             Toy & Games
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                             Cooking
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                              Smart Phones
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                             Cameras & Photo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop-fullwidth-banner.html">
+                              Accessories
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop-banner-sidebar.html"
+                                class="font-weight-bold text-primary text-uppercase ls-25">
+                                View All Categories<i class="w-icon-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Mobile Menu -->
+
+        <!-- Start of Newsletter popup -->
+        <div class="newsletter-popup mfp-hide d-none">
+            <div class="newsletter-content">
+                <h4 class="text-uppercase font-weight-normal ls-25">Get Up to<span class="text-primary">25% Off</span></h4>
+                <h2 class="ls-25">Sign up</h2>
+                <p class="text-light ls-10">Subscribe to the Vistaar market newsletter to
+                    receive updates on special offers.</p>
+                <form action="#" method="get" class="input-wrapper input-wrapper-inline input-wrapper-round">
+                    <input type="email" class="form-control email font-size-md" name="email" id="email2"
+                        placeholder="Your email address" required="">
+                    <button class="btn btn-dark" type="submit">SUBMIT</button>
+                </form>
+                <div class="form-checkbox d-flex align-items-center">
+                    <input type="checkbox" class="custom-checkbox" id="hide-newsletter-popup" name="hide-newsletter-popup"
+                        required="">
+                    <label for="hide-newsletter-popup" class="font-size-sm text-light">Don't show this popup again.</label>
+                </div>
+            </div>
+        </div>
+        <!-- End of Newsletter popup -->
+
+
+
+    <!-- Start of Quick View -->
+    <div class="product product-single product-popup">
+        <div class="row gutter-lg">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div class="product-gallery product-gallery-sticky">
+                    <div class="swiper-container product-single-swiper swiper-theme nav-inner">
+                        <div class="swiper-wrapper row cols-1 gutter-no">
+                            <div class="swiper-slide">
+                                <figure class="product-image">
+                                    <img src="assets/images/products/popup/1-440x494.jpg"
+                                        data-zoom-image="assets/images/products/popup/1-800x900.jpg"
+                                        alt="Water Boil Black Utensil" width="800" height="900">
+                                </figure>
+                            </div>
+                            <div class="swiper-slide">
+                                <figure class="product-image">
+                                    <img src="assets/images/products/popup/2-440x494.jpg"
+                                        data-zoom-image="assets/images/products/popup/2-800x900.jpg"
+                                        alt="Water Boil Black Utensil" width="800" height="900">
+                                </figure>
+                            </div>
+                            <div class="swiper-slide">
+                                <figure class="product-image">
+                                    <img src="assets/images/products/popup/3-440x494.jpg"
+                                        data-zoom-image="assets/images/products/popup/3-800x900.jpg"
+                                        alt="Water Boil Black Utensil" width="800" height="900">
+                                </figure>
+                            </div>
+                            <div class="swiper-slide">
+                                <figure class="product-image">
+                                    <img src="assets/images/products/popup/4-440x494.jpg"
+                                        data-zoom-image="assets/images/products/popup/4-800x900.jpg"
+                                        alt="Water Boil Black Utensil" width="800" height="900">
+                                </figure>
+                            </div>
+                        </div>
+                        <button class="swiper-button-next"></button>
+                        <button class="swiper-button-prev"></button>
+                    </div>
+                    <div class="product-thumbs-wrap swiper-container" data-swiper-options="{
+                        'navigation': {
+                            'nextEl': '.swiper-button-next',
+                            'prevEl': '.swiper-button-prev'
+                        }
+                    }">
+                        <div class="product-thumbs swiper-wrapper row cols-4 gutter-sm">
+                            <div class="product-thumb swiper-slide">
+                                <img src="assets/images/products/popup/1-103x116.jpg" alt="Product Thumb" width="103"
+                                    height="116">
+                            </div>
+                            <div class="product-thumb swiper-slide">
+                                <img src="assets/images/products/popup/2-103x116.jpg" alt="Product Thumb" width="103"
+                                    height="116">
+                            </div>
+                            <div class="product-thumb swiper-slide">
+                                <img src="assets/images/products/popup/3-103x116.jpg" alt="Product Thumb" width="103"
+                                    height="116">
+                            </div>
+                            <div class="product-thumb swiper-slide">
+                                <img src="assets/images/products/popup/4-103x116.jpg" alt="Product Thumb" width="103"
+                                    height="116">
+                            </div>
+                        </div>
+                        <button class="swiper-button-next"></button>
+                        <button class="swiper-button-prev"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 overflow-hidden p-relative">
+                <div class="product-details scrollable pl-0">
+                    <h2 class="product-title">Electronics Black Wrist Watch</h2>
+                    <div class="product-bm-wrapper">
+                        <figure class="brand">
+                            <img src="{% static "assets/images/products/brand/brand-1.jpg" %}" alt="Brand" width="102" height="48" />
+                        </figure>
+                        <div class="product-meta">
+                            <div class="product-categories">
+                                Category:
+                                <span class="product-category"><a href="#">Electronics</a></span>
+                            </div>
+                            <div class="product-sku">
+                                SKU: <span>MS46891340</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="product-divider">
+
+                    <div class="product-price">$40.00</div>
+
+                    <div class="ratings-container">
+                        <div class="ratings-full">
+                            <span class="ratings" style="width: 80%;"></span>
+                            <span class="tooltiptext tooltip-top"></span>
+                        </div>
+                        <a href="#" class="rating-reviews">(3 Reviews)</a>
+                    </div>
+
+                    <div class="product-short-desc">
+                        <ul class="list-type-check list-style-none">
+                            <li>Ultrices eros in cursus turpis massa cursus mattis.</li>
+                            <li>Volutpat ac tincidunt vitae semper quis lectus.</li>
+                            <li>Aliquam id diam maecenas ultricies mi eget mauris.</li>
+                        </ul>
+                    </div>
+
+                    <hr class="product-divider">
+
+                    <div class="product-form product-variation-form product-color-swatch">
+                        <label>Color:</label>
+                        <div class="d-flex align-items-center product-variations">
+                            <a href="#" class="color" style="background-color: #ffcc01"></a>
+                            <a href="#" class="color" style="background-color: #ca6d00;"></a>
+                            <a href="#" class="color" style="background-color: #1c93cb;"></a>
+                            <a href="#" class="color" style="background-color: #ccc;"></a>
+                            <a href="#" class="color" style="background-color: #333;"></a>
+                        </div>
+                    </div>
+                    <div class="product-form product-variation-form product-size-swatch">
+                        <label class="mb-1">Size:</label>
+                        <div class="flex-wrap d-flex align-items-center product-variations">
+                            <a href="#" class="size">Small</a>
+                            <a href="#" class="size">Medium</a>
+                            <a href="#" class="size">Large</a>
+                            <a href="#" class="size">Extra Large</a>
+                        </div>
+                        <a href="#" class="product-variation-clean">Clean All</a>
+                    </div>
+
+                    <div class="product-variation-price">
+                        <span></span>
+                    </div>
+
+                    <div class="product-form">
+                        <div class="product-qty-form">
+                            <div class="input-group">
+                                <input class="quantity form-control" type="number" min="1" max="10000000">
+                                <button class="quantity-plus w-icon-plus"></button>
+                                <button class="quantity-minus w-icon-minus"></button>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-cart">
+                            <i class="w-icon-cart"></i>
+                            <span>Add to Cart</span>
+                        </button>
+                    </div>
+
+                    <div class="social-links-wrapper">
+                        <div class="social-links">
+                            <div class="social-icons social-no-color border-thin">
+                                <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
+                                <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
+                                <a href="#" class="social-icon social-pinterest fab fa-pinterest-p"></a>
+                                <a href="#" class="social-icon social-whatsapp fab fa-whatsapp"></a>
+                                <a href="#" class="social-icon social-youtube fab fa-linkedin-in"></a>
+                            </div>
+                        </div>
+                        <span class="divider d-xs-show"></span>
+                        <div class="product-link-wrapper d-flex">
+                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
+                            <a href="#"
+                                class="btn-product-icon btn-compare btn-icon-left w-icon-compare"><span></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Quick view -->
+
+    {% endblock %}
+
+  
+    {% block script %}
+    <!-- Plugin JS File -->
+    <script src="{% static "assets/vendor/jquery/jquery.min.js" %} "></script>
+    <script src="{% static "assets/js/bootstrap.js"></script>
+    <script src="{% static "assets/vendor/jquery.plugin/jquery.plugin.min.js" %} "></script>
+    <script src="{% static "assets/vendor/imagesloaded/imagesloaded.pkgd.min.js" %} "></script>
+    <script src="{% static "assets/vendor/swiper/swiper-bundle.min.js" %} "></script>
+    <script src="{% static "assets/vendor/jquery.countdown/jquery.countdown.min.js" %} "></script>
+    <script src="{% static "assets/vendor/magnific-popup/jquery.magnific-popup.min.js" %} "></script>
+    <script src="{% static "assets/vendor/floating-parallax/parallax.min.js" %} "></script>
+    <script src="{% static "assets/vendor/zoom/jquery.zoom.js" %} "></script>
+    <script src="{% static "assets/vendor/niceselect.js" %} "></script>
+
+    <script src="{% static "assets/js/datatable.js" %} "></script>
+    <script src="{% static "assets/js/apexchart.js" %} "></script>
+    <script src="{% static "assets/js/chartoption.js" %} "></script>
+    <script src="{% static "assets/js/popper.min.js" %} "></script>
+    <script src="{% static "assets/js/lunar.js" %} "></script>
+    <script src="{% static "assets/js/main.js" %} "></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+
+    <!-- Main Js -->
+    <script src="{% static "assets/js/main.min.js" %} "></script>
+
+        <script>
+        $(document).ready(function() {
+  $('select').niceSelect();
+});
+    </script>
+<script> 
+    $(function(){
+      $("#header").load("header.html"); 
+      $("#footer").load("footer.html"); 
+    });
+    </script> 
+
+
+<script>
+    var options = {
+strings: ['Orders.', 'New Orders.', 'More New Orders.'],
+typeSpeed: 150,
+backSpeed: 150,
+loop: true,
+};
+
+var typed = new Typed('.autotype', options);
+</script>
+
+{% endblock %}
+
+</body>
+
+
+</html>

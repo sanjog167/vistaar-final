@@ -1,0 +1,129 @@
+{% load static %}
+
+<div class="col-3 h-100 shadow-sm py-3 sticky-top" style="top: 20px; z-index: 0;">
+    <div class="mb-2 p-2 dashboard-profile border border-lg-1 rounded">
+        <div class="d-flex align-items-center flex-column text-center flex-lg-row">
+            <img src="{% static "image/admin.png" %}" class="rounded-circle"
+                style="width: 30px; height: 30px; border: 1px solid green;" alt="">
+            <div class="ms-1 d-none d-lg-block profile-name">
+                <a href="{% url 'edit' %}" class="nav-link text-success ps-1">
+                    <h6 class="my-0">{{ current_profile }} <i class="far fa-edit"></i></h6>
+                </a>
+            </div>
+        </div>
+        <a href="#" class="text-decoration-none text-dark">
+            <div class="d-flex justify-content-between align-items-center text-center company pt-1">
+                <div class="overflow-hidden text-lg-start company-name" style="width: 150px; height: 25px;">
+                    {{current_supplier}}
+                </div>
+                <!-- <span class="d-none d-lg-block">5
+                    <img src="{% static "image/icon/start-filled.svg" %}" alt="">
+                    <img src="../../image/icon/star-grey.svg" alt="">
+                </span> -->
+            </div>
+        </a>
+
+    </div>
+    <ul class="list-group dashboard-item">
+        <a href="{% url 'dashboard' %}" class="text-decoration-none">
+            <li class="list-group-item py-2 px-1">
+                <div class="d-flex flex-column text-center text-lg-start flex-lg-row align-items-center">
+                    <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    Dashboard
+                </div>
+            </li>
+        </a>
+        <a href="{% url 'company_profile' %}" class="text-decoration-none">
+            <li
+                class="list-group-item py-2 px-1 d-flex align-items-center flex-column text-center text-lg-start flex-lg-row">
+                <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                    <i class="fas fa-users-cog"></i>
+                </div>
+                Company Profile
+            </li>
+        </a>
+        <!-- <a href="{% url 'lead_manager' %}" class="text-decoration-none">
+            <li
+                class="list-group-item py-2 px-1 d-flex align-items-center flex-column text-center text-lg-start flex-lg-row">
+                <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                    <i class="fas fa-comment-medical"></i>
+                </div>
+                Lead Manager <span class="d-none d-lg-block"> (295)</span>
+            </li>
+        </a> -->
+        <a href="{% url 'manage_products' %}" class="text-decoration-none">
+            <li
+                class="list-group-item py-2 px-1 d-flex align-items-center flex-column text-center text-lg-start flex-lg-row">
+                <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                    <i class="fas fa-luggage-cart"></i>
+                </div>
+                Manage Products
+            </li>
+        </a>
+        <a href="{% url 'buy_leads' %}" class="text-decoration-none">
+            <li
+                class="list-group-item py-2 px-1 d-flex align-items-center flex-column text-center text-lg-start flex-lg-row">
+                <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                Buy Leads
+            </li>
+        </a>
+        <!-- <a href="{% url 'collect_payments' %}" class="text-decoration-none">
+            <li
+                class="list-group-item py-2 px-1 d-flex align-items-center flex-column text-center text-lg-start flex-lg-row">
+                <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                    <i class="fas fa-money-check-alt"></i>
+                </div>
+                Collect Payments
+            </li>
+        </a>
+        <a href="{% url 'catalog_view' %}" class="text-decoration-none">
+            <li
+                class="list-group-item py-2 px-1 d-flex align-items-center flex-column text-center text-lg-start flex-lg-row">
+                <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                Your Catalog Views <span>18</span>
+            </li>
+        </a>
+        <a href="{% url 'photos_docs' %}" class="text-decoration-none">
+            <li
+                class="list-group-item py-2 px-1 d-flex align-items-center flex-column text-center text-lg-start flex-lg-row">
+                <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                Photos & Docs
+            </li>
+        </a>
+        <a href="{% url 'bills_invoice' %}" class="text-decoration-none">
+            <li
+                class="list-group-item py-2 px-1 d-flex align-items-center flex-column text-center text-lg-start flex-lg-row">
+                <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                    <i class="fas fa-file-import"></i>
+                </div>
+                Bills & Invoice
+            </li>
+        </a>
+        <a href="{% url 'buyer_tools' %}" class="text-decoration-none">
+            <li
+                class="list-group-item py-2 px-1 d-flex align-items-center flex-column text-center text-lg-start flex-lg-row">
+                <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                    <i class="fas fa-toolbox"></i>
+                </div>
+                Buyers Tools <span>New</span>
+            </li>
+        </a>
+        <a href="{% url 'settings' %}" class="text-decoration-none">
+            <li
+                class="list-group-item py-2 px-1 d-flex align-items-center flex-column text-center text-lg-start flex-lg-row">
+                <div class="d-flex justify-content-center me-lg-2" style="width: 25px;">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                Setting
+            </li>
+        </a> -->
+    </ul>
+</div>

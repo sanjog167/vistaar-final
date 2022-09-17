@@ -1,0 +1,46 @@
+<html>
+
+<head>
+
+    <title>Generate Stats</title>
+
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+
+</head>
+
+<body>
+    
+<h3> Keywords Used </h3>
+
+<table>
+    <tr>
+      <th>Keyword</th>
+      <th>Frequency</th>
+    </tr>
+    {% for k,f in keywords.items %}
+    <tr>
+      <td>{{k}}</td>
+      <td>{{f}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</body>
+
+</html>

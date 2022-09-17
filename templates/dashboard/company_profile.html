@@ -1,0 +1,780 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% load static %}
+
+{% block style %}
+    <style>
+        .nav-tabs .nav-link:focus,
+        .nav-tabs .nav-link.active {
+            background-color: seagreen;
+            color: white;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- Content Start -->
+    <div class="container dashboard py-3">
+        <div class="row">
+            <!-- Sidebar Content -->
+            {% include 'dashboard/sidebar.html' %}
+
+            <div class="col-9 bg-light">
+                <div class="container">
+                    <div class="card my-3 p-0">
+                        <div class="card-body">
+                            <nav>
+                                <div class="d-flex justify-content-between">
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="nav-contact-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-contact" type="button" role="tab"
+                                            aria-controls="nav-contact" aria-selected="true">Contact
+                                            Details</button>
+                                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-profile" type="button" role="tab"
+                                            aria-controls="nav-profile" aria-selected="false">Business Profile</button>
+                                        <!-- <button class="nav-link" id="nav-website-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-website" type="button" role="tab"
+                                            aria-controls="nav-contact" aria-selected="false">Website Pages</button> -->
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button"
+                                            class="btn border border-success shadow-none dropdown-toggle"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            More Option
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><button class="dropdown-item" type="button">Action</button></li>
+                                            <li><button class="dropdown-item" type="button">Another action</button></li>
+                                            <li><button class="dropdown-item" type="button">Something else here</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-contact" role="tabpanel"
+                                    aria-labelledby="nav-contact-tab">
+                                    <div class="card my-4">
+                                        <div class="card-body">
+                                            <h1 class="fs-6">Contact Information</h1>
+                                            <hr>
+                                            <div class="row">
+                                                <!-- Profile -->
+                                                <div class="col-md-4 order-md-last">
+                                                    <img class="img-fluid" src="{% static 'image/admin.png' %}" alt="">
+                                                    <!-- <div class="custom-file mt-3">
+                                                        <input id="" class="custom-file-input" type="file" name="">
+                                                    </div> -->
+                                                </div>
+                                                <!-- Information -->
+                                                <div class="col-md-8">
+                                                    <form action="">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td valign="middle">Contact Person Name <span
+                                                                            class="text-danger">*</span></td>
+                                                                    <td><input type="text" name=""
+                                                                            class="form-control shadow-none"
+                                                                            value="{{current_supplier.name}}" readonly></td>
+                                                                </tr>
+                                                                <!-- <tr>
+                                                                    <td valign="middle">
+                                                                        <label for="my-input">Designation</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input id="my-input"
+                                                                            class="form-control shadow-none" type="text"
+                                                                            name="" readonly>
+                                                                    </td>
+                                                                </tr> -->
+                                                                <!-- <tr>
+                                                                    <td valign="middle">
+                                                                        <label for="my-input">Mobile no.</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input id="my-input"
+                                                                            class="form-control shadow-none" type="text"
+                                                                            name="" readonly>
+                                                                    </td>
+                                                                </tr> -->
+                                                                <tr>
+                                                                    <td valign="middle">
+                                                                        <label for="my-input">Phone no.</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input id="my-input"
+                                                                            class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.phone_number}}" name="" readonly>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td valign="middle">
+                                                                        <label for="my-input">Email ID</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input id="my-input"
+                                                                            class="form-control shadow-none"
+                                                                            type="email"
+                                                                            value="{{current_supplier.user.email}}" readonly>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- <tr>
+                                                                    <td valign="middle">
+                                                                        <label for="my-input">Alternative Email
+                                                                            ID</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input id="my-input"
+                                                                            class="form-control shadow-none"
+                                                                            type="email" name="" readonly>
+                                                                    </td>
+                                                                </tr> -->
+                                                            </tbody>
+                                                        </table>
+                                                    </form>
+                                                    <a href="{% url 'edit_company_info' %}" class="btn btn-primary">Edit</a>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="card">
+                                                <div class="card-body">
+                                                    <h1 class="fs-6">Additional Contact Details</h1>
+                                                    <div class="card-footer">
+                                                        <form method="post" action="">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="">Division</label>
+                                                                        <input id="" class="form-control shadow-none"
+                                                                            type="text" name="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="">Contact Person Name</label>
+                                                                        <input id="" class="form-control shadow-none"
+                                                                            type="text" name="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-8">
+                                                                    <div class="form-group">
+                                                                        <label for="">Address</label>
+                                                                        <input id="" class="form-control shadow-none"
+                                                                            type="text" name="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="">Country</label>
+                                                                        <input id="" class="form-control shadow-none"
+                                                                            type="text" name="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="my-input">Mobile Number</label>
+                                                                        <div class="input-group flex-nowrap">
+                                                                            <span
+                                                                                class="input-group-text d-none d-md-block"
+                                                                                id="addon-wrapping">+977</span>
+                                                                            <input type="text"
+                                                                                class="form-control shadow-none"
+                                                                                placeholder="" aria-label="Username"
+                                                                                aria-describedby="addon-wrapping">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="">Landline Number</label>
+                                                                        <div class="input-group mb-3">
+                                                                            <span
+                                                                                class="input-group-text d-none d-md-block">025</span>
+                                                                            <span
+                                                                                class="input-group-text d-none d-md-block">STD
+                                                                                Code</span>
+                                                                            <input type="text"
+                                                                                class="form-control shadow-none"
+                                                                                aria-label="Dollar amount (with dot and two decimal places)">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="">Toll Free Number</label>
+                                                                        <input id="" class="form-control shadow-none"
+                                                                            type="text" name="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="">Email</label>
+                                                                        <input id="" class="form-control shadow-none"
+                                                                            type="text" name="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="">Fax Number</label>
+                                                                        <input id="" class="form-control shadow-none"
+                                                                            type="text" name="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit"
+                                                                class="btn btn-primary mt-3">Save</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                    aria-labelledby="nav-profile-tab">
+
+                                    <!-- Company Details -->
+                                    <div class="card my-3">
+                                        <div class="card-header bg-white">
+                                            <h1 class="fs-6">Company Details</h1>
+                                        </div>
+                                        <div class="card-body">
+                                            <form method="POST">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-4 order-sm-last">
+                                                        <div class="text-center">
+                                                            <img src="{% static 'image/admin.png' %}" alt="">
+                                                            <!-- <p>Company Logo</p> -->
+                                                        </div>
+                                                        <!-- <div class="input-group mb-3">
+                                                            <input type="file" class="form-control"
+                                                                id="inputGroupFile02">
+                                                        </div> -->
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <table class="table">
+                                                            <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td valign="middle">Company Name <span
+                                                                            class="text-danger"></span></td>
+                                                                    <td><input type="text" name=""
+                                                                            class="form-control shadow-none"
+                                                                            value="{{current_supplier.company_name}}" readonly></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td valign="middle">
+                                                                        <label for="my-input">Year of Establishment</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input id="my-input"
+                                                                            class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.establishment_year}}" readonly>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td valign="middle">
+                                                                        <label for="my-input">CEO Name</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input id="my-input"
+                                                                            class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.ceo_name}}" readonly>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td valign="middle">
+                                                                        <label for="my-input">Email Address</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input id="my-input"
+                                                                            class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.email}}" name="" readonly>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td valign="middle">
+                                                                        <label for="my-input">Website</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input id="my-input"
+                                                                            class="form-control shadow-none"
+                                                                            type="email"
+                                                                            value="{{current_supplier.website}}" readonly>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="text-start w-100">
+                                                    <a href="{% url 'edit_business_profile' %}" class="btn btn-success w-50">
+                                                        <!-- <i class="fas fa-plus-square"></i>  -->
+                                                        Edit</a>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Company Address -->
+                                    <div class="card my-3">
+                                        <div class="card-header bg-white">
+                                            <h1 class="fs-6">Address</h1>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td>
+                                                                    PIN Code <span class="text-danger"></span>
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.pin_code}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    State <span class="text-danger"></span>
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.state}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Address (Building Nofloor) <span
+                                                                        class="text-danger"></span>
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.building_number}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Locality
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.locality}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td>
+                                                                    City <span class="text-danger"></span>
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.city}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Country <span class="text-danger"></span>
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.country}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Address (Area/ Street) <span
+                                                                        class="text-danger"></span>
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.street}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Landmark
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.landmark}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="text-start w-100">
+                                                    <a href="{% url 'edit_business_profile' %}" class="btn btn-success w-50">
+                                                        <!-- <i class="fas fa-plus-square"></i>  -->
+                                                        Edit</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <!-- Statutory Details -->
+                                    <div class="card my-3">
+                                        <div class="card-header bg-white">
+                                            <h1 class="fs-6">Statutory Details</h1>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <table class="table">
+                                                            <tr class="col-md-6">
+                                                                <td valign="middle">
+                                                                    EXIM
+                                                                    <span
+                                                                        class="text-light px-2 bg-danger rounded-circle">
+                                                                        !
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.exim}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="col-md-6">
+                                                                <td valign="middle">
+                                                                    PAN
+                                                                    <span
+                                                                        class="text-light px-2 bg-danger rounded-circle">
+                                                                        !
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.pan}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="col-md-6">
+                                                                <td valign="middle">
+                                                                    VAT
+                                                                    <span
+                                                                        class="text-light px-2 bg-danger rounded-circle">
+                                                                        !
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <input id="my-input" class="form-control shadow-none" type="text"
+                                                                            value="{{current_supplier.vat}}" readonly>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="text-start w-100">
+                                                    <a href="{% url 'edit_business_profile' %}" class="btn btn-success w-50">
+                                                        <!-- <i class="fas fa-plus-square"></i>  -->
+                                                        Edit</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bank Account Details -->
+                                    <!-- <div class="card my-3">
+                                        <div class="card-header bg-white">
+                                            <h1 class="fs-6">Bank Account Details</h1>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td>
+                                                                    IFSC Code <span class="text-danger">*</span>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name=""
+                                                                        class="form-control shadow-none" id="">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Bank Name <span class="text-danger">*</span>
+                                                                    <small>(As per IFSC Code)</small>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name=""
+                                                                        class="form-control shadow-none" id="">
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td>
+                                                                    Account Number <span class="text-danger">*</span>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name=""
+                                                                        class="form-control shadow-none" id="">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Account Type <span class="text-danger">*</span>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" name=""
+                                                                        class="form-control shadow-none" id="">
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="text-start w-100">
+                                                    <button type="submit" class="btn btn-success w-50"><i
+                                                            class="fas fa-plus-square"></i> Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div> -->
+
+                                    <!-- Business Details -->
+                                    <div class="card my-3">
+                                        <div class="card-header bg-white">
+                                            <h1 class="fs-6">Name of Business</h1>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td>
+                                                                    Primary Business Type
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-select shadow-none"
+                                                                        aria-label="Default select example">
+                                                                        <option selected>Wholesaler</option>
+                                                                        <option value="1">One</option>
+                                                                        <option value="2">Two</option>
+                                                                        <option value="3">Three</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Number pf Employees
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-select shadow-none"
+                                                                        aria-label="Default select example">
+                                                                        <option selected>Upto 10 People</option>
+                                                                        <option value="1">One</option>
+                                                                        <option value="2">Two</option>
+                                                                        <option value="3">Three</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td>
+                                                                    Ownership Type
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-select shadow-none"
+                                                                        aria-label="Default select example">
+                                                                        <option selected>Individual</option>
+                                                                        <option value="1">One</option>
+                                                                        <option value="2">Two</option>
+                                                                        <option value="3">Three</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Annual Turnover
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-select shadow-none"
+                                                                        aria-label="Default select example">
+                                                                        <option selected>Rs. 10- 25 Core</option>
+                                                                        <option value="1">One</option>
+                                                                        <option value="2">Two</option>
+                                                                        <option value="3">Three</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="row my-3">
+                                                    <h1 class="fs-6 text-muted">
+                                                        Secondary Business
+                                                    </h1>
+                                                    <div class="col-md-4">
+                                                        <div class="list-group">
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Wholesaler
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Non Profit Organization
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Buyer Individual
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Manufacturer
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Buyer Company
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="list-group">
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Exporter
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Association
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Service Provider
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Trader
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Buying House
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="list-group">
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Distributor
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Supplier
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Importer
+                                                            </label>
+                                                            <label class="list-group-item">
+                                                                <input class="form-check-input me-1" type="checkbox"
+                                                                    value="">
+                                                                Retailer
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-start w-100">
+                                                    <button type="submit" class="btn btn-success w-50"><i
+                                                        class="fas fa-plus-square"></i> Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Statutory Details -->
+                                    <!-- <div class="card my-3">
+                                        <div class="card-header bg-white">
+                                            <h1 class="fs-6">Business Card</h1>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div>
+                                                            <p class="text-muted">Front View</p>
+                                                            <div class="form-group">
+                                                                <label for="front"
+                                                                    class="w-100 border text-center pt-3">
+                                                                    <i class="fas fa-upload display-4"></i>
+                                                                    <p>Click To Upload</p>
+                                                                </label>
+                                                                <div class="input-group my-3">
+                                                                    <input type="file" class="form-control shadow-none"
+                                                                        id="front">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div>
+                                                            <p class="text-muted">Back View</p>
+                                                            <div class="form-group">
+                                                                <label for="back" class="w-100 border text-center pt-3">
+                                                                    <i class="fas fa-upload display-4 text-success"></i>
+                                                                    <p>Click To Upload</p>
+                                                                </label>
+                                                                <div class="input-group my-3">
+                                                                    <input type="file" class="form-control shadow-none"
+                                                                        id="back">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-start w-100">
+                                                    <button type="submit" class="btn btn-success w-50"><i
+                                                            class="fas fa-plus-square"></i> Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div> -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content End -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

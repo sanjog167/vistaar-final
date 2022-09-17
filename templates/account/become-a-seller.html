@@ -1,0 +1,611 @@
+{% extends "perm.html" %}
+{% load static %}
+{% block title %} Become a Seller {% endblock %}
+
+
+{% block style %}
+
+
+	@-webkit-keyframes down_angle {
+		0% {
+			border-bottom-width: 2vw;
+		}
+		to {
+			border-bottom-width: 30vw;
+		}
+	}
+	@keyframes down_angle {
+		0% {
+			border-bottom-width: 2vw;
+		}
+		to {
+			border-bottom-width: 30vw;
+		}
+	}
+
+	.wrapper {
+		max-width: auto;
+		/* margin: auto; */
+		position: relative;
+	}
+
+	.wrapper .search-input {
+		background: #ddd;
+		width: 100%;
+		border-radius: 5px;
+	}
+
+	.wrapper .search-input form input {
+		height: 55px;
+		width: 100%;
+		outline: none;
+		border: none;
+		border-radius: 5px;
+		padding: 0 60px 0 20px;
+		font-size: 18px;
+		box-sizing: border-box;
+		/* box-shadow: 0 1px 3px grey; */
+	}
+	.search-input form .autocom-box {
+		padding: 0;
+		max-height: 280px;
+		overflow-y: auto;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.search-input.active form .autocom-box {
+		padding: 10px 8px;
+		opacity: 1;
+		pointer-events: auto;
+		background-color: white;
+		position: relative;
+		top: 3px;
+		z-index: 1111;
+		width: 320px;
+	}
+
+	.autocom-box li {
+		list-style: none;
+		padding: 8px 12px;
+		width: 100%;
+		cursor: default;
+		border-radius: 3px;
+		box-sizing: border-box;
+		display: none;
+		font-size: 16px;
+		line-height: 18px;
+		text-align: left;
+	}
+
+	.search-input.active form .autocom-box li {
+		display: block;
+	}
+
+	.autocom-box li:hover {
+		background: #efefef;
+	}
+	.seller-page-top {
+		position: relative;
+	}
+	.seller-page-top .green-overlay {
+		position: absolute;
+		inset: 0;
+		background-color: rgba(0, 145, 124, 0.2);
+		height: 100%;
+	}
+	.seller-page-top .overlay-text {
+		position: absolute;
+		inset: 0;
+		top: 50%;
+	}
+
+	.main-div {
+		position: absolute;
+		background-color: white;
+		z-index: 5;
+		height: auto;
+		width: 100%;
+	}
+	.main-div .down-angle-container {
+		pointer-events: none;
+		width: 100%;
+		overflow: hidden;
+		position: absolute;
+		z-index: 3;
+		top: 0;
+		transform: translateY(-55%);
+	}
+	.main-div .down-angle-container .down-angle {
+		width: 0;
+		height: 0;
+		border-color: transparent;
+		border-bottom-color: #fff;
+		border-style: solid;
+		border-bottom-width: 2vw;
+	}
+	.main-div .down-angle-container .down-angle-1 {
+		border-right-width: 100vw;
+		float: left;
+		margin-left: -0.5em;
+	}
+	.main-div .down-angle-container .down-angle-2 {
+		border-left-width: 100vw;
+	}
+	body.loaded .main-div {
+		transition: top 2.75s cubic-bezier(0.165, 0.84, 0.44, 1) 0.25s;
+	}
+	body.loaded .main-div .down-angle-container .down-angle {
+		animation: down_angle 3.5s ease-out 0.5s 1 normal forwards;
+	}
+	.main-site-content {
+		position: relative;
+		z-index: 9;
+		overflow: hidden;
+	}
+
+	.square-box {
+		border: 3px solid #00917c;
+		width: 180px;
+		height: 180px;
+		opacity: 0;
+	}
+	.dotted-line {
+		width: 10%;
+		height: 4px;
+
+		background-image: linear-gradient(
+			90deg,
+			#d3d3d3 40%,
+			rgba(255, 255, 255, 0) 0%
+		);
+		background-size: 19px 3px;
+		background-repeat: repeat-x;
+		opacity: 0;
+		border: none !important;
+		z-index: -1;
+	}
+	.btn-outline {
+		border: 3px solid #00917c;
+		background: transparent;
+	}
+	.btn-outline:hover {
+		padding: 3px;
+		background-color: #00917c;
+		color: white;
+	}
+
+	.text-red {
+		color: red;
+	}
+
+	.hidden-form {
+		display: none;
+		margin: 0 auto;
+		max-width: max-content;
+		margin: 10px auto;
+		padding: 10px 20px;
+		background: #f4f7f8;
+		border-radius: 8px;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="number"],
+	select {
+		background: rgba(255, 255, 255, 0.1);
+		border: none;
+		font-size: 16px;
+		height: auto;
+		margin: 0;
+		outline: 0;
+		padding: 15px;
+		width: 100%;
+		background-color: #e8eeef;
+		color: #8a97a0;
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+		margin-bottom: 30px;
+	}
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@-webkit-keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@media only screen and (max-width: 768px) {
+		.hidden-form {
+			width: 90% !important;
+		}
+	}
+	@media only screen and (max-width: 426px) {
+		#sub-heading {
+			display: none !important;
+		}
+	}
+
+
+
+{% endblock %}
+
+
+{% block content %}
+		<script>
+			let suggestions = [
+				"Hello World",
+				"This is testing search in the field of iphone 10 that i love coding",
+				"I am here to help you",
+				"What can I help you",
+			];
+			// Getting all required elements
+			const searchWrapper = document.querySelector(".search-input");
+			const inputBox = searchWrapper.querySelector("input");
+			const suggBox = searchWrapper.querySelector(".autocom-box");
+
+			// if user press any key and realses
+			inputBox.onkeyup = (e) => {
+				let userData = e.target.value;
+				let emptyArray = [];
+				if (userData) {
+					emptyArray = suggestions.filter((data) => {
+						// filltering array value and user char to lowercase and return only those word/sents which are starts with user entered word
+						return data
+							.toLocaleLowerCase()
+							.startsWith(userData.toLocaleLowerCase());
+					});
+					emptyArray = emptyArray.map((data) => {
+						return (data = "<li>" + data + "</li>");
+					});
+					console.log(emptyArray);
+					searchWrapper.classList.add("active"); // show autocomplete box
+					showSuggestions(emptyArray);
+					let allList = suggBox.querySelectorAll("li");
+					for (let i = 0; i < allList.length; i++) {
+						// adding oncick
+						allList[i].setAttribute("onclick", "select(this)");
+					}
+				} else {
+					searchWrapper.classList.remove("active"); // hide autocomplete box
+				}
+			};
+
+			function select(element) {
+				let selectUserData = element.textContent;
+				console.log(selectUserData);
+				inputBox.value = selectUserData; // passing the user selected list data in text input
+				searchWrapper.classList.remove("active"); // hide autocomplete box
+			}
+
+			function showSuggestions(list) {
+				let listData;
+				if (!list.length) {
+					userValue = inputBox.value;
+					listData = "<li>" + userValue + "</li>";
+				} else {
+					listData = list.join("");
+				}
+				suggBox.innerHTML = listData;
+			}
+		</script>
+		<!-- Section Image Hero -->
+		<section class="container-fluid" style="padding: 0 !important">
+			<div class="seller-page-top">
+				<img src="https://via.placeholder.com/1920x1080" alt="" />
+				<div class="green-overlay"></div>
+				<div class="overlay-text">
+					<h1 class="text-center">Become a Seller</h1>
+					<p
+						id="sub-heading"
+						class="d-flex align-items-center justify-content-center text-center w-75 mx-auto"
+					>
+						Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+					</p>
+				</div>
+			</div>
+		</section>
+		<!-- End section -->
+		<!-- Section Seller Content -->
+		<div class="main-div">
+			<div class="down-angle-container">
+				<div class="down-angle down-angle-1"></div>
+				<div class="down-angle down-angle-2"></div>
+			</div>
+			<div class="main-site-content">
+				<section class="square-boxes-section">
+					<div
+						class="heading my-5"
+						data-aos="fade-down"
+						data-aos-easing="ease-out-cubic"
+						data-aos-duration="2000"
+						data-aos-delay="300"
+					>
+						<h3 class="text-center">Why Vistaar?</h3>
+					</div>
+					<div
+						id="square-boxes"
+						class="d-flex flex-sm-row flex-column justify-content-center align-items-center w-100 my-0 mx-auto mt-5"
+					>
+						<div
+							class="square-box d-flex justify-content-center align-items-center"
+						>
+							<p>Lorem</p>
+						</div>
+						<div class="dotted-line d-none d-lg-block d-xl-block"></div>
+						<div
+							class="square-box d-flex justify-content-center align-items-center"
+						>
+							<p>Lorem</p>
+						</div>
+						<div class="dotted-line d-none d-lg-block d-xl-block"></div>
+						<div
+							class="square-box d-flex justify-content-center align-items-center"
+						>
+							<p>Lorem</p>
+						</div>
+						<div class="dotted-line d-none d-lg-block d-xl-block"></div>
+						<div
+							class="square-box d-flex justify-content-center align-items-center"
+						>
+							<p>Lorem</p>
+						</div>
+					</div>
+				</section>
+				<section class="sliding-form my-5">
+					<div
+						class="d-flex justify-content-center"
+						data-aos="zoom-in"
+						data-aos-easing="ease-out-cubic"
+						data-aos-duration="2000"
+						data-aos-delay="300"
+					>
+						<h4>So, hurry up and register!</h4>
+					</div>
+					<div class="d-flex justify-content-center mt-5">
+						<button class="text-center btn px-4 py-3" id="btn-register">
+							Register
+						</button>
+					</div>
+					<div class="hidden-form w-50 mt-5" id="hidden-register-form">
+						<form class="row g-3 p-4" method="POST" action="{% url 'register_supplier' %}">
+							{% csrf_token %}
+							<div class="col-md-6 col-12">
+								<label class="form-label">Company Name</label>
+								<span class="text-red">*</span>
+								<input
+									type="text"
+									class="form-control"
+									placeholder="Company name"
+									required
+									name="company-name"
+								/>
+								<div class="invalid-feedback">Please choose a username.</div>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">Year of Establishment</label>
+								<span class="text-red">*</span>
+								<input
+									type="number"
+									class="form-control"
+									placeholder="Year of Establishment"
+									name="estdyear"
+									maxlength="4"
+								/>
+							</div>
+							<div class="col-12">
+								<label class="form-label">Company Email</label>
+								<input
+									type="email"
+									class="form-control"
+									placeholder="company@email.com"
+									name="company-email"
+								/>
+							</div>
+							<div class="col-12">
+								<label class="form-label">Company Website</label>
+								<input
+									type="text"
+									class="form-control"
+									placeholder="company.com"
+									name="website"
+								/>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label"> Name of CEO/Proprietor </label>
+								<span class="text-red">*</span>
+								<input
+									type="text"
+									class="form-control"
+									placeholder="Name of CEO/Proprietor"
+									name="ceo-name"
+								/>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label"> Company Phone Number </label>
+								<span class="text-red">*</span>
+								<input
+									type="number"
+									class="form-control"
+									placeholder="Company Phone Number"
+									name="company-phone"
+								/>
+							</div>
+							<div class="col-12">
+								<label class="form-label">Company Address Line 1</label>
+								<input
+									type="text"
+									class="form-control"
+									placeholder="Apartment, studio, or floor"
+									name="address1"
+								/>
+							</div>
+							<div class="col-12">
+								<label class="form-label">Company Address Line 2</label>
+								<input
+									type="text"
+									class="form-control"
+									placeholder="Apartment, studio, or floor"
+									name="address2"
+								/>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label"> Contact Person Name </label>
+								<input
+									type="text"
+									class="form-control"
+									placeholder="Contact Person Name"
+									name="contact-name"
+								/>
+							</div>
+							<div class="col-md-4">
+								<label class="form-label"> Company State </label>
+								<span class="text-red">*</span>
+								<select class="form-select" name="state">
+									<option selected disabled>Choose State</option>
+									<option value="Province No 1">Province No 1</option>
+									<option value="Madhesh Pradesh">Madhesh Pradesh</option>
+									<option value="Bagmati Province">Bagmati Province</option>
+									<option value="Gandaki Province">Gandaki Province</option>
+									<option value="Lumbini Province">Lumbini Province</option>
+									<option value="Karnali Province">Karnali Province</option>
+									<option value="Sudurpashchim Province">
+										Sudurpashchim Province
+									</option>
+								</select>
+							</div>
+
+							<div class="col-md-6">
+								<label class="form-label"> Contact Person Phone Number </label>
+								<span class="text-red">*</span>
+								<input
+									type="text"
+									class="form-control"
+									placeholder="Contact Person Phone Number"
+									name="contact-phone"
+								/>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label"> Contact Person Email </label>
+								<span class="text-red">*</span>
+								<input
+									type="text"
+									class="form-control"
+									placeholder="Contact Person Email"
+									name="contact-email"
+								/>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label"> PAN Number </label>
+								<span class="text-red">*</span>
+								<input
+									type="text"
+									class="form-control"
+									placeholder="PAN Number"
+									name="pan"
+								/>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label"> VAT Number </label>
+								<input
+									type="text"
+									class="form-control"
+									placeholder="VAT Number"
+									name="vat"
+								/>
+							</div>
+
+							<div class="col-12">
+								<button type="submit" class="px-4 py-3 btn text-center mt-4">
+									Submit
+								</button>
+							</div>
+						</form>
+					</div>
+				</section>
+			</div>
+		<!-- </div> -->
+		<!-- End Section Seller Content -->
+
+{% endblock %}
+
+{% block script %}
+
+		<!-- AOS -->
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script>
+			AOS.init();
+		</script>
+		<script>
+			function isInViewport(el) {
+				const rect = el.getBoundingClientRect();
+
+				return (
+					rect.top >= 0 &&
+					rect.left >= 0 &&
+					rect.bottom <=
+						(window.innerHeight || document.documentElement.clientHeight) &&
+					rect.right <=
+						(window.innerWidth || document.documentElement.clientWidth)
+				);
+			}
+
+			let squareBoxes = document.getElementById("square-boxes").children;
+			let parentSquareBox = document.getElementById("square-boxes");
+
+			document.addEventListener("scroll", function () {
+				if (isInViewport(parentSquareBox)) {
+					if (window.innerWidth < 992) {
+						for (var i = 0; i < squareBoxes.length; i++) {
+							var squareBox = squareBoxes[i];
+							squareBox.style.margin = "0 15px";
+						}
+					}
+					if (window.innerWidth > 768) {
+						addAnimation(squareBoxes);
+					}
+				} else {
+					if (window.innerWidth < 600) {
+						for (var i = 0; i < squareBoxes.length; i++) {
+							var squareBox = squareBoxes[i];
+							squareBox.style.opacity = 1;
+							squareBox.style.margin = "15px 0";
+						}
+					}
+				}
+			});
+
+			function addAnimation(squareBoxes) {
+				for (var i = 0; i < squareBoxes.length; i++) {
+					var squareBox = squareBoxes[i];
+					squareBox.style.animationName = "fadeIn";
+					squareBox.style.animationDuration = "5s";
+					squareBox.style.animationDelay = i + "s";
+					squareBox.style.animationFillMode = "forwards";
+					squareBox.style.webkitAnimationName = "fadeIn";
+					squareBox.style.webkitAnimationDuration = "5s";
+					squareBox.style.webkitAnimationDelay = i + "s";
+					squareBox.style.webkitAnimationFillMode = "forwards";
+				}
+			}
+		</script>
+		<script>
+			$(document).ready(function () {
+				$("#btn-register").on("click", function () {
+					if ($("#hidden-register-form").is(":hidden")) {
+						$("#hidden-register-form").slideDown("slow");
+					} else {
+						$("#hidden-register-form").slideUp("slow");
+					}
+				});
+			});
+		</script>
+
+{% endblock %}

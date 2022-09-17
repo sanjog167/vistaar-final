@@ -1,0 +1,418 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" type="image/png" href="{% static 'image/longlogo.png' %}"/>
+
+      
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+        <!-- Font Icon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <!-- Owl carousel -->
+        <link href="{% static "css/owl.carousel.min.css" %}" rel="stylesheet">
+          <link href="{% static "css/owl.theme.green.min.css" %}" rel="stylesheet">
+        <!-- Light Slider CSS------- -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.css">
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,700;1,400&display=swap"
+          rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="{% static "css/index.css" %}" rel="stylesheet">
+        <link href="{% static "css/style.css" %}" rel="stylesheet">
+
+        <!--For Search-->
+        <link href="{% static "css/all.min.css" %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+
+
+    
+        <title>{% block title %}{% endblock %}</title>
+        <style>{% block style %}{% endblock %}</style>
+      </head>
+
+    <body>
+     <!-- Header Start -->
+     <!-- Navbar Top Fixed-->
+        <div class="sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom border-success border-3">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url "home" %}">
+                        <img class="img-fluid" src="{% static "image/longlogo.png" %}" width="100" alt="">
+                    </a>
+                    <div class="search border rounded-pill d-none d-sm-block">
+                        <form class="d-flex px-3 py-1" action="{% url 'products:search' %}" method="GET">
+                            <select class=" shadow-none border-end" aria-label="Default select example">
+                                <option class="" selected hidden>Location</option>
+                                <option value="1">Dharan</option>
+                                <option value="2">Biratnagar</option>
+                                <option value="3">Kathmandu</option>
+                            </select>
+                            <input class="form-control shadow-none me-0" name="keyword" type="text" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-stream"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <!--li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-sitemap"></i> Category
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Agriculture</a></li>
+                                    <li><a class="dropdown-item" href="#">Apparel</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Automobiles Two Wheelers</a></li>
+                                </ul>
+                            </li-->
+                            {% if request.user.supplier %}
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'register_supplier' %}">
+                                    <i class="fab fa-sellcast"></i> Become a
+                                    Seller
+                                </a>
+                            </li>
+                            {% endif %}
+                            <li class="nav-item">
+
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn border border-success p-0 px-sm-0 px-2 shadow-none"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                                    {% if request.user.is_authenticated %}
+
+                                    <a class="nav-link" href="#">Hi, {{request.user.first_name}} <i class="fas fa-sign-in-alt fs-5"></i></a>
+
+                                    {% else %}
+
+                                    <a class="nav-link" href="#">Sign In <i class="fas fa-sign-in-alt fs-5"></i></a>
+
+                                    {% endif %}
+
+
+                                </button>
+                                <!-- Modal is down there -->
+
+                            </li>
+
+                        </ul>
+                        <div class="d-block d-sm-none">
+                            <form class="d-flex px-0 py-1">
+                                <input class="form-control shadow-none me-2" type="text" placeholder="Search"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+        <!-- Sign In Modal -->
+        <div class="modal fade login" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    {% if request.user.is_authenticated == False %}
+                    <div class="modal-header flex-column">
+                        <h5 class="modal-title" id="exampleModalLabel">Get started Now
+                        </h5>
+
+                        
+                        <p>Please Log in to go to your profile</p>
+                        <a href="{% url "login" %}" class="btn btn-success btn-sm w-50 shadow-none">Log in</a>
+                        <p class="mt-2">Don't have an account? <a href="{% url 'register' %}" class="text-decoration-none">Sign up</a></p>
+                    </div>
+
+                    {% else %}
+
+                    <div class="modal-header flex-column">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Hi, {{request.user.first_name}}!
+                        </h5>
+
+
+
+
+                    </div>
+
+                    {% endif %}
+                    <div class="modal-body py-0">
+                        <ul class="list-group list-group-flush">
+                            
+                            {% if request.user.profile.account_type == 'Supplier' or request.user.supplier %}
+                            <li class="list-group-item">
+                                <a href="{% url 'dashboard' %}" class="text-decoration-none">
+                                    <i class="fas fa-bullhorn"></i><span class="ms-2">My Seller Dashboard</span>
+                                </a>
+                            </li>
+                            {% else %}
+
+                            <li class="list-group-item">
+                                <a href="{% url 'register_supplier' %}" class="text-decoration-none">
+                                    <i class="fas fa-stamp"></i><span class="ms-2">Become
+                                        a seller</span>
+                                </a>
+                            </li>
+                            
+                            {% endif %}
+                            <!-- <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">
+                                    <i class="fas fa-bullhorn"></i><span class="ms-2">Advertise with Vistaar</span>
+                                </a>
+                            </li> -->
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">
+                                    <i class="fas fa-satellite-dish"></i><span class="ms-2">Request for Quotation</span>
+                                </a>
+                            </li>
+                            <!-- <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">
+                                    <i class="fas fa-tasks"></i><span class="ms-2">Enquire & Manage Quotes</span>
+                                </a>
+                            </li> -->
+                            {% if request.user.is_authenticated %}
+                            <li class="list-group-item">
+                                <a href="{% url "edit" %}" class="text-decoration-none">
+                                    <i class="fas fa-tasks"></i><span class="ms-2">Edit Profile</span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url "password_change" %}" class="text-decoration-none">
+                                    <i class="fas fa-tasks"></i><span class="ms-2">Change Password</span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{% url "logout" %}" class="text-decoration-none">
+                                    <i class="fas fa-tasks"></i><span class="ms-2">Sign Out</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Mega Menu start -->
+        <div class="mega-menu">
+            <nav class="navbar-lg navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <div class="d-flex justify-content-between align-items-center py-sm-0 py-2">
+                        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbars" aria-controls="navbars" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <i class="fas fa-th-large"></i>
+                            <span>Category</span>
+                        </button>
+                        <!-- <a href="#" class="btn btn-sm btn-success d-md-none"></a> -->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-sm btn-success d-md-none" data-bs-toggle="modal"
+                            data-bs-target="#postRequireModal">
+                            Post Your Requirement
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="postRequireModal" tabindex="-1" aria-labelledby="postRequireModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="postRequireModalLabel">Coming Soon!</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                        <p>Coming Soon!</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbars">
+                        <!-- <a href="#" class="btn btn-outline-success btn-sm d-none d-md-block">Post Your Requirement</a> -->
+                        <!-- Button trigger modal -->
+                        <a type="button" class="btn btn-outline-success shadow-none btn-sm d-none d-md-block"
+                            href="{% url 'post_requirements' %}">
+                            Post Your Requirement
+                        </a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="postRequire_LgModal" tabindex="-1"
+                            aria-labelledby="postRequire_LgModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="postRequire_LgModalLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="tab-content" id="pills-tabContent">
+                                                    <div class="tab-pane fade show active" id="pills-signup" role="tabpanel"
+                                                        aria-labelledby="pills-signup-tab">
+                                                        <div class="card border-0">
+                                                            <div class="highlight ps-sm-3 pt-sm-4 text-center">
+                                                                {% if messages %}
+                                                                {% for message in messages %}
+                                                                <p>
+                                                                    {{ message }}
+                                                                </p>
+                                                                {% endfor %}
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <form method="POST" action="{% url 'post_requirements' %}">
+                                                                    {% csrf_token %}
+                                                                    <div class="form-floating mb-3">
+                                                                        <input type="text" class="form-control shadow-none" id="floatingName"
+                                                                            name="product" placeholder="name@example.com" required>
+                                                                        <label for="floatingName">Product</label>
+                                                                    </div>
+                                                                    <div class="form-floating mb-3">
+                                                                        <input type="text" class="form-control shadow-none" id="floatingName"
+                                                                            name="quantity" placeholder="name@example.com" required>
+                                                                        <label for="floatingName">Quantity</label>
+                                                                    </div>
+                                                                    <div class="form-floating mb-3">
+                                                                        <input type="text" class="form-control shadow-none" id="floatingEmail"
+                                                                            name="description" placeholder="name@example.com">
+                                                                        <label for="floatingEmail">Description</label>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+                                                                        <input type="submit" class="btn btn-primary" value="Post">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Mega menu End -->
+    
+        <!-- Header End -->
+
+{% block content %}    
+{% endblock %}
+
+<!-- Footer -->
+<footer class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 border-bottom mb-3">
+                <h1 class="fs-3 text-success">About Us</h1>
+                <p>We are a homegrown B2B platform for Nepalese entrepreneurs to expand their businesses by listing
+                    their products online to sell them in bulk and gain access to the pan
+                    Nepal market in just a few clicks. We believe we can be a game changer in helping businesses
+                    establish their presence online as we have come up with a simple model of listing products and
+                    generating sales leads
+                    without the hassle of in-website transactions and complete liberty of dealing with the leads
+                    offline.</p>
+            </div>
+            <div class="col-md-6">
+                <h1 class="fs-3 text-success">Contact-us</h1>
+                <div>
+                    <span><i class="fas fa-map-marker-alt"></i> <b class="text-muted">Address</b></span>
+                    <p class="text-muted">Tribhuwan Path, Ward-02, Dharan Nepal</p>
+                </div>
+                <hr>
+                <div>
+                    <p class="mb-0"><i class="fas fa-phone-square-alt"></i> Phone: +977-9805372400</p>
+                    <p class=""><i class="fas fa-envelope-square"></i> Email: info@vistaartrade.com</p>
+                </div>
+                <div>
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fab fa-instagram-square"></i>
+                    <i class="fab fa-youtube-square"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+      <script src={% static "js/jquery.js" %}></script>
+      <script src={% static "js/bootstrap.js" %}></script>
+      <script src={% static "js/propermin.js" %}></script>
+      <script src={% static "js/main.js" %}></script>
+  
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="{% static "js/jquery.min.js" %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static "js/owl.carousel.min.js" %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $(".owl-carousel").owlCarousel({
+        loop: true,
+        loop: true,
+        mouseDrag: true,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 1
+          },
+          1000: {
+            items: 1
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

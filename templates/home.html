@@ -1,0 +1,416 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Vistaar - First B2B Marketplace in Nepal {% endblock %}
+{% block style %}
+
+/* ------------- */
+.slider a {
+    cursor: grab;
+    text-decoration: none;
+}
+
+/* Single Box  */
+.trending-box {
+    margin: 5px auto;
+    width: 200px;
+    overflow: hidden;
+}
+.trending-box .content {
+    position: relative;
+}
+
+.trending-box .s-img {
+    width: 100%;
+    height: 180px;
+    transition: all 0.5s;
+    object-fit: cover;
+}
+
+.trending-box:hover .s-img {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+/* Responsive-------------- */
+@media only screen and (max-width:400px) {
+    .trending-box {
+        width: 150px;
+    }
+}
+
+/* slider controls Css ------------------------- */
+.slideControls {
+    border-bottom: 1px solid rgb(112, 138, 110);
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+}
+
+.slideControls a {
+    position: absolute;
+    top: 4px;
+    width: 30px;
+    height: 30px;
+    background-color: #198754;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+}
+
+.slideControls i {
+    font-size: 30px;
+}
+
+.slideControls .slideNext {
+    right: 0px;
+}
+
+.slideControls .slidePrev {
+    right: 35px;
+}
+
+/* Featured Product Slider Start --------- */
+.featured-slider .card .imgBx {
+    text-align: center;
+}
+
+.featured-slider .card .imgBx img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.featured-slider .card .content .price {
+    font-size: 12px;
+}
+
+.featured-slider .card .content .order a {
+    color: white;
+}
+
+.featured-slider .card .content .supplier {
+    font-size: 13px;
+    line-height: 17px;
+}
+/* Featured Product COntrols---- */
+
+.featured-title {
+    border-radius: 0 10px 0 0;
+}
+
+
+/* -other Product Card --------------------------------------*/
+.other-product .box-card {
+    background-color: white;
+    position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    width: 205px;
+    margin: 10px auto;
+}
+section.other-product .box-card {
+    margin: 10px 5px;
+    width: 214px;
+    border: 2px solid #ddd;
+}
+.other-product .box-card .title {
+    padding-bottom: 5px;
+}
+
+.other-product .box-card .imgBx {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.other-product .box-card .imgBx img{
+    height: 150px;
+    object-fit: cover;
+}
+.other-product .box-card .content .price {
+    font-size: 12px;
+}
+
+.other-product .box-card .content .order a {
+    color: white;
+}
+
+.other-product .box-card .content .supplier {
+    font-size: 13px;
+    line-height: 17px;
+}
+
+
+/* Responsive ------------------ */
+@media (max-width:425px) {
+    section.other-product .box-card {
+        width: 80vw;
+        margin-top: 15px;
+    }
+
+    section.other-product .box-card {
+        width: 80vw;
+        margin-top: 15px;
+    }
+}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- Banner -->
+  <div class="container-fluid banner">
+    <div class="owl-carousel owl-theme">
+      <div> <img class="img-fluid" src="{% static "image/new_banner-1.png" %}" alt=""> </div>
+      <div> <img class="img-fluid" src="{% static "image/new_banner-2.png" %}" alt=""> </div>
+      <div> <img class="img-fluid" src="{% static "image/new_banner-3.png" %}" alt=""> </div>
+      <div> <img class="img-fluid" src="{% static "image/new_banner-4.png" %}" alt=""> </div>
+    </div>
+  </div>
+  <!-- Trending Products -->
+  <div class="py-5 trending">
+    <div class="container py-2 shadow rounded">
+      <div class="d-flex justify-content-between border-bottom border-2 border-primary">
+        <h1 class="fs-4">Trendings <span class="text-success">Products</span> </h1>
+        <a href="" class="text-decoration-none">View All</a>
+      </div>
+
+      <div class="row">
+        {% for product in trending %}
+        <div class="col-sm-2 col-md-3">
+          <div class="card">
+            <a href="{{ product.get_absolute_url }}">
+            <div class="card-body p-1 text-center">
+              <img class="img-fluid" src="{{ product.image.url }}" width=%" alt="">
+              <p class="my-0">{{product.product_name}}</p>
+            </div>
+          </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Products -->
+  <!--  div class="py-3 Recomanded">
+    <div class="container">
+      <div class="border-bottom border-2 my-3">
+        <a href="" class="btn btn-sm btn-success px-3" style="border-radius: 0 15px 0 0;"> Featured Products </a>
+      </div>
+      
+      <div class="row">
+        {% for p in products %}
+        
+        <div class="col-sm-3 col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <img class="img-fluid" src="{{ p.image.url }}" alt="">
+            </div>
+            <div class="card-footer">
+              <a href="{{ p.get_absolute_url }}">
+                <h1 class="fs-6 mb-0 text-dark">{{ p.product_name }}</h1>
+              </a>
+              <p><a href="{{ p.get_absolute_url }}">Rs. {{ p.price }}</a></p>
+              <p><a href="#">Supplied by : {{ p.supplier }}</a></p>
+            </div>
+          </div>
+        </div>
+        
+        {% endfor %}
+
+      </div>
+    </div>
+  </div-->
+
+  <!-- Featured Product new -->
+  <section class="featured-slider py-5">
+    <div class="container">
+        <div class="row">
+            <div class="slideControls mb-3">
+                <span class="fw-bold btn btn-sm btn-success featured-title">
+                    Featured Products
+                </span>
+                <a class="slidePrev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="slideNext">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <!-- Slider Start------------------------------------- -->
+            <ul id="featured-slider" class="cs-hidden row">
+              {% for p in products %}                
+                <!-- 1------------------- -->
+                <li class="item-a col-3 p-1">
+                    <div class="card">
+                        <div class="card-body px-1">
+                            <div class="title mb-1">
+                                <a href="{{ p.get_absolute_url }}">
+                                    <span class="badge bg-danger">New</span>
+                                </a>
+                            </div>
+                            <div class="imgBx">
+                                <a href="{{ p.get_absolute_url }}">
+                                    <img src="{{ p.image.url }}" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="content">
+                                <a href="{{ p.get_absolute_url }}" class="text-decoration-none text-dark">
+                                    <p class="fs-6 fw-bold mb-0">{{ p.product_name }}</p>
+                                </a>
+                                <div class="d-flex justify-content-between align-items-center my-1">
+                                    <div class="price">
+                                        <strong class="">Rs. {{ p.price }}</strong>
+                                        <!--span>
+                                            <del>Rs. 9000</del>
+                                        </span-->
+                                    </div>
+                                    <div class="order">
+                                        <a href="{{ p.get_absolute_url }}" class="badge bg-danger text-decoration-none">Order</a>
+                                    </div>
+                                </div>
+                                <p class="supplier mb-0">Supplied By: <i>{{ p.supplier }}</i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+              {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+ 
+
+  <!-- Demostration -->
+  <div class="py-3">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="fs-3">HOW TO BECOME A SELLER</h1>
+      </div>
+      <div class="shadow p-3 rounded">
+        <div class="row d-flex align-items-center">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-7">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/WUNGObk8fSs"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="col-md-5">
+            <img class="img-fluid" src="{% static 'image/banner-2.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Category wise -->
+{% for category in categories %}
+{% if category.featured %}
+  <section class="featured-slider py-5">
+    <div class="container">
+        <div class="row">
+            <div class="slideControls mb-3">
+                <span class="fw-bold btn btn-sm btn-success featured-title">
+                    {{category}}
+                </span>
+                <a class="slidePrev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="slideNext">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <!-- Slider Start------------------------------------- -->
+            <ul id="featured-slider" class="cs-hidden row">
+              {% for p in products %}                
+                <!-- 1------------------- -->
+                {% if p.category == category %}
+                <li class="item-a col-3 p-1">
+                    <div class="card">
+                        <div class="card-body px-1">
+                            <div class="title mb-1">
+                                <a href="{{ p.get_absolute_url }}">
+                                    <span class="badge bg-danger">New</span>
+                                </a>
+                            </div>
+                            <div class="imgBx">
+                                <a href="{{ p.get_absolute_url }}">
+                                    <img src="{{ p.image.url }}" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="content">
+                                <a href="{{ p.get_absolute_url }}" class="text-decoration-none text-dark">
+                                    <p class="fs-6 fw-bold mb-0">{{ p.product_name }}</p>
+                                </a>
+                                <div class="d-flex justify-content-between align-items-center my-1">
+                                    <div class="price">
+                                        <strong class="">Rs. {{ p.price }}</strong>
+                                        <!--span>
+                                            <del>Rs. 9000</del>
+                                        </span-->
+                                    </div>
+                                    <div class="order">
+                                        <a href="{{ p.get_absolute_url }}" class="badge bg-danger text-decoration-none">Order</a>
+                                    </div>
+                                </div>
+                                <p class="supplier mb-0">Supplied By: <i>{{ p.supplier }}</i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+
+
+<!--Categories-->
+<section>
+  <div class="container py-5">
+      <div class="slider my-3">
+          <!-- Slider Start -->
+          <ul id="responsive-trending" class="cs-hidden list-unstyled">
+            {% for category in categories %}
+
+              <!-- Slider First  -->
+              <li class="item-a">
+                  <!-- trending-box -->
+                  <a href="{{ category.get_absolute_url }}">
+                      <div class="trending-box">
+                          <!-- image -->
+                          <div class="image">
+                              <img src="{{ category.image.url }}" class="s-img" alt="image/product-1.jpeg">
+                          </div>
+                          <!-- content -->
+                          <div class="content text-center text-white bg-success  py-2">
+                              <h1 class="fs-5 m-0">
+                                  {{category}}
+                              </h1>
+                          </div>
+                      </div>
+                  </a>
+              </li>
+
+            {% endfor %}
+          </ul>
+          <!-- Slider End -->
+      </div>
+  </div>
+</section>
+
+
+{% endblock %}

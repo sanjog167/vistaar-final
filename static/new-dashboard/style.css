@@ -1,0 +1,301 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.aside-bar {
+	height: 100%;
+	width: 15vw;
+	background-color: rgba(0, 145, 124, 0.8);
+	position: fixed !important;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.aside-img {
+	width: 10vw;
+}
+
+.aside-links {
+	text-decoration: none;
+}
+
+.aside-links-span {
+	color: rgb(234, 230, 230);
+}
+
+.aside-links-span:hover {
+	color: #fff;
+}
+
+.aside-icon {
+	width: 18px !important;
+	height: 24px;
+}
+
+.main-body {
+	width: 90vw;
+	margin-left: 15vw;
+}
+
+.nav {
+	background-color: #fff !important;
+}
+
+.notification-nav {
+	position: relative;
+	margin: 0.5rem 1rem;
+	color: rgba(0, 0, 0, 0.55);
+}
+
+.notification-nav:hover,
+.user-nav:hover,
+.settings-nav:hover {
+	color: #00917c !important;
+}
+
+.notification-anv:after {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background: red;
+	top: 0;
+	right: 0;
+	border-radius: 50%;
+}
+
+.nav-img {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+}
+
+.dropdown-toggle::after {
+	display: none !important;
+}
+
+.user-nav-dropdown {
+	top: 90% !important;
+}
+
+.logout-nav {
+	color: rgba(0, 0, 0, 0.55);
+	text-decoration: none;
+}
+.logout-nav:hover {
+	color: #00917c !important;
+}
+
+.w-80 {
+	width: 80%;
+	margin: auto;
+}
+
+.user-tier-icon {
+	color: #00917c;
+}
+
+.custom-btn {
+	background-color: #282828;
+	padding: 0.25rem 1rem;
+	color: white;
+	border: none;
+	border-radius: 1%;
+}
+
+.custom-btn:hover {
+	background-color: #00917c;
+}
+
+.views-img,
+.rfq-img,
+.visits-img {
+	max-width: 100%;
+	max-height: 100%;
+	filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+
+.performance-image-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.performance-image-overlay-title {
+	color: rgb(208, 206, 206);
+}
+
+.performance-image-overlay-value {
+	color: #fff;
+}
+
+.analytics-customer-section {
+	padding-left: 0 !important;
+}
+
+.br-15 {
+	border-radius: 15px;
+}
+
+.analytics-year-select {
+	border: none !important;
+}
+.popular-products-chart-div {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	margin: auto;
+	width: auto;
+	height: auto;
+}
+
+.popular-product-section-chart-title .title {
+	font-size: 14px;
+}
+.leads-section-table {
+	position: relative;
+}
+.lead-table-row-striped {
+	background-color: #21ffde1f;
+}
+.lead-table-row:hover {
+	background-color: #00917c70;
+}
+.lead-table-footer {
+	height: 50px;
+}
+
+.lead-table-view-all-link {
+	text-decoration: none;
+	color: white;
+	padding: 10px 20px;
+	background-color: #282828;
+}
+.lead-table-view-all-link:hover {
+	background-color: #00917c;
+	color: white;
+}
+
+.premium-lead-overlay {
+	position: absolute;
+	margin: 0;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.7);
+	-webkit-backdrop-filter: blur(3px);
+	backdrop-filter: blur(3px);
+}
+
+.premium-lead-upgrade-btn {
+	width: 70%;
+	text-decoration: none;
+	padding: 10px 20px;
+	background-color: #282828;
+	color: white;
+	border: none;
+}
+
+.premium-lead-upgrade-btn:hover {
+	background-color: #00917c;
+}
+
+/* Leads Page */
+
+.tabs {
+	overflow: hidden;
+	background-color: #fff;
+}
+
+.tabs button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+}
+
+.tabs button:hover {
+	background-color: #00917c;
+	color: white;
+}
+
+.tabs button.active {
+	background-color: #00917c;
+	color: white;
+}
+
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	-webkit-animation: fadeEffect 1s;
+	animation: fadeEffect 1s;
+}
+
+@-webkit-keyframes fadeEffect {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeEffect {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.lead-product-image {
+	max-width: 100%;
+	max-height: 100%;
+}
+.buyers-detail {
+	line-height: 34px;
+}
+
+.buyer-details-key,
+.buyer-details-value {
+	width: 190px;
+}
+
+.empty-leads {
+	height: 100px;
+	background-image: linear-gradient(
+		to right top,
+		#00917c,
+		#08ab94,
+		#11c7ac,
+		#19e2c5,
+		#21ffdf
+	);
+}
+
+.empty-leads-p {
+	color: white;
+	margin-bottom: 0 !important;
+}
+@media only screen and (max-width: 576px) {
+	.w-80 {
+		width: 100%;
+	}
+}

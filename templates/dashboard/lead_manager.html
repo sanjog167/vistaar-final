@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+{% load static %}
+
+    <!-- Content Start -->
+    <div class="container dashboard py-3">
+        <div class="row">
+            <!-- Sidebar Nav -->
+            {% include 'dashboard/sidebar.html' %}
+
+            <div class="col-9 bg-light">
+                <!-- Custom chat -->
+                <div class="custom_chat py-3">
+                    <div class="d-flex align-items-start">
+                        <div class="nav flex-column nav-pills me-3 overflow-auto position-relative" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical" style="height: 100vh;">
+                            <!-- Title  -->
+                            <div class="sticky-top bg-light mb-1">
+                                <h1 class="fs-5">Buy Lead (43)</h1>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control shadow-none" placeholder="Search Here Name"
+                                        aria-label="Search Here Name" aria-describedby="basic-addon1">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Customer List -->
+                            <button class="nav-link p-1 active text-start" id="govin_verma" data-bs-toggle="pill"
+                                data-bs-target="#govin-verma-id" type="button" role="tab" aria-selected="true">
+                                <div class="border my-1 rounded px-2">
+                                    <h1 class="fs-6">Govind Verma , 84165184961</h1>
+                                    <p class="mb-2">Itahari, Milan Chok</p>
+                                    <span>
+                                        <i class="fas fa-cart-plus"></i>
+                                        <em>MIld Steel U Chanel</em>
+                                    </span>
+                                    <p class="text-muted">
+                                        <i class="fas fa-check-double"></i>
+                                        Available
+                                    </p>
+                                </div>
+                            </button>
+                            <button class="nav-link p-1 text-start" id="raka_sharma" data-bs-toggle="pill"
+                                data-bs-target="#raka-sharma-id" type="button" role="tab" aria-selected="true">
+                                <div class="border my-1 rounded px-2">
+                                    <h1 class="fs-6">Raka Sharama , 84165184961</h1>
+                                    <p class="mb-2">Itahari, Milan Chok</p>
+                                    <span>
+                                        <i class="fas fa-cart-plus"></i>
+                                        <em>MIld Steel U Chanel</em>
+                                    </span>
+                                    <p class="text-muted">
+                                        <i class="fas fa-check-double"></i>
+                                        Hi Username, We can deliver address
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        <!-- Chat Content -->
+                        <div class="tab-content w-100" id="v-pills-tabContent">
+                            <!-- Chat Box -->
+                            <div class="tab-pane fade show active " id="govin-verma-id" role="tabpanel"
+                                aria-labelledby="govin_verma">
+                                <div class="ms-md-2">
+                                    <div class="status border-bottom border-success">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div>
+                                                <strong>Govind Verma </strong>
+                                                <a href="#" class="text-decoration-none text-dark">
+                                                    <i class="fas fa-phone-volume"></i>+9779804090266
+                                                </a>
+                                                <p class="mb-2"><em>Itahari</em></p>
+                                                <a href="#" class="text-decoration-none text-primary">View Details</a>
+                                            </div>
+                                            <div>
+                                                <i class="far fa-clock"></i>
+                                                <span>Last Seen yesterday at <b>01:40 PM</b></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="message bg-white py-3" style="height: 65vh; overflow-x: hidden;">
+                                        <div class="row my-1">
+                                            <div class="col-6">
+                                                <div class="rounded bg-secondary text-white px-2">
+                                                    <p>I am intrested in buying C Chanel Profile</p>
+                                                    Kindly send me price and other details
+                                                    <br>
+                                                    quantity : 6
+                                                    <br>
+                                                    Quantity Unit : Kg
+                                                    <br>
+                                                    Total Order Value( Rs ): Upto 1,000
+                                                    <br>
+                                                    Size : 5 Inch * 3 inch
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row my-1">
+                                            <div class="col-6 ms-auto">
+                                                <div class="rounded bg-secondary text-white px-2">
+                                                    <p>I am intrested in buying C Chanel Profile</p>
+                                                    Kindly send me price and other details
+                                                    <br>
+                                                    quantity : 6
+                                                    <br>
+                                                    Quantity Unit : Kg
+                                                    <br>
+                                                    Total Order Value( Rs ): Upto 1,000
+                                                    <br>
+                                                    Size : 5 Inch * 3 inch
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row my-1">
+                                            <div class="col-6">
+                                                <div class="rounded bg-secondary text-white px-2">
+                                                    <p>I am intrested in buying C Chanel Profile</p>
+                                                    Kindly send me price and other details
+                                                    <br>
+                                                    quantity : 6
+                                                    <br>
+                                                    Quantity Unit : Kg
+                                                    <br>
+                                                    Total Order Value( Rs ): Upto 1,000
+                                                    <br>
+                                                    Size : 5 Inch * 3 inch
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="send mt-2">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a comment here"
+                                                id="floatingTextarea2" style="height: 100px"></textarea>
+                                            <label for="floatingTextarea2">Comments</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-success mt-3">Send <i
+                                                class="far fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Chat Box -->
+                            <div class="tab-pane fade show" id="raka-sharma-id" role="tabpanel"
+                                aria-labelledby="raka-sharma">
+                                <div class="ms-md-2">
+                                    <div class="status border-bottom border-success">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div>
+                                                <strong>Raka Sharma </strong>
+                                                <a href="#" class="text-decoration-none text-dark">
+                                                    <i class="fas fa-phone-volume"></i>+9779804090266
+                                                </a>
+                                                <p class="mb-2"><em>Itahari</em></p>
+                                                <a href="#" class="text-decoration-none text-primary">View Details</a>
+                                            </div>
+                                            <div>
+                                                <i class="far fa-clock"></i>
+                                                <span>Last Seen yesterday at <b>01:40 PM</b></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="message bg-white py-3" style="height: 65vh; overflow-x: hidden;">
+                                        <div class="row my-1">
+                                            <div class="col-6">
+                                                <div class="rounded bg-secondary text-white px-2">
+                                                    <p>I am intrested in buying C Chanel Profile</p>
+                                                    Kindly send me price and other details
+                                                    <br>
+                                                    quantity : 6
+                                                    <br>
+                                                    Quantity Unit : Kg
+                                                    <br>
+                                                    Total Order Value( Rs ): Upto 1,000
+                                                    <br>
+                                                    Size : 5 Inch * 3 inch
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row my-1">
+                                            <div class="col-6 ms-auto">
+                                                <div class="rounded bg-secondary text-white px-2">
+                                                    <p>I am intrested in buying C Chanel Profile</p>
+                                                    Kindly send me price and other details
+                                                    <br>
+                                                    quantity : 6
+                                                    <br>
+                                                    Quantity Unit : Kg
+                                                    <br>
+                                                    Total Order Value( Rs ): Upto 1,000
+                                                    <br>
+                                                    Size : 5 Inch * 3 inch
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row my-1">
+                                            <div class="col-6">
+                                                <div class="rounded bg-secondary text-white px-2">
+                                                    <p>I am intrested in buying C Chanel Profile</p>
+                                                    Kindly send me price and other details
+                                                    <br>
+                                                    quantity : 6
+                                                    <br>
+                                                    Quantity Unit : Kg
+                                                    <br>
+                                                    Total Order Value( Rs ): Upto 1,000
+                                                    <br>
+                                                    Size : 5 Inch * 3 inch
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="send mt-2">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a comment here"
+                                                id="floatingTextarea2" style="height: 100px"></textarea>
+                                            <label for="floatingTextarea2">Comments</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-success mt-3">Send <i
+                                                class="far fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Content End -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}

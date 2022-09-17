@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Buy Leads</title>
+		<!-- Bootstrap CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+			crossorigin="anonymous"
+		/>
+		<!-- FontAwesome CSS -->
+		<link rel="stylesheet" href="{% static 'new-dashboard/assets/pro/css/all.min.css' %}" />
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="{% static 'new-dashboard/style.css' %}" />
+		<!-- Fontawesome JS-->
+		<script defer src="{% static 'new-dashboard/assets/pro/js/all.js' %}"></script>
+
+		<!-- Nice Select CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+			integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"> -->
+	</head>
+
+	<body>
+		<div class="main d-flex flex-row">
+			<aside class="aside-bar">
+				<div class="ms-3 aside-img-logo">
+					<img
+						src="{% static 'new-dashboard/assets/images/vistaar.png' %}"
+						alt="logo"
+						class="aside-img my-3"
+					/>
+				</div>
+				<div class="aside-hyperlinks mt-5">
+					<div class="row ms-1">
+						<a href="{% url 'dashboard' %}" class="aside-links mt-5">
+							<span class="aside-links-span d-flex">
+								<i class="fa-regular fa-home aside-icon me-2"></i> Dashboard
+							</span>
+						</a>
+					</div>
+
+					<div class="row ms-1 my-3">
+						<a href="#" class="aside-links">
+							<span class="aside-links-span d-flex">
+								<i class="fa-regular fa-person aside-icon me-2"></i>
+								Company Profile
+							</span>
+						</a>
+					</div>
+					<div class="row ms-1 my-3">
+						<a href="#" class="aside-links">
+							<span class="aside-links-span d-flex">
+								<i class="fa-regular fa-bag-shopping aside-icon me-2"></i>
+								Manage Products
+							</span>
+						</a>
+					</div>
+					<div class="row ms-1 my-3">
+						<a href="#" class="aside-links">
+							<span class="aside-links-span d-flex">
+								<i class="fa-regular fa-chart-line aside-icon me-2"></i>
+								Buy Leads
+							</span>
+						</a>
+					</div>
+				</div>
+			</aside>
+			<main class="main-body mb-5">
+				<!-- Nav Bar -->
+				<nav class="navbar navbar-expand-lg navbar-light bg-light nav shadow">
+					<div class="container-fluid">
+						<span class="ms-2"><i class="fa-solid fa-bars fa-lg"></i></span>
+						<button
+							class="navbar-toggler"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#navbarNavAltMarkup"
+							aria-controls="navbarNavAltMarkup"
+							aria-expanded="false"
+							aria-label="Toggle navigation"
+						>
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div
+							class="collapse navbar-collapse justify-content-end"
+							id="navbarNavAltMarkup"
+						>
+							<div class="navbar-nav">
+								<a
+									class="notification-nav my-auto"
+									aria-current="page"
+									href="#"
+								>
+									<i class="fa-solid fa-bell fa-xl"></i>
+								</a>
+								<a class="nav-link settings-nav my-auto" href="#"
+									><i class="fa-regular fa-gear fa-xl"></i
+								></a>
+								<div class="nav-link user-nav">
+									<span>
+										<img src="{% static 'new-dashboard/assets/images/download.jpg' %}" class="nav-img" />
+										<span class="ms-1 dropdown-toggle" data-bs-toggle="dropdown"
+											>Kate Doe <i class="fa-regular fa-angle-down ms-1"></i
+										></span>
+										<ul
+											class="dropdown-menu dropdown-menu-end user-nav-dropdown"
+										>
+											<li>
+												<a href="#" class="logout-nav"
+													><i
+														class="fa-regular fa-arrow-right-from-bracket fa-xl mx-2"
+													></i
+													>Logout</a
+												>
+											</li>
+										</ul>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<!-- Main Content -->
+				<section class="tab-section w-80 shadow br-15">
+					<div class="tabs mt-5">
+						<button
+							class="tablinks"
+							id="default"
+							onclick="openTab(event, 'recent-leads')"
+						>
+							Unconsumed Leads
+						</button>
+						<button class="tablinks" onclick="openTab(event, 'direct-leads')">
+							Direct Leads
+						</button>
+						<button class="tablinks" onclick="openTab(event, 'open-quotes')">
+							Open Quotation Requests
+						</button>
+						<button class="tablinks" onclick="openTab(event, 'premium-leads')">
+							Premium Leads
+						</button>
+						<button class="tablinks" onclick="openTab(event, 'consumed-leads')">
+							Consumed Leads
+						</button>
+					</div>
+				</section>
+
+				<section class="tab-content-section w-80 br-1 shadow py-5">
+					<div id="recent-leads" class="tabcontent">
+						<!-- Leads Card section -->
+						{% for l in all_leads %}
+						{% if not l.consumed %}
+						<div class="row shadow w-80 br-15 mt-5">
+							<div class="col-md-4 col-12 d-flex justify-content-center">
+								<img
+									src="{% static 'new-dashboard/assets/images/watch.webp' %}"
+									class="rounded m-4 lead-product-image"
+								/>
+							</div>
+							<div class="col-md-8 col-12 my-auto buyers-detail">
+								<div class="row justify-content-center">
+									<div
+										class="buyer-details-name d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Buyer's Name</span>
+										</div>
+										<div class="buyer-details-value">
+											<span>: {{l.buyer}}</span>
+										</div>
+									</div>
+									<div
+										class="buyer-details-contact d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Buyer's Contact Number</span>
+										</div>
+										<div class="buyer-details-value">
+											<span class="text-break">: {{l.buyer.profile.mobile_number}}</span>
+										</div>
+									</div>
+									<div
+										class="buyer-details-quatity d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Quantity Requested In</span>
+										</div>
+										<div class="buyer-details-value">
+											<span>: {{l.quantity_required}}</span>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<input type="checkbox" class="me-2" {% if l.consumed %}checked{% endif %}/>
+										<label for="consumed"> Mark as consumed </label>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% empty %}
+						<div class="row shadow w-80 br-15 mt-5 empty-leads">
+							<p
+								class="empty-leads-p d-flex align-items-center justify-content-center"
+							>
+								Upload More Products and Get Unlimited Leads
+							</p>
+						</div>
+						{% endfor %}
+					</div>
+					<div id="direct-leads" class="tabcontent">
+						<!-- Leads Card section -->
+						{% for l in prim_leads %}
+						<div class="row shadow w-80 br-15 mt-5">
+							<div class="col-md-4 col-12 d-flex justify-content-center">
+								<img
+									src="{% static 'new-dashboard/assets/images/watch.webp' %}"
+									class="rounded m-4 lead-product-image"
+								/>
+							</div>
+							<div class="col-md-8 col-12 my-auto buyers-detail">
+								<div class="row justify-content-center">
+									<div
+										class="buyer-details-name d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Buyer's Name</span>
+										</div>
+										<div class="buyer-details-value">
+											<span>: {{l.buyer}}</span>
+										</div>
+									</div>
+									<div
+										class="buyer-details-contact d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Buyer's Contact Number</span>
+										</div>
+										<div class="buyer-details-value">
+											<span class="text-break">: {{l.buyer.profile.mobile_number}}</span>
+										</div>
+									</div>
+									<div
+										class="buyer-details-quatity d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Quantity Requested In</span>
+										</div>
+										<div class="buyer-details-value">
+											<span>: {{l.quantity_required}}</span>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<input type="checkbox" class="me-2" {% if l.consumed %}checked{% endif %}/>
+										<label for="consumed"> Mark as consumed </label>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% empty %}
+						<div class="row shadow w-80 br-15 mt-5 empty-leads">
+							<p
+								class="empty-leads-p d-flex align-items-center justify-content-center"
+							>
+								Upload More Products and Get Unlimited Leads
+							</p>
+						</div>
+						{% endfor %}
+					</div>
+					<div id="open-quotes" class="tabcontent">
+						<!-- Leads Card section -->
+						{% for l in rfq_leads %}
+						<div class="row shadow w-80 br-15 mt-5">
+							<div class="col-md-4 col-12 d-flex justify-content-center">
+								<img
+									src="{% static 'new-dashboard/assets/images/watch.webp' %}"
+									class="rounded m-4 lead-product-image"
+								/>
+							</div>
+							<div class="col-md-8 col-12 my-auto buyers-detail">
+								<div class="row justify-content-center">
+									<div
+										class="buyer-details-name d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Buyer's Name</span>
+										</div>
+										<div class="buyer-details-value">
+											<span>: {{l.buyer}}</span>
+										</div>
+									</div>
+									<div
+										class="buyer-details-contact d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Buyer's Contact Number</span>
+										</div>
+										<div class="buyer-details-value">
+											<span class="text-break">: {{l.buyer.profile.mobile_number}}</span>
+										</div>
+									</div>
+									<div
+										class="buyer-details-quatity d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Quantity Requested In</span>
+										</div>
+										<div class="buyer-details-value">
+											<span>: {{l.quantity_required}}</span>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<input type="checkbox" class="me-2" {% if l.consumed %}checked{% endif %}/>
+										<label for="consumed"> Mark as consumed </label>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% empty %}
+						<div class="row shadow w-80 br-15 mt-5 empty-leads">
+							<p
+								class="empty-leads-p d-flex align-items-center justify-content-center"
+							>
+								Upload More Products and Get Unlimited Leads
+							</p>
+						</div>
+						{% endfor %}
+					</div>
+					<div id="premium-leads" class="tabcontent">
+						<!-- Leads Card section -->
+						{% for l in prem_leads %}
+						<div class="row shadow w-80 br-15 mt-5">
+							<div class="col-md-4 col-12 d-flex justify-content-center">
+								<img
+									src="{% static 'new-dashboard/assets/images/watch.webp' %}"
+									class="rounded m-4 lead-product-image"
+								/>
+							</div>
+							<div class="col-md-8 col-12 my-auto buyers-detail">
+								<div class="row justify-content-center">
+									<div
+										class="buyer-details-name d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Buyer's Name</span>
+										</div>
+										<div class="buyer-details-value">
+											<span>: {{l.buyer}}</span>
+										</div>
+									</div>
+									<div
+										class="buyer-details-contact d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Buyer's Contact Number</span>
+										</div>
+										<div class="buyer-details-value">
+											<span class="text-break">: {{l.buyer.profile.mobile_number}}</span>
+										</div>
+									</div>
+									<div
+										class="buyer-details-quatity d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Quantity Requested In</span>
+										</div>
+										<div class="buyer-details-value">
+											<span>: {{l.quantity_required}}</span>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<input type="checkbox" class="me-2" {% if l.consumed %}checked{% endif %}/>
+										<label for="consumed"> Mark as consumed </label>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% empty %}
+						<div class="row shadow w-80 br-15 mt-5 empty-leads">
+							<p
+								class="empty-leads-p d-flex align-items-center justify-content-center"
+							>
+								Upload More Products and Get Unlimited Leads
+							</p>
+						</div>
+						{% endfor %}
+					</div>
+					<div id="consumed-leads" class="tabcontent">
+						<!-- Leads Card section -->
+						{% for l in all_leads %}
+						<div class="row shadow w-80 br-15 mt-5">
+							<div class="col-md-4 col-12 d-flex justify-content-center">
+								<img
+									src="{% static 'new-dashboard/assets/images/watch.webp' %}"
+									class="rounded m-4 lead-product-image"
+								/>
+							</div>
+							<div class="col-md-8 col-12 my-auto buyers-detail">
+								<div class="row justify-content-center">
+									<div
+										class="buyer-details-name d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Buyer's Name</span>
+										</div>
+										<div class="buyer-details-value">
+											<span>: {{l.buyer}}</span>
+										</div>
+									</div>
+									<div
+										class="buyer-details-contact d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Buyer's Contact Number</span>
+										</div>
+										<div class="buyer-details-value">
+											<span class="text-break">: {{l.buyer.profile.mobile_number}}</span>
+										</div>
+									</div>
+									<div
+										class="buyer-details-quatity d-flex justify-content-between"
+									>
+										<div class="buyer-details-key">
+											<span>Quantity Requested In</span>
+										</div>
+										<div class="buyer-details-value">
+											<span>: {{l.quantity_required}}</span>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<input type="checkbox" class="me-2" {% if l.consumed %}checked{% endif %}/>
+										<label for="consumed"> Mark as consumed </label>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% empty %}
+						<div class="row shadow w-80 br-15 mt-5 empty-leads">
+							<p
+								class="empty-leads-p d-flex align-items-center justify-content-center"
+							>
+								Upload More Products and Get Unlimited Leads
+							</p>
+						</div>
+						{% endfor %}
+					</div>
+				</section>
+			</main>
+		</div>
+	</body>
+	<!-- Jquery -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
+	<!-- Bootstrap JS -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"
+	></script>
+
+	<!-- Chart JS -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+		integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
+	<!-- Nice Select -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"
+		integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
+
+	<script>
+		function openTab(evt, tabName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+
+		// Get the element with id="defaultOpen" and click on it
+		document.getElementById("default").click();
+	</script>
+</html>

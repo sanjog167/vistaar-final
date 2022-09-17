@@ -1,0 +1,721 @@
+{% extends "perm.html" %}
+{% load static %}
+{% block title %} {{supplier}} {% endblock %}
+
+{% block style %}
+
+.seller_profile {
+	position: relative;
+}
+
+.seller_profile .top {
+	position: relative;
+	margin-bottom: 10%;
+}
+
+.seller_profile .top .profile {
+	position: absolute;
+	top: 50%;s
+	transform: translateY(-0%);
+	width: 100%;
+	height: 100%;
+	padding: 5px;
+}
+
+.cover {
+	width: 100%;
+	height: 250px;
+}
+
+.cover img {
+	object-fit: cover;
+}
+
+.profile {
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.profile .imgBx .profile-img {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	border: 8px double #00917c;
+}
+
+.profile .buttons .contact,
+.profile .buttons .request {
+	margin: 5px;
+	background-color: #333;
+	padding: 10px 15px;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.profile .buttons a {
+	color: white;
+}
+
+.profile .buttons div:hover {
+	background-color: #00917c;
+}
+
+@media screen and (max-width:768px) {
+	.cover {
+		display: none;
+	}
+
+	.seller_profile .top {
+		position: relative;
+		margin-bottom: 0%;
+	}
+
+	.seller_profile .top .profile {
+		position: static;
+	}
+
+	.profile .imgBx .profile-img {
+		width: 150px;
+		height: 150px;
+		border-radius: 5%;
+		border: 1px double #00917c;
+		/* margin-left: 10px; */
+	}
+}
+
+@media screen and (max-width:500px) {
+	.profile .imgBx .profile-img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.company_name .name {
+		font-size: 25px;
+	}
+
+	.company_name .details,
+	.company_name .details a {
+		font-size: 12px;
+	}
+}
+.shop-blog .shop-top {
+	clear: both;
+	background: #f6f7fb;
+	padding: 18px 20px 50px 20px;
+}
+
+.shop-blog .shop-shorter {
+	float: left;
+}
+
+.shop-blog .single-shorter {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.shop-blog .single-shorter:last-child {
+	margin: 0;
+}
+
+.shop-blog .single-shorter label {
+	display: inline-block;
+	float: left;
+	margin: 4px 5px 0 0;
+	font-weight: 500;
+}
+
+.shop-blog .single-shorter option {}
+.shop-blog .nice-select {
+	clear: initial;
+	display: inline-block;
+	margin: 0;
+	border: 1px solid #e6e6e6;
+	border-radius: 0px;
+	height: auto;
+	width: auto;
+	border-radius: 0px;
+}
+
+.shop-blog .nice-select::after {
+	border-color: #888;
+}
+
+.shop-blog .nice-select .list {
+	border-radius: 0px;
+}
+
+.shop-blog .nice-select .option.selected {
+	font-weight: 500;
+}
+
+.shop-blog .nice-select .list li {
+	color: #666;
+	border-radius: 0px;
+}
+
+.shop-blog .nice-select .list li:hover {
+	background: #00917c;
+	color: #fff;
+}
+
+.shop-blog .view-mode {
+	float: right;
+}
+
+.shop-blog .view-mode li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.shop-blog .view-mode li:last-child {
+	margin: 0;
+}
+
+.shop-blog .view-mode li a {
+	width: 43px;
+	height: 32px;
+	background: transparent;
+	border: 1px solid #77777775;
+	text-align: center;
+	display: block;
+	line-height: 32px;
+	color: #888;
+	border-radius: 0px;
+}
+
+.shop-blog .view-mode li.active a,
+.shop-blog .view-mode li:hover a {
+	background: #00917c;
+	color: #fff;
+	border-color: transparent;
+}
+
+{% endblock %}
+
+{% block content %}
+	<!-- Start Seller Page Start Single -->
+	<section class="blog-single shop-blog grid section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-8 col-12 pt-4 ml-5 pl-5">
+					<div class="seller_profile">
+						<!-- Top Profile -->
+						<div class="top">
+							<div class="cover">
+								<img src="{% static "images/seller_cover_default.png" %}" class="img-fluid" alt="">
+							</div>
+							<div class="profile d-md-flex align-items-center">
+								<div class="imgBx">
+									<img src="{% static "images/seller_dp_default.png" %}" class="profile-img" alt="">
+								</div>
+								<div class="buttons d-md-block d-none">
+									<a href="#" class="button">
+										<div class="contact">
+											Contact Suppliers
+										</div>
+									</a>
+									<a href="#" class="">
+										<div class="request">
+											Request for quotation
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- Mid Profile -->
+						<div class="mid">
+							<div class="company_name d-md-flex align-items-center justify-content-center">
+								<div class="col-md-6">
+									<h1 class="name">{{supplier}}</h1>
+									<div class="details row">
+										<div class="col-12">
+											<i class="fas fa-history"></i>
+											Since {{supplier.user.date_joined}}
+										</div>
+									</div>
+									<div class="details row mb-3">
+										<div class="col-md-12">
+											<div class="d-md-flex">
+												<div class="pr-2" style="border-right: 1px solid grey;">
+													<i class="fas fa-check-double"></i>
+													Verified
+												</div>
+												<div class="px-md-2" style="border-right: 1px solid grey;">
+													<i class="fas fa-user"></i>
+													{{supplier.name}}
+												</div>
+												<div class="pl-md-2">
+													<i class="fas fa-home"></i>
+													{{supplier.street}}, {{supplier.city}}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div
+									class="col-md-6 d-none d-md-flex text-center align-items-center justify-content-end">
+										<a
+											href="#qrModal"
+											class=""
+											data-toggle="modal"
+											data-target="#qrModal"
+										>
+											<i class="fas fa-share-alt h1 mb-0"></i>
+										</a>
+									<a href="#">
+										<img src="{{supplier.qr_code.url}}" width="200" alt="">
+									</a>
+								</div>
+							</div>
+
+						</div>
+						<!-- About Seller -->
+						<div class="row">
+							<div class="col-12 mb-5">
+								<h4><u>About The seller</u></h4>
+								<p>
+									Leading suppliers of {{ category.0 }} products, now available through Vistaar!
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- Start Most Popular -->
+					<div class="product-area most-popular section p-0">
+						<div class="container">
+							<div class="row">
+								<div class="col-12">
+									<div class="section-title m-0 p-0">
+										<h2>Trending Products</h2>
+									</div>
+								</div>
+							</div>
+							<div class="row mb-5">
+								<div class="col-12">
+									<div class="owl-carousel popular-slider">
+									    {% for p in products %}
+										<!-- Start Single Product -->
+										<div class="single-product">
+											<div class="product-img">
+												<a href="{{ p.get_absolute_url }}">
+													{% if p.image %}
+													<img class="default-img" src="{{ p.image.url }}" alt="#" style="height: 250px;">
+													<img class="hover-img" src="{{ p.image.url }}" alt="#" style="height: 250px;">
+													
+													{% endif %}
+<span class="out-of-stock">Hot</span>
+												</a>
+											</div>
+											<div class="product-content">
+												<h3><a href="{{ p.get_absolute_url }}">{{p}}</a></h3>
+												<div class="product-price">
+													<span>Rs. {{p.price}}{% if p.max_price and p.max_price != 0 %} - Rs. {{ p.max_price }}{% endif %}</span>
+												</div>
+											</div>
+										</div>
+										<!-- End Single Product -->
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Most Popular Area -->
+				</div>
+				<!-- Sidebar -->
+				<div class="col-lg-3 col-12">
+					<div class="main-sidebar">
+						<!-- Single Widget -->
+						<div class="single-widget search">
+							<div class="form">
+								<input type="email" placeholder="Search Here...">
+								<a class="button" href="#"><i class="fa fa-search"></i></a>
+							</div>
+						</div>
+						<!--/ End Single Widget -->
+						<!-- Single Widget -->
+						<div class="single-widget category">
+							<h3 class="title">Categories</h3>
+							<ul class="categor-list">
+							    {% for c in category %}
+								<li><a href="{% url 'products:category_detail' id=c.id slug=c.slug %}">{{c}}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
+						<!--/ End Single Widget -->
+
+						<!-- Single Widget -->
+						<div class="single-widget side-tags">
+							<h3 class="title">Tags</h3>
+							<ul class="tag">
+								<li><a href="#">business</a></li>
+								<li><a href="#">wordpress</a></li>
+								<li><a href="#">html</a></li>
+								<li><a href="#">multipurpose</a></li>
+								<li><a href="#">education</a></li>
+								<li><a href="#">template</a></li>
+								<li><a href="#">Ecommerce</a></li>
+							</ul>
+						</div>
+						<!--/ End Single Widget -->
+						<!-- Single Widget -->
+						<div class="single-widget newsletter">
+							<h3 class="title">Contact</h3>
+							<div class="letter-inner">
+								<h4>Request a call back from the seller</h4>
+								<div class="form-inner">
+									<input type="email" placeholder="Phone number">
+									<a href="#">Submit</a>
+								</div>
+							</div>
+						</div>
+						<!--/ End Single Widget -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Product list view -->
+		<div class="container">
+			<!-- List Sorting -->
+			<div class="row">
+				<div class="col-12">
+					<!-- Shop Top -->
+					<div class="shop-top">
+						<div class="shop-shorter">
+							<!--<div class="single-shorter">-->
+							<!--	<label>Show :</label>-->
+							<!--	<select>-->
+							<!--		<option selected="selected">09</option>-->
+							<!--		<option>15</option>-->
+							<!--		<option>25</option>-->
+							<!--		<option>30</option>-->
+							<!--	</select>-->
+							<!--</div>-->
+							<!--<div class="single-shorter">-->
+							<!--	<label>Sort By :</label>-->
+							<!--	<select>-->
+							<!--		<option selected="selected">Name</option>-->
+							<!--		<option>Price</option>-->
+							<!--		<option>Size</option>-->
+							<!--	</select>-->
+							<!--</div>-->
+							<h3>All products from {{supplier}}</h3>
+						</div>
+						<!--<ul class="view-mode">-->
+						<!--	<li><a href=""><i class="fa fa-th-large"></i></a></li>-->
+						<!--	<li class="active"><a href=""><i class="fa fa-th-list"></i></a></li>-->
+						<!--</ul>-->
+					</div>
+					<!--/ End Shop Top -->
+				</div>
+			</div>
+			<!-- List Product View -->
+			<div class="row">
+			    {% for p in all_products %}
+				<!-- 1===== -->
+				<div class="col-lg-3 col-md-6 col-12">
+					<div class="single-product">
+						<div class="product-img">
+							<a href="{{ p.get_absolute_url }}">
+								{% if p.image %}
+								<img class="default-img img-fluid" src="{{ p.image.url }}"
+									style="height: 250px;" alt="#">
+								<img class="hover-img" src="{{ p.image.url }}" alt="#">
+								{% endif %}
+							</a>
+							<div class="button-head">
+								<div class="product-action">
+									<a data-toggle="modal" data-target="#exampleModal" title="Quick View"
+										href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+									<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to
+											Wishlist</span></a>
+									<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to
+											Compare</span></a>
+								</div>
+								<div class="product-action-2">
+									<a title="Add to cart" href="#">Add to cart</a>
+								</div>
+							</div>
+						</div>
+						<div class="product-content">
+							<h3><a href="{{ p.get_absolute_url }}">{{p}}</a></h3>
+							<div class="product-price">
+								<span>Rs. {{p.price}}{% if p.max_price and p.max_price != 0 %} - Rs. {{ p.max_price }}{% endif %}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				<div class="col-12">
+					<!-- Pagination -->
+					<!--<div class="pagination">-->
+					<!--	<ul class="pagination-list">-->
+					<!--		<li><a href="#"><i class="ti-arrow-left"></i></a></li>-->
+					<!--		<li class="active"><a href="#">1</a></li>-->
+					<!--		<li><a href="#">2</a></li>-->
+					<!--		<li><a href="#">3</a></li>-->
+					<!--		<li><a href="#"><i class="ti-arrow-right"></i></a></li>-->
+					<!--	</ul>-->
+					<!--</div>-->
+					<!--/ End Pagination -->
+				</div>
+			</div>
+		</div>
+	
+	
+	</section>
+	<!-- Message Start -->
+	<section class="message">
+		<div class="container">
+			<!-- Message  -->
+			<div class="row">
+				<div class="col-8 my-5 shadow">
+					<div class="card rounded-0 border-0" style="box-shadow: 1px 2px 5px  #F6F7FB;">
+						<div class="card-body shadow" style="box-shadow: 3px 5px 10px  #868688;">
+							<h3>Send Your Message To Seller</h3><br>
+							<form action="">
+
+								<div class="form-group">
+									<label for="" class="">Enter Product Name</label>
+									<input id="" class="form-control p-2 border-0 shadow-0 rounded-0"
+										style="background-color: #F6F7FB;" type="text" name="" placeholder="">
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="">Category</label>
+											<input id="" class="form-control p-2 border-0 shadow-0 rounded-0 "
+												style="background-color: #F6F7FB;" type="text" name="" placeholder="">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="">Quantity</label>
+											<input id="" class="form-control p-2 border-0 shadow-0 rounded-0 "
+												style="background-color: #F6F7FB;" type="text" name="" placeholder="">
+										</div>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<label for="">Description</label>
+									<textarea id="" class="form-control p-2 border-0 shadow-none rounded-0"
+										style="background-color: #F6F7FB;" name="" rows="5" placeholder=""></textarea>
+								</div>
+								<button type="submit" class="btn btn-primary">Send</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-4 my-5">
+					<img class="default-img" src="{% static "/images/seller_page_bottom.png" %}" alt="#">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/ End Blog Single -->
+	<!-- Modal -->
+	<div class="modal fade d-none" id="exampleModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close"
+							aria-hidden="true"></span></button>
+				</div>
+				<div class="modal-body">
+					<div class="row no-gutters">
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+							<!-- Product Slider -->
+							<div class="product-gallery">
+								<div class="quickview-slider-active">
+									<div class="single-slider">
+										<img src="https://via.placeholder.com/569x528" alt="#">
+									</div>
+									<div class="single-slider">
+										<img src="https://via.placeholder.com/569x528" alt="#">
+									</div>
+									<div class="single-slider">
+										<img src="https://via.placeholder.com/569x528" alt="#">
+									</div>
+									<div class="single-slider">
+										<img src="https://via.placeholder.com/569x528" alt="#">
+									</div>
+								</div>
+							</div>
+							<!-- End Product slider -->
+						</div>
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+							<div class="quickview-content">
+								<h2>Flared Shift Dress</h2>
+								<div class="quickview-ratting-review">
+									<div class="quickview-ratting-wrap">
+										<div class="quickview-ratting">
+											<i class="yellow fa fa-star"></i>
+											<i class="yellow fa fa-star"></i>
+											<i class="yellow fa fa-star"></i>
+											<i class="yellow fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<a href="#"> (1 customer review)</a>
+									</div>
+									<div class="quickview-stock">
+										<span><i class="fa fa-check-circle-o"></i> in stock</span>
+									</div>
+								</div>
+								<h3>$29.00</h3>
+								<div class="quickview-peragraph">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum
+										ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui
+										nemo ipsum numquam.</p>
+								</div>
+								<div class="size">
+									<div class="row">
+										<div class="col-lg-6 col-12">
+											<h5 class="title">Size</h5>
+											<select>
+												<option selected="selected">s</option>
+												<option>m</option>
+												<option>l</option>
+												<option>xl</option>
+											</select>
+										</div>
+										<div class="col-lg-6 col-12">
+											<h5 class="title">Color</h5>
+											<select>
+												<option selected="selected">orange</option>
+												<option>purple</option>
+												<option>black</option>
+												<option>pink</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="quantity">
+									<!-- Input Order -->
+									<div class="input-group">
+										<div class="button minus">
+											<button type="button" class="btn btn-primary btn-number" disabled="disabled"
+												data-type="minus" data-field="quant[1]">
+												<i class="ti-minus"></i>
+											</button>
+										</div>
+										<input type="text" name="quant[1]" class="input-number" data-min="1"
+											data-max="1000" value="1">
+										<div class="button plus">
+											<button type="button" class="btn btn-primary btn-number" data-type="plus"
+												data-field="quant[1]">
+												<i class="ti-plus"></i>
+											</button>
+										</div>
+									</div>
+									<!--/ End Input Order -->
+								</div>
+								<div class="add-to-cart">
+									<a href="#" class="btn">Add to cart</a>
+									<a href="#" class="btn min"><i class="ti-heart"></i></a>
+									<a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+								</div>
+								<div class="default-social">
+									<h4 class="share-now">Share:</h4>
+									<ul>
+										<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+										<li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal end -->
+	
+		<!-- QR Modal Start -->
+		<div
+			class="modal fade"
+			id="qrModal"
+			tabindex="-1"
+			aria-labelledby="qrModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog qrModal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button
+							type="button"
+							class="close"
+							data-dismiss="modal"
+							aria-label="Close"
+						>
+							<span class="ti-close" aria-hidden="true"></span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="no-gutters">
+							<div id="qrModal-inner">
+								<div
+									class="d-flex align-items-center justify-content-center my-4"
+									id="qrModal-heading1"
+								>
+									<h3 class="text-center qr-text">Scan & Browse</h3>
+								</div>
+								<div
+									class="d-flex align-items-center justify-content-center w-75 my-4 mx-auto"
+									id="qrModal-sellerName"
+								>
+									<h4 class="text-center qr-text">
+										Champak and Chirag International
+									</h4>
+								</div>
+								<div
+									class="d-flex align-items-center justify-content-center w-50 my-4 mx-auto"
+									id="qrModal-sellerQR"
+								>
+									<img src="{{supplier.qr_code.url}}" alt="" />
+								</div>
+								<div
+									class="d-flex flex-column align-items-center justify-content-center w-50 mt-4 mx-auto"
+									id="qrModal-vistaar"
+								>
+									<img src="{% static "images/logo.png" %}" alt="" />
+									<h4 class="text-center mt-2 qr-text">
+										www.vistaartrtade.com
+									</h4>
+								</div>
+							</div>
+							<div
+								class="d-flex flex-column align-items-center justify-content-center mt-4"
+								id="social-links"
+							>
+								<h6 class="text-center mt-2 qr-text">Share via:</h6>
+								<div
+									class="d-flex flex-row align-items-center justify-content-center my-2"
+								>
+									<a href="#">
+										<i class="fa-brands fa-2x fa-facebook mx-2 fb-blue"></i>
+									</a>
+									<a href="#">
+										<i class="fa-brands fa-2x fa-twitter mx-2 twitter-blue"></i>
+									</a>
+									<a href="#">
+										<i class="fa-brands fa-2x fa-linkedin mx-2 linkedin-blue"></i>
+									</a>
+								</div>
+								<div
+									class="d-flex align-items-center justify-content-center my-3"
+								>
+									<button class="btn p-2">Print</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- QR Modal End -->
+{% endblock %}
+

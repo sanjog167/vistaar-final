@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+{% load static %}
+
+    <!-- Content Start -->
+    <div class="container dashboard py-3">
+        <div class="row">
+            <!-- Sidebar Nav -->
+            {% include 'dashboard/sidebar.html' %}
+
+            <div class="col-9 bg-light">
+                <div class="container py-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Choose Photo -->
+                            <div class="d-md-flex justify-content-between mb-3">
+                                <div>
+                                    <h1 class="fs-3">Photos & Docs</h1>
+                                    <p>All Your Photo and document at one place</p>
+                                </div>
+                                <div>
+                                    <form action="">
+                                        <div class="input-group">
+                                            <label class="input-group-text" for="inputGroupFile01"><i
+                                                    class="fas fa-question-circle"></i></label>
+                                            <input type="file" class="form-control shadow-none" id="inputGroupFile01">
+                                        </div>
+                                        <small><b>Drag & Drop</b><i class="text-muted"> Files To Upload</i></small>
+                                    </form>
+                                </div>
+                            </div>
+                            <div>
+                                <h1 class="fs-6">Quick Filters</h1>
+                                <div class="d-md-flex">
+                                    <div class="bg-dark my-1 text-white me-2 px-3 py-2 rounded">
+                                        <i class="fas fa-photo-video"></i>
+                                        <span>72 Photo</span>
+                                    </div>
+                                    <div class="bg-dark my-1 text-white me-2 px-3 py-2 rounded">
+                                        <i class="fas fa-file-pdf"></i>
+                                        <span>1 PDF files</span>
+                                    </div>
+                                    <div class="bg-dark my-1 text-white me-2 px-3 py-2 rounded">
+                                        <i class="far fa-file"></i>
+                                        <span>4 Zip files</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-4">
+                                <div class="d-md-flex justify-content-between align-items-center">
+                                    <h1 class="fs-6"><a href="#" class="text-decoration-none">All Files
+                                            <span>(77)</span></a></h1>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary shadow-none mb-3 dropdown-toggle" type="button"
+                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Sort by: <b>Recent Added</b>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Product Items Start -->
+                                <div class="row mb-2">
+                                    <div class="col-md-4 my-1">
+                                        <div>
+                                            <div class="card border-0 shadow-sm">
+                                                <div class="card-body text-center">
+                                                    <img src="{% static 'image/product-3.png' %}"
+                                                        style="height: 200px; object-fit: cover;" class="img-fluid"
+                                                        alt="">
+                                                </div>
+                                                <div class="card-footer bg-white">
+                                                    <div class="bg-dark text-white me-2 px-3 py-2 rounded">
+                                                        <i class="far fa-file"></i>
+                                                        <span>product-3</span>
+                                                    </div>
+                                                    <div class="bg-dark text-white me-2 px-3 py-2 rounded mt-2">
+                                                        <p class="text-muted mb-0">Uploaded: 12-mar-2021</p>
+                                                        <p class="">Photos used in enquiry</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content End -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

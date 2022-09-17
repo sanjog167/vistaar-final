@@ -1,0 +1,138 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+// Main nav bar
+.search{
+    form button{
+        background-color: transparent;
+        border: none;
+    }
+    form input,form select{
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+    }
+    form input:focus,
+    form input:hover{
+        background-color: transparent;
+    }
+}
+.menu{
+    .nav-item{
+        padding-top: 0;
+        padding-bottom: 0;
+        .nav-link{
+            margin-top: 0;
+            padding: 0 5px;
+        }
+    }
+}
+.login{
+    .modal-body{
+        .list-group{
+            .list-group-item{
+                i{
+                    color: green;
+                }
+                span{
+                    color: seagreen;
+                }
+            }
+        }
+    }
+}
+
+// Mega Menu
+.mega-menu{
+    .navbar-toggler{
+        padding: 0;
+        margin: 5px 0;
+    }
+    .navbar-collapse{
+        top: 50px;
+    }
+    .menu-area{
+        position: static;
+        .mega-area{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            .dropdown-item,a{
+                padding: 3px 0;
+                font-size: 14px;
+                font-weight: 300;
+                :hover,:focus{
+                    color: seagreen;
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
+
+// Trending
+.trending{
+    .row{
+        .card{
+            margin: 7px 0;
+            .card-body{
+                img{
+                    height: 90px;
+                }
+            }
+            
+        }
+    }
+}
+// Recomanded
+.Recomanded{
+    .card{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        .card-body{
+            padding: 5px;
+            text-align: center;
+            img{
+                height: 200px;
+            }
+        }
+        .card-footer{
+            a{
+                text-decoration: none;
+                color: gray;
+                font-size: 14px;
+                :hover{
+                    color: green;
+                }
+            }
+            p{
+                margin: 0;
+            }
+        }
+    }
+}
+// Product
+.product{
+    .card{
+        .card-body{
+            text-align: center;
+            img{
+                height: 150px;
+            }
+        }
+    }
+}
+
+// Footer
+footer{
+    p,b{
+        font-weight: 400;
+        color: rgb(20, 19, 19);
+        i{
+            color: slategray;
+        }
+    }
+    
+}

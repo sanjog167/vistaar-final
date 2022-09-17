@@ -1,0 +1,155 @@
+{% extends "perm.html" %}
+{% block title %}Create an account{% endblock %}
+{% block content %}
+{% load static %}
+
+<!-- Navbar End -->
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-0 mx-1 fw-bold btn btn-outline-primary border-0"><a href="{% url "login" %}">Log in</a></button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-0 mx-1 fw-bold active btn btn-outline-primary border-0 shadow-none">Sign Up</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-signup" role="tabpanel"
+                            aria-labelledby="pills-signup-tab">
+                            <div class="d-sm-flex align-items-center justify-content-center">
+                                <div class="img">
+                                    <img src="{% static "image/logo.png" %}" class="img-fluid" style="object-fit: cover;"
+                                        width="180" alt="">
+                                </div>
+                            </div>
+                            <div class="card border-0">
+                                <div class="highlight ps-sm-3 pt-sm-4 text-center">
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    <p>
+                                        {{ message }}
+                                    </p>
+                                    {% endfor %}
+                                    {% else %}
+                                    <h1 class="fs-5 mb-0">Welcome</h1>
+                                    <p>Login for a seamless experience</p>
+                                    {% endif %}
+                                </div>
+                                <div class="card-body">
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control shadow-none" id="floatingName"
+                                                name="first_name" placeholder="name@example.com" required>
+                                            <label for="floatingName">First Name</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control shadow-none" id="floatingName"
+                                                name="last_name" placeholder="name@example.com" required>
+                                            <label for="floatingName">Last Name</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control shadow-none" id="floatingEmail"
+                                                name="email" placeholder="name@example.com" required>
+                                            <label for="floatingEmail">Email</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control shadow-none" id="floatingName"
+                                                name="username" placeholder="name@example.com" required>
+                                            <label for="floatingName">Username</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control shadow-none"
+                                                id="floatingName"
+                                                name="phone_number" placeholder="981234567" required>
+                                            <label for="floatingName">Phone Number</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="password" class="form-control shadow-none"
+                                                id="floatingPassword"
+                                                name="password" placeholder="name@example.com" required>
+                                            <label for="floatingPassword">Password</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="password" class="form-control shadow-none"
+                                                id="floatingPassword"
+                                                name="confirm_password" placeholder="name@example.com" required>
+                                            <label for="floatingPassword">Confirm Password</label>
+                                        </div>
+                                        <input class="btn btn-success" type="submit" value="Sign Up">
+                                        <!-- Button trigger modal -->
+                                        <!-- <button type="button" class="btn btn-success shadow-none mt-3"
+                                            data-bs-toggle="modal" data-bs-target="#SignUpModal">
+                                            <i class="far fa-paper-plane"></i>
+                                            Sign Up
+                                        </button> -->
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="SignUpModal" tabindex="-1"
+                                            aria-labelledby="SignUpModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <!-- Confirm -->
+                                                        <div class="my-3">
+                                                            <form action="">
+                                                                <p>
+                                                                    <span>9804090266 </span>
+                                                                    <a href="#" class="text-decoration-none"><i
+                                                                            class="fas fa-pen"></i></a>
+                                                                </p>
+                                                                <input type="text" name=""
+                                                                    class="form-control shadow-none"
+                                                                    placeholder="Put your OTP Number" id="">
+                                                            </form>
+                                                            <div class="d-flex justify-content-between mt-3">
+                                                                <a href="#"
+                                                                    class="text-decoration-none text-muted">Didn't
+                                                                    receive the
+                                                                    OTP</a>
+
+                                                                <a href="#"
+                                                                    class="text-decoration-none text-primary">Resend
+                                                                    OTP</a>
+                                                            </div>
+                                                            <div class="text-end mt-2">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary rounded-circle">
+                                                                    <i class="fas fa-arrow-right"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+
+                                        <!--div class="text-center">
+                                            <a href="#" class="btn btn-primary">
+                                                <i class="fab fa-facebook-square"></i>
+                                                <span>Sign up From Facebook</span>
+                                            </a>
+                                            <a href="#" class="btn btn-danger">
+                                                <i class="fab fa-google-plus-square"></i>
+                                                <span>Sign up From Gmail</span>
+                                            </a>
+                                        </div-->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}

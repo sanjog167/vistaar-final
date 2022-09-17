@@ -1,0 +1,51 @@
+.menu-lg{
+    display: block;
+}
+.menu-md {
+    width: 8rem;
+}
+.menu-md .nav-item a span {
+    display: none;
+}
+.menu-md .nav-item a i {
+    margin-right: 0;
+}
+.menu-md .nav-item a:after {
+    opacity: 0;
+    -webkit-transition: all .2s ease-in-out 1ms;
+    transition: all .2s ease-in-out 1ms;
+}
+.menu-md .sub-menu {
+    margin-right: 0;
+}
+.sub-menu {
+    display: none;
+    left: 8rem;
+    z-index: 99;
+    width: 100%;
+    max-width: 300px;
+    background: #fff;
+    
+}
+
+.sub-menu.active {
+  /* display: block; */
+}
+
+.menu-mini .sub-menu.active {
+  display: none;
+}
+.menu-mini .sub-menu.show {
+  display: block;
+}
+
+.sub-menu.active {
+    /* display: block; */
+}
+.menu-md .sub-menu.show /* , .menu-mini .sub-menu.active */ {
+  display: block;
+  margin-top: -57px;
+    position: fixed;
+    border: 1px  solid #ddd;
+    
+}

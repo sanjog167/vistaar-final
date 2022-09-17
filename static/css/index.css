@@ -1,0 +1,123 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.search form button {
+  background-color: transparent;
+  border: none;
+}
+
+.search form input, .search form select {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.search form input:focus,
+.search form input:hover {
+  background-color: transparent;
+}
+
+.menu .nav-item {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.menu .nav-item .nav-link {
+  margin-top: 0;
+  padding: 0 5px;
+}
+
+.login .modal-body .list-group .list-group-item i {
+  color: green;
+}
+
+.login .modal-body .list-group .list-group-item span {
+  color: seagreen;
+}
+
+.mega-menu .navbar-toggler {
+  padding: 0;
+  margin: 5px 0;
+}
+
+.mega-menu .navbar-collapse {
+  top: 50px;
+}
+
+.mega-menu .menu-area {
+  position: static;
+}
+
+.mega-menu .menu-area .mega-area {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  padding: 15px;
+}
+
+.mega-menu .menu-area .mega-area .dropdown-item, .mega-menu .menu-area .mega-area a {
+  padding: 3px 0;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.mega-menu .menu-area .mega-area .dropdown-item :hover, .mega-menu .menu-area .mega-area .dropdown-item :focus, .mega-menu .menu-area .mega-area a :hover, .mega-menu .menu-area .mega-area a :focus {
+  color: seagreen;
+  background-color: transparent;
+}
+
+.trending .row .card {
+  margin: 7px 0;
+}
+
+.trending .row .card .card-body img {
+  height: 90px;
+}
+
+.Recomanded .card {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.Recomanded .card .card-body {
+  padding: 5px;
+  text-align: center;
+}
+
+.Recomanded .card .card-body img {
+  height: 200px;
+}
+
+.Recomanded .card .card-footer a {
+  text-decoration: none;
+  color: gray;
+  font-size: 14px;
+}
+
+.Recomanded .card .card-footer a :hover {
+  color: green;
+}
+
+.Recomanded .card .card-footer p {
+  margin: 0;
+}
+
+.product .card .card-body {
+  text-align: center;
+}
+
+.product .card .card-body img {
+  height: 150px;
+}
+
+footer p, footer b {
+  font-weight: 400;
+  color: #141313;
+}
+
+footer p i, footer b i {
+  color: slategray;
+}
+/*# sourceMappingURL=index.css.map */

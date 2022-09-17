@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>User Dashboard</title>
+		<!-- Bootstrap CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+			crossorigin="anonymous"
+		/>
+		<!-- FontAwesome CSS -->
+		<link rel="stylesheet" href="{% static 'new-dashboard/assets/pro/css/all.min.css' %}" />
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="{% static 'new-dashboard/style.css' %}" />
+		<!-- Fontawesome JS-->
+		<script defer src="{% static 'new-dashboard/assets/pro/js/all.js' %}"></script>
+
+		<!-- Nice Select CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+			integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"> -->
+	</head>
+
+	<body>
+		<div class="main d-flex flex-row">
+			<aside class="aside-bar">
+				<div class="ms-3 aside-img-logo">
+					<a href="{% url 'home' %}">
+					<img
+						src="{% static 'new-dashboard/assets/images/vistaar.png' %}"
+						alt="logo"
+						class="aside-img my-3"
+					/>
+					</a>
+				</div>
+				<div class="aside-hyperlinks mt-5">
+					<div class="row ms-1">
+						<a href="#" class="aside-links mt-5">
+							<span class="aside-links-span d-flex">
+								<i class="fa-regular fa-home aside-icon me-2"></i> Dashboard
+							</span>
+						</a>
+					</div>
+
+					<div class="row ms-1 my-3">
+						<a href="#" class="aside-links">
+							<span class="aside-links-span d-flex">
+								<i class="fa-regular fa-person aside-icon me-2"></i>
+								Company Profile
+							</span>
+						</a>
+					</div>
+					<div class="row ms-1 my-3">
+						<a href="#" class="aside-links">
+							<span class="aside-links-span d-flex">
+								<i class="fa-regular fa-bag-shopping aside-icon me-2"></i>
+								Manage Products
+							</span>
+						</a>
+					</div>
+					<div class="row ms-1 my-3">
+						<a href="{% url 'buy_leads' %}" class="aside-links">
+							<span class="aside-links-span d-flex">
+								<i class="fa-regular fa-chart-line aside-icon me-2"></i>
+								Buy Leads
+							</span>
+						</a>
+					</div>
+				</div>
+			</aside>
+			<main class="main-body">
+				<!-- Nav Bar -->
+				<nav class="navbar navbar-expand-lg navbar-light bg-light nav shadow">
+					<div class="container-fluid">
+						<span class="ms-2"><i class="fa-solid fa-bars fa-lg"></i></span>
+						<button
+							class="navbar-toggler"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#navbarNavAltMarkup"
+							aria-controls="navbarNavAltMarkup"
+							aria-expanded="false"
+							aria-label="Toggle navigation"
+						>
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div
+							class="collapse navbar-collapse justify-content-end"
+							id="navbarNavAltMarkup"
+						>
+							<div class="navbar-nav">
+								<a
+									class="notification-nav my-auto"
+									aria-current="page"
+									href="#"
+								>
+									<i class="fa-solid fa-bell fa-xl"></i>
+								</a>
+								<a class="nav-link settings-nav my-auto" href="#"
+									><i class="fa-regular fa-gear fa-xl"></i
+								></a>
+								<div class="nav-link user-nav">
+									<span>
+										<img src="{% static 'new-dashboard/assets/images/download.jpg' %}" class="nav-img" />
+										<span class="ms-1 dropdown-toggle" data-bs-toggle="dropdown"
+											>{{current_supplier}} <i class="fa-regular fa-angle-down ms-1"></i
+										></span>
+										<ul
+											class="dropdown-menu dropdown-menu-end user-nav-dropdown"
+										>
+											<li>
+												<a href="#" class="logout-nav"
+													><i
+														class="fa-regular fa-arrow-right-from-bracket fa-xl mx-2"
+													></i
+													>Logout</a
+												>
+											</li>
+										</ul>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<!-- Main Content -->
+				<!-- User Type -->
+				<section class="user-type w-80 mt-5 shadow rounded">
+					<p class="p-3">
+						Your are currently on
+						<i class="fa-regular fa-gem user-tier-icon"></i>
+						<button class="custom-btn ms-2">Upgrade</button>
+					</p>
+				</section>
+				<!-- 30 days section -->
+				<section class="performance-section w-80 mt-5">
+					<div class="performance-section-title">
+						<p class="fw-bolder fs-5">30 Days Performance</p>
+					</div>
+					<div class="performance-section-body row">
+						<div
+							class="col-lg-4 position-relative my-4 my-lg-0 row me-1 me-sm-0"
+						>
+							<img src="{% static 'new-dashboard/assets/images/vector-1.svg' %}" class="views-img" />
+							<div class="performance-image-overlay ps-5">
+								<p class="performance-image-overlay-title">Views</p>
+								<p class="performance-image-overlay-value">7,482,120</p>
+							</div>
+						</div>
+						<div
+							class="col-lg-4 position-relative my-4 my-lg-0 row mx-1 mx-sm-0"
+						>
+							<img src="{% static 'new-dashboard/assets/images/vector-1.svg' %}" class="rfq-img" />
+							<div class="performance-image-overlay ps-5">
+								<p class="performance-image-overlay-title">RFQ</p>
+								<p class="performance-image-overlay-value">54,364</p>
+							</div>
+						</div>
+						<div
+							class="col-lg-4 position-relative my-4 my-lg-0 row ms-1 ms-sm-0"
+						>
+							<img src="{% static 'new-dashboard/assets/images/vector-1.svg' %}" class="visits-img" />
+							<div class="performance-image-overlay ps-5">
+								<p class="performance-image-overlay-title">Visits</p>
+								<p class="performance-image-overlay-value">125,685</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Analytics, Popular Products and Customers section -->
+				<div class="row w-80 g-5">
+					<div class="analytics-customer-section col-lg-8 mt-5">
+						<!-- Analytics Section -->
+						<section class="analytics-section">
+							<div class="analytics-section-title">
+								<p class="fw-bolder fs-5">Analytics</p>
+							</div>
+							<div class="analytics-section-chart p-3 shadow-lg br-15">
+								<div
+									class="analytics-chart-header d-flex justify-content-between"
+								>
+									<div class="analytics-chart-title">
+										<p class="ms-4 fw-bold">Daily Views</p>
+									</div>
+									<div class="analytics-chart-selector me-5">
+										<select
+											name="analytics-year-select"
+											id=""
+											class="analytics-year-select nice-select"
+										>
+											<option value="2021">2021</option>
+											<option value="2020">2020</option>
+											<option value="2019">2019</option>
+										</select>
+									</div>
+								</div>
+								<canvas id="analytics-chart" width="300" height="100"></canvas>
+							</div>
+						</section>
+						<!-- Leads Section -->
+						<section class="leads-section mt-5">
+							<div class="leads-section-title">
+								<p class="fw-bolder fs-5">Recent Direct Leads</p>
+							</div>
+							<div class="leads-section-table shadow br-15">
+								<table class="table lead-table">
+									<tbody>
+										{% for l in leads %}
+										<tr class="lead-table-row lead-table-row-striped">
+											<td>
+												<p class="d-flex justify-content-between">
+													<span class="ms-1">
+														ABC wants XYZ in quanity: 7pcs
+													</span>
+													<span class="me-2"> Date: 9th March,2022 </span>
+												</p>
+											</td>
+										</tr>
+										{% empty %}
+										<tr class="lead-table-row lead-table-row-striped">
+											<td>
+												<p class="d-flex justify-content-between">
+													<span class="ms-1">
+														Upload more products and get unlimited leads!
+													</span>
+												</p>
+											</td>
+										</tr>										
+										{% endfor %}
+									</tbody>
+									<tfoot class="lead-table-footer">
+										<tr>
+											<td class="text-center">
+												<a href="{% url 'buy_leads' %}" class="lead-table-view-all-link">
+													View All
+												</a>
+											</td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</section>
+					</div>
+					<div class="popular-products col-lg-4 mt-5">
+						<!-- Popular Section -->
+						<section class="popular-products-section">
+							<div class="popular-products-section-title">
+								<p class="fw-bolder fs-5">Popular Products</p>
+							</div>
+							<div class="popular-product-section-chart br-15 shadow-lg p-4">
+								<div class="popular-product-section-chart-title">
+									<p class="text-center fw-bold title">
+										All time favorite products
+									</p>
+								</div>
+								<div class="popular-products-chart-div mt-5">
+									<canvas
+										id="popular-products-chart"
+										width="auto"
+										height="auto"
+									></canvas>
+								</div>
+							</div>
+						</section>
+						<!-- Buy Premium Section -->
+						<section class="leads-section mt-5">
+							<div class="leads-section-title">
+								<p class="fw-bolder fs-5">Premium Leads</p>
+							</div>
+							<div class="leads-section-table shadow br-15">
+								<table class="table lead-table">
+									<tbody>
+										<tr class="lead-table-row lead-table-row-striped">
+											<td>
+												<p class="d-flex justify-content-between">
+													<span class="ms-1">
+														ABC wants XYZ in quanity: 7pcs
+													</span>
+													<span class="me-2"> Date: 9th March,2022 </span>
+												</p>
+											</td>
+										</tr>
+										<tr class="lead-table-row">
+											<td>
+												<p class="d-flex justify-content-between">
+													<span class="ms-1">
+														ABC wants XYZ in quanity: 7pcs
+													</span>
+													<span class="me-2"> Date: 9th March,2022 </span>
+												</p>
+											</td>
+										</tr>
+										<tr class="lead-table-row lead-table-row-striped">
+											<td>
+												<p class="d-flex justify-content-between">
+													<span class="ms-1">
+														ABC wants XYZ in quanity: 7pcs
+													</span>
+													<span class="me-2"> Date: 9th March,2022 </span>
+												</p>
+											</td>
+										</tr>
+									</tbody>
+									<tfoot class="lead-table-footer">
+										<tr>
+											<td class="text-center">
+												<a href="#" class="lead-table-view-all-link">
+													View All
+												</a>
+											</td>
+										</tr>
+									</tfoot>
+								</table>
+								<!-- Remove this div to remove the blur filter -->
+								<div class="premium-lead-overlay br-15">
+									<button class="premium-lead-upgrade-btn">
+										Upgrade to Premium
+									</button>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</main>
+		</div>
+	</body>
+	<!-- Jquery -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
+	<!-- Bootstrap JS -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"
+	></script>
+
+	<!-- Chart JS -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+		integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
+	<!-- Nice Select -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"
+		integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
+
+	<script>
+		const ctx = document.getElementById("analytics-chart").getContext("2d");
+
+		let width, height, gradient;
+		function getGradient(ctx, chartArea, background = false) {
+			const chartWidth = chartArea.right - chartArea.left;
+			const chartHeight = chartArea.bottom - chartArea.top;
+			if (!gradient || width !== chartWidth || height !== chartHeight) {
+				// Create the gradient because this is either the first render
+				// or the size of the chart has changed
+				width = chartWidth;
+				height = chartHeight;
+				gradient = ctx.createLinearGradient(
+					0,
+					chartArea.bottom,
+					0,
+					chartArea.top
+				);
+				if (background === false) {
+					gradient.addColorStop(0, "#21ffdf00");
+					gradient.addColorStop(1, "#00917c00");
+				} else {
+					gradient.addColorStop(0, "#21ffdf70");
+					gradient.addColorStop(1, "#00917c70");
+				}
+			}
+			return gradient;
+		}
+		const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
+		const data = {
+			labels: labels,
+			datasets: [
+				{
+					label: "Views",
+					data: [65, 59, 80, 81, 56, 55, 40],
+					fill: true,
+					backgroundColor: function (context) {
+						const chart = context.chart;
+						const { ctx, chartArea } = chart;
+
+						if (!chartArea) {
+							// This case happens on initial chart load
+							return;
+						}
+						return getGradient(ctx, chartArea, (background = true));
+					},
+					borderColor: function (context) {
+						const chart = context.chart;
+						const { ctx, chartArea } = chart;
+
+						if (!chartArea) {
+							// This case happens on initial chart load
+							return;
+						}
+						return getGradient(ctx, chartArea);
+					},
+					tension: 0.1,
+				},
+			],
+		};
+		const config = {
+			type: "line",
+			data: data,
+			options: {
+				responsive: true,
+				plugins: {
+					legend: {
+						display: false,
+					},
+				},
+			},
+		};
+
+		const line_chart = new Chart(ctx, config);
+	</script>
+
+	<!-- <script>
+		var label = [];
+		{% for n in trending_names %}
+			label.push("{{n}}");
+		{% endfor %} 
+		console.log(label);
+		const doughnut_ctx = document.getElementById("popular-products-chart");
+		const doughnut_data = {
+			labels: label,
+			datasets: [
+				{
+					label: "Popular Products",
+					data: {{trending_count}},
+					backgroundColor: [
+						"rgb(255, 99, 132)",
+						"rgb(54, 162, 235)",
+						"rgb(255, 205, 86)",
+						"rgb(0,145,124)",
+					],
+					hoverOffset: 4,
+					cutout: "80%",
+				},
+			],
+		};
+
+		const centerText = {
+			id: "centerText",
+			beforeDraw(chart, args, options) {
+				const {
+					ctx,
+					chartArea: { left, top, right, bottom, width, height },
+				} = chart;
+
+				ctx.save();
+				ctx.font = "30px helvetica";
+				ctx.textAlign = "center";
+				ctx.fillStyle = "#00917c";
+				ctx.fillText(options.text, width / 2, height / 2);
+
+				ctx.font = "14px helvetica";
+				ctx.textAlign = "center";
+				ctx.fillStyle = "#000";
+				ctx.fillText("", width / 2, height / 1.6);
+			},
+		};
+		const doughnut_config = {
+			type: "doughnut",
+			data: doughnut_data,
+			options: {
+				responsive: true,
+				maintainAspectRation: false,
+				plugins: {
+					legend: {
+						display: true,
+						position: "bottom",
+						labels: {
+							usePointStyle: true,
+							boxWidth: 100,
+							padding: 30,
+						},
+					},
+					centerText: {
+						text: "{300K}",
+					},
+				},
+			},
+			plugins: [centerText],
+		};
+
+		const doughnut_chart = new Chart(doughnut_ctx, doughnut_config);
+	</script> -->
+
+		<script>
+		var label = [];
+		{% for n in trending_names %}
+			label.push("{{n}}");
+		{% endfor %}
+		const doughnut_ctx = document.getElementById("popular-products-chart");
+		const doughnut_data = {
+			labels: label,
+			datasets: [
+				{
+					label: "Popular Products",
+					data: {{trending_count}},
+					backgroundColor: [
+						"rgb(255, 99, 132)",
+						"rgb(54, 162, 235)",
+						"rgb(255, 205, 86)",
+						"rgb(0,145,124)",
+					],
+					hoverOffset: 4,
+					cutout: "80%",
+				},
+			],
+		};
+
+		const centerText = {
+			id: "centerText",
+			beforeDraw(chart, args, options) {
+				const {
+					ctx,
+					chartArea: { left, top, right, bottom, width, height },
+				} = chart;
+
+				ctx.save();
+				ctx.font = "30px helvetica";
+				ctx.textAlign = "center";
+				ctx.fillStyle = "#00917c";
+				ctx.fillText(options.text, width / 2, height / 2.5);
+
+				ctx.font = "14px helvetica";
+				ctx.textAlign = "center";
+				ctx.fillStyle = "#000";
+				ctx.fillText("Views", width / 2, height / 1.6);
+			},
+		};
+		const doughnut_config = {
+			type: "doughnut",
+			data: doughnut_data,
+			options: {
+				responsive: true,
+				maintainAspectRation: false,
+				plugins: {
+					legend: {
+						display: true,
+						position: "bottom",
+						labels: {
+							usePointStyle: true,
+							boxWidth: 100,
+							padding: 30,
+						},
+					},
+					centerText: {
+						text: "{{trending_total_count}}",
+					},
+				},
+			},
+			plugins: [centerText],
+		};
+
+		const doughnut_chart = new Chart(doughnut_ctx, doughnut_config);
+	</script>
+
+	<script>
+		$(document).ready(function () {
+			$("select").niceSelect();
+		});
+	</script>
+</html>

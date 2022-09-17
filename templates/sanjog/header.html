@@ -1,0 +1,505 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    {% block title %}{% endblock %}
+
+    <meta name="robots" content="noindex, nofollow"/>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="http://vistaartrade.com/static/images/logo.png">
+
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: { families: ['Poppins:400,500,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
+    <link rel="preload" href="assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font" type="font/woff2"
+        crossorigin="anonymous">
+    <link rel="preload" href="assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font" type="font/woff2"
+        crossorigin="anonymous">
+    <link rel="preload" href="assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" type="font/woff2"
+        crossorigin="anonymous">
+
+
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static "assets/vendor/swiper/swiper-bundle.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/vendor/animate/animate.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/vendor/magnific-popup/magnific-popup.min.css" %}">
+
+    <!-- Default CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/demo2.min.css" %}"> 
+    <link rel="stylesheet" href="{% static "assets/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "assets/vendor/fontawesome-free/css/all.min.css" %}">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="{% static "assets/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/custom.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/datatables.css" %}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "assets/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/style.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/lunar.css" %}">   
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
+
+    
+</head>
+
+<body class="home">
+    <div class="page-wrapper">
+        <h1 class="d-none">Vistaar Trade | Home</h1>
+        
+        <!-- Start of Header -->
+        <header class="header">
+            <div class="header-top">
+                <div class="container">
+                  
+                    <div class="header-right pr-0">
+                
+                  
+                
+                        <a href="#" class="d-lg-show">
+                            <img src="{% static "assets/images/shop.png" %}" class="w-20 mr-2">
+                            {% if request.user.profile.account_type == 'Retailier' %}
+								<li><i class="ti-user"></i> <a href="{% url 'register_supplier' %}">Become a Seller</a></li>
+								{% endif %}
+								{% if request.user.is_authenticated %}
+								<li>Hi, {{ request.user.first_name }}</li>
+								{% else %}
+								<li></i><a href="{% url "register" %}">Sign-up</a></li>
+								{% endif %}    
+                        </a>
+                        <div class="dropdown">
+                            <a href="#currency">Need Help?</a>
+                            <div class="dropdown-box">
+                                <a href="">Call Us +9779846579211</a>
+                                <a href="">Send Feedback</a>
+                                <a href="">Contact Us</a>
+                            	<a href="{% url 'logout' %}">Logout</a>
+		            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+            <!-- End of Header Top -->
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left mr-md-4">
+                        <a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
+                            <img src="{% static "assets/images/menu (1).png" %}" alt="">
+	                        </a>
+                        <a href="{% url 'home' %}" class="logo ml-lg-0">
+                            <img src="{% static "assets/images/logo.png" %}" alt="logo" width="144" height="45" />
+                        </a>
+                        <form method="GET" action="{% url 'products:search' %}"
+                        class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper mr-4 ml-4">
+                        <div class="select-box">
+                            <select id="category" name="category">
+                                <option value="None">All Categories</option>
+                                {% for cat in all_cat %}
+                                <option value="{{cat}}">{{cat}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <input type="text" class="form-control" name="keyword" id="search"
+                            placeholder="What are you looking for..." required />
+                        <button class="btn btn-search" type="submit"><i class="fa fa-search"></i>
+                        </button> 
+                    </form>
+
+                    </div>
+                    <div class="header-right ml-4">
+                        {% if request.user.is_authenticated %} 
+                        {% else %}
+                        <a class="wishlist label-down link d-xs-show" href="{% url 'login' %}">
+                            <img src="{% static "assets/images/profile.png" %}">
+                            <span class="wishlist-label d-lg-show">Sign In</span>
+                        </a>
+
+                  
+
+                        {% endif %}
+                        <div class="dropdown cart-dropdown mr-0 mr-lg-2">
+                            <div class="cart-overlay"></div>
+                            <!--div class="dropdown-box">
+                                <div class="products">
+                                    <div class="product product-cart">
+                                        <div class="product-detail">
+                                            <a href="categorypage.html" class="product-name">Beige knitted
+                                                elas<br>tic
+                                                runner shoes</a>
+                                            <div class="price-box">
+                                                <span class="product-quantity">1</span>
+                                                <span class="product-price">$25.68</span>
+                                            </div>
+                                        </div>
+                                        <figure class="product-media">
+                                            <a href="categorypage.html">
+                                                <img src="assets/images/cart/product-1.jpg" alt="product" height="84"
+                                                    width="94" />
+                                            </a>
+                                        </figure>
+                                        <button class="btn btn-link btn-close" aria-label="button">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="product product-cart">
+                                        <div class="product-detail">
+                                            <a href="categorypage.html" class="product-name">Blue utility
+                                                pina<br>fore
+                                                denim dress</a>
+                                            <div class="price-box">
+                                                <span class="product-quantity">1</span>
+                                                <span class="product-price">$32.99</span>
+                                            </div>
+                                        </div>
+                                        <figure class="product-media">
+                                            <a href="categorypage.html">
+                                                <img src="assets/images/cart/product-2.jpg" alt="product" width="84"
+                                                    height="94" />
+                                            </a>
+                                        </figure>
+                                        <button class="btn btn-link btn-close" aria-label="button">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="cart-total">
+                                    <label>Subtotal:</label>
+                                    <span class="price">$58.67</span>
+                                </div>
+
+                                <div class="cart-action">
+                                    <a href="cart.html" class="btn btn-dark btn-outline btn-rounded">View Cart</a>
+                                    <a href="checkout.html" class="btn btn-primary  btn-rounded">Checkout</a>
+                                </div>
+                            </div-->
+                            <!-- End of Dropdown Box -->
+                        </div>
+                        <!--a class="compare label-down link d-xs-show" href="compare.html">
+                            <img src="{% static "assets/images/message.png" %}" style="margin-top: 7px">
+                            <span class="compare-label d-lg-show">Messages</span>
+                        </a-->
+                    
+                    </div>
+                </div>
+            </div>
+            <!-- End of Header Middle -->
+
+            <div class="header-bottom sticky-content fix-top sticky-header">
+                <div class="container">
+                    <div class="inner-wrap">
+                        <div class="header-left flex-1">
+                            <div class="dropdown category-dropdown has-border" data-visible="true">
+                                <a href="#" class="category-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true" data-display="static"
+                                    title="Browse Categories">
+                                    <img src="{% static "assets/images/menu-white.png" %}" class="w-20">
+                                    <span class="text-white ml-2">All Categories</span>
+                                </a>
+
+                                <div class="dropdown-box">
+
+                                    <ul class="menu vertical-menu category-menu">
+
+                                        {% for cat in nav_categories %}
+
+                                        <li>
+                                            <a href="shop-fullwidth-banner.html">
+                                               {{cat}}
+                                            </a>
+                                            <ul class="megamenu">
+
+                                                {% for sub in cat.get_subcat %}
+                                                <li>
+                                                    <h4 class="menu-title">{{sub}}</h4>
+                                                    <hr class="divider">
+                                                    <ul>
+                                                        <li><a href="shop-fullwidth-banner.html">New Arrivals</a>
+                                                        </li>
+                                                        <li><a href="shop-fullwidth-banner.html">Best Sellers</a>
+                                                        </li>
+                                                        <li><a href="shop-fullwidth-banner.html">Trending</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Clothing</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Shoes</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Bags</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Accessories</a>
+                                                        </li>
+                                                        <li><a href="shop-fullwidth-banner.html">Jewlery &
+                                                                Watches</a></li>
+                                                    </ul>
+                                                </li>
+                                                {% endfor %}
+
+                                                <li>
+                                                    <div class="banner-fixed menu-banner menu-banner2">
+                                                        <figure>
+                                                            <img src="{% static "assets/images/np1.png" %}" alt="Menu Banner"
+                                                                width="235" height="347" />
+                                                        </figure>
+                                                        <div class="banner-content">
+                                                            <div class="banner-price-info mb-1 ls-normal">Get up to
+                                                                <strong
+                                                                    class="text-primary text-uppercase">20%Off</strong>
+                                                            </div>
+                                                            <h3 class="banner-title ls-normal">Hot Sales</h3>
+                                                            <a href="shop-banner-sidebar.html"
+                                                                class="btn btn-dark btn-sm btn-link btn-slide-right btn-icon-right">
+                                                                Shop Now<i class="w-icon-long-arrow-right"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+
+                                        {% endfor %}
+                                        <!--li>
+                                            <a href="shop-banner-sidebar.html"
+                                                class="font-weight-bold text-primary text-uppercase ls-25">
+                                                View All Categories<i class="w-icon-angle-right"></i>
+                                            </a>
+                                        </li-->
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="{% url 'post_requirements' %}" class="d-xl-show mr-6 text-white">Post Your Requirements</a>
+                            {% if request.user.is_authenticated %}
+                            {% if request.user.profile.account_type != 'Retailer' %}
+                            <a href="{% url 'dashboard' %}" class="text-white">My Seller Dashboard</a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                 
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End of Header -->
+
+
+
+
+        {% block content %} 
+        {% endblock %}
+
+        <footer class="footer">
+            <div class="footer-newsletter bg-primary pt-6 pb-6">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-xl-5 col-lg-6">
+                            <div class="icon-box icon-box-side text-white">
+                                <div class="icon-box-icon d-inline-flex">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div class="icon-box-content">
+                                    <h4 class="icon-box-title text-white text-uppercase mb-0">Subscribe To  Our Newsletter</h4>
+                                    <p class="text-white p-0">Get all the latest information on Events, Sales and Offers.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-6 col-md-9 mt-4 mt-lg-0 ">
+                            <form action="#" method="get" class="input-wrapper input-wrapper-inline input-wrapper-rounded">
+                                <input type="email" class="form-control mr-2 bg-white" name="email" id="email"
+                                    placeholder="Your E-mail Address" />
+                            <button class="btn btn-dark btn-rounded" type="submit">Subscribe<i
+                                    class="fa fa-arrow-right"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-black">
+            <div class="container">
+                <div class="footer-top">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="widget widget-about">
+                                <a href="demo1.html" class="logo-footer">
+                                    <img src="http://vistaartrade.com/static/images/logo.png" alt="logo-footer" width="144"
+                                        height="45" />
+                                </a>
+                                <div class="widget-body">
+                                    <p class="widget-about-title">Got Question? Call us 24/7</p>
+                                   
+                                    <p class="widget-about-desc">Register now to get updates on pronot get up icons
+                                        & coupons ster now toon.
+                                    </p>
+        
+                                    <div class="social-icons social-icons-colored">
+                                        <a href="#" class="social-icon social-facebook w-icon-facebook">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                        <a href="#" class="social-icon social-twitter w-icon-twitter">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a href="#" class="social-icon social-instagram w-icon-instagram">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                        
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="widget">
+                                <h3 class="widget-title mb-4">Company</h3>
+                                <ul class="widget-body">
+                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li><a href="#">Team Member</a></li>
+                                    <li><a href="#">Career</a></li>
+                                    <li><a href="contact-us.html">Contact Us</a></li>
+                                    <li><a href="#">Affilate</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="widget">
+                                <h4 class="widget-title mb-4">My Account</h4>
+                                <ul class="widget-body">
+                                    <li><a href="#">Track My Order</a></li>
+                                    <li><a href="cart.html">View Cart</a></li>
+                                    <li><a href="login.html">Sign In</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="wishlist.html">My Wishlist</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="widget">
+                                <h4 class="widget-title mb-4">Customer Service</h4>
+                                <ul class="widget-body">
+                                    <li><a href="#">Payment Methods</a></li>
+                                    <li><a href="#">Money-back guarantee!</a></li>
+                                    <li><a href="#">Product Returns</a></li>
+                                    <li><a href="#">Support Center</a></li>
+                                    <li><a href="#">Shipping</a></li>
+                                    <li><a href="{% url 'terms_conditions' %}">Terms and Conditions</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-middle">
+                    <div class="widget widget-category">
+                        <div class="category-box">
+                            <h6 class="category-name">Consumer Electric:</h6>
+                            <a href="#">TV Television</a>
+                            <a href="#">Air Condition</a>
+                            <a href="#">Refrigerator</a>
+                            <a href="#">Washing Machine</a>
+                            <a href="#">Audio Speaker</a>
+                            <a href="#">Security Camera</a>
+                            <a href="#">View All</a>
+                        </div>
+                        <div class="category-box">
+                            <h6 class="category-name">Clothing & Apparel:</h6>
+                            <a href="#">Men's T-shirt</a>
+                            <a href="#">Dresses</a>
+                            <a href="#">Men's Sneacker</a>
+                            <a href="#">Leather Backpack</a>
+                            <a href="#">Watches</a>
+                            <a href="#">Jeans</a>
+                            <a href="#">Sunglasses</a>
+                            <a href="#">Boots</a>
+                            <a href="#">Rayban</a>
+                            <a href="#">Acccessories</a>
+                        </div>
+                        <div class="category-box">
+                            <h6 class="category-name">Home, Garden & Kitchen:</h6>
+                            <a href="#">Sofa</a>
+                            <a href="#">Chair</a>
+                            <a href="#">Bed Room</a>
+                            <a href="#">Living Room</a>
+                            <a href="#">Cookware</a>
+                            <a href="#">Utensil</a>
+                            <a href="#">Blender</a>
+                            <a href="#">Garden Equipments</a>
+                            <a href="#">Decor</a>
+                            <a href="#">Library</a>
+                        </div>
+                        <div class="category-box">
+                            <h6 class="category-name">Health & Beauty:</h6>
+                            <a href="#">Skin Care</a>
+                            <a href="#">Body Shower</a>
+                            <a href="#">Makeup</a>
+                            <a href="#">Hair Care</a>
+                            <a href="#">Lipstick</a>
+                            <a href="#">Perfume</a>
+                            <a href="#">View all</a>
+                        </div>
+                        <div class="category-box">
+                            <h6 class="category-name">Jewelry & Watches:</h6>
+                            <a href="#">Necklace</a>
+                            <a href="#">Pendant</a>
+                            <a href="#">Diamond Ring</a>
+                            <a href="#">Silver Earing</a>
+                            <a href="#">Leather Watcher</a>
+                            <a href="#">Rolex</a>
+                            <a href="#">Gucci</a>
+                            <a href="#">Australian Opal</a>
+                            <a href="#">Ammolite</a>
+                            <a href="#">Sun Pyrite</a>
+                        </div>
+                        <div class="category-box">
+                            <h6 class="category-name">Computer & Technologies:</h6>
+                            <a href="#">Laptop</a>
+                            <a href="#">iMac</a>
+                            <a href="#">Smartphone</a>
+                            <a href="#">Tablet</a>
+                            <a href="#">Apple</a>
+                            <a href="#">Asus</a>
+                            <a href="#">Drone</a>
+                            <a href="#">Wireless Speaker</a>
+                            <a href="#">Game Controller</a>
+                            <a href="#">View all</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-left">
+                        <p class="copyright">Copyright © 2021 Vistaar Trade. All Rights Reserved.</p>
+                    </div>
+                    <div class="footer-right">
+                        <span class="payment-label mr-lg-8">We're using safe payment for</span>
+                        <figure class="payment">
+                            <img src="assets/images/payment.png" alt="payment" width="159" height="25" />
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </footer> 
+
+</body>
+
+{% block script %}
+{% endblock %}
+
+</html>

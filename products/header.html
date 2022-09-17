@@ -1,0 +1,309 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    {% block title %}{% endblock %}
+
+    <meta name="robots" content="noindex, nofollow"/>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="http://vistaartrade.com/static/images/logo.png">
+
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: { families: ['Poppins:400,500,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
+    <link rel="preload" href="assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font" type="font/woff2"
+        crossorigin="anonymous">
+    <link rel="preload" href="assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font" type="font/woff2"
+        crossorigin="anonymous">
+    <link rel="preload" href="assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" type="font/woff2"
+        crossorigin="anonymous">
+
+
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static "assets/vendor/swiper/swiper-bundle.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/vendor/animate/animate.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/vendor/magnific-popup/magnific-popup.min.css" %}">
+
+    <!-- Default CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/demo2.min.css" %}"> 
+    <link rel="stylesheet" href="{% static "assets/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "assets/vendor/fontawesome-free/css/all.min.css" %}">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="{% static "assets/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/custom.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/datatables.css" %}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "assets/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/style.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/lunar.css" %}">   
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
+
+    
+</head>
+
+<body class="home">
+    <div class="page-wrapper">
+        <h1 class="d-none">Vistaar Trade | Home</h1>
+        
+        <!-- Start of Header -->
+        <header class="header">
+            <div class="header-top">
+                <div class="container">
+                  
+                    <div class="header-right pr-0">
+                
+                  
+                
+                        <a href="#" class="d-lg-show">
+                            <img src="{% static "assets/images/shop.png" %}" class="w-20 mr-2">
+                            {% if request.user.profile.account_type == 'Retailier' %}
+								<li><i class="ti-user"></i> <a href="{% url 'register_supplier' %}">Become a Seller</a></li>
+								{% endif %}
+								{% if request.user.is_authenticated %}
+								<li>Hi, {{ request.user.first_name }}</li>
+								{% else %}
+								<li></i><a href="{% url "register" %}">Sign-up</a></li>
+								{% endif %}    
+                        </a>
+                        <div class="dropdown">
+                            <a href="#currency">Need Help?</a>
+                            <div class="dropdown-box">
+                                <a href="">Call Us +9779846579211</a>
+                                <a href="">Send Feedback</a>
+                                <a href="">Contact Us</a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+            <!-- End of Header Top -->
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left mr-md-4">
+                        <a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
+                            <img src="assets/images/menu (1).png" alt="">
+                        </a>
+                        <a href="index.html" class="logo ml-lg-0">
+                            <img src="{% static "images/logo.png" %}" alt="logo" width="144" height="45" />
+                        </a>
+                        <form method="GET" action="{% url 'products:search' %}"
+                        class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper mr-4 ml-4">
+                        <div class="select-box">
+                            <select id="category" name="category">
+                                <option value="All">All Categories</option>
+                                {% for cat in all_cat %}
+                                <option value="{{cat}}">{{cat}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <input type="text" class="form-control" name="keyword" id="search"
+                            placeholder="What are you looking for..." required />
+                        <button class="btn btn-search" type="submit"><i class="fa fa-search"></i>
+                        </button> 
+                    </form>
+
+                    </div>
+                    <div class="header-right ml-4">
+                        {% if request.user.is_authenticated %}
+                        {% else %}
+                        <a class="wishlist label-down link d-xs-show" href="{% url 'login' %}">
+                            <img src="{% static "assets/images/profile.png" %}">
+                            <span class="wishlist-label d-lg-show">Sign In</span>
+                        </a>
+                        {% endif %}
+                        <div class="dropdown cart-dropdown mr-0 mr-lg-2">
+                            <div class="cart-overlay"></div>
+                            <!--div class="dropdown-box">
+                                <div class="products">
+                                    <div class="product product-cart">
+                                        <div class="product-detail">
+                                            <a href="categorypage.html" class="product-name">Beige knitted
+                                                elas<br>tic
+                                                runner shoes</a>
+                                            <div class="price-box">
+                                                <span class="product-quantity">1</span>
+                                                <span class="product-price">$25.68</span>
+                                            </div>
+                                        </div>
+                                        <figure class="product-media">
+                                            <a href="categorypage.html">
+                                                <img src="assets/images/cart/product-1.jpg" alt="product" height="84"
+                                                    width="94" />
+                                            </a>
+                                        </figure>
+                                        <button class="btn btn-link btn-close" aria-label="button">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="product product-cart">
+                                        <div class="product-detail">
+                                            <a href="categorypage.html" class="product-name">Blue utility
+                                                pina<br>fore
+                                                denim dress</a>
+                                            <div class="price-box">
+                                                <span class="product-quantity">1</span>
+                                                <span class="product-price">$32.99</span>
+                                            </div>
+                                        </div>
+                                        <figure class="product-media">
+                                            <a href="categorypage.html">
+                                                <img src="assets/images/cart/product-2.jpg" alt="product" width="84"
+                                                    height="94" />
+                                            </a>
+                                        </figure>
+                                        <button class="btn btn-link btn-close" aria-label="button">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="cart-total">
+                                    <label>Subtotal:</label>
+                                    <span class="price">$58.67</span>
+                                </div>
+
+                                <div class="cart-action">
+                                    <a href="cart.html" class="btn btn-dark btn-outline btn-rounded">View Cart</a>
+                                    <a href="checkout.html" class="btn btn-primary  btn-rounded">Checkout</a>
+                                </div>
+                            </div-->
+                            <!-- End of Dropdown Box -->
+                        </div>
+                        <!--a class="compare label-down link d-xs-show" href="compare.html">
+                            <img src="{% static "assets/images/message.png" %}" style="margin-top: 7px">
+                            <span class="compare-label d-lg-show">Messages</span>
+                        </a-->
+                    
+                    </div>
+                </div>
+            </div>
+            <!-- End of Header Middle -->
+
+            <div class="header-bottom sticky-content fix-top sticky-header">
+                <div class="container">
+                    <div class="inner-wrap">
+                        <div class="header-left flex-1">
+                            <div class="dropdown category-dropdown has-border" data-visible="true">
+                                <a href="#" class="category-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true" data-display="static"
+                                    title="Browse Categories">
+                                    <img src="{% static "assets/images/menu-white.png" %}" class="w-20">
+                                    <span class="text-white ml-2">All Categories</span>
+                                </a>
+
+                                <div class="dropdown-box">
+
+                                    <ul class="menu vertical-menu category-menu">
+
+                                        {% for cat in nav_categories %}
+
+                                        <li>
+                                            <a href="shop-fullwidth-banner.html">
+                                               {{cat}}
+                                            </a>
+                                            <ul class="megamenu">
+
+                                                {% for sub in cat.get_subcat %}
+                                                <li>
+                                                    <h4 class="menu-title">{{sub}}</h4>
+                                                    <hr class="divider">
+                                                    <ul>
+                                                        <li><a href="shop-fullwidth-banner.html">New Arrivals</a>
+                                                        </li>
+                                                        <li><a href="shop-fullwidth-banner.html">Best Sellers</a>
+                                                        </li>
+                                                        <li><a href="shop-fullwidth-banner.html">Trending</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Clothing</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Shoes</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Bags</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Accessories</a>
+                                                        </li>
+                                                        <li><a href="shop-fullwidth-banner.html">Jewlery &
+                                                                Watches</a></li>
+                                                    </ul>
+                                                </li>
+                                                {% endfor %}
+
+                                                <li>
+                                                    <div class="banner-fixed menu-banner menu-banner2">
+                                                        <figure>
+                                                            <img src="{% static "assets/images/np1.png" %}" alt="Menu Banner"
+                                                                width="235" height="347" />
+                                                        </figure>
+                                                        <div class="banner-content">
+                                                            <div class="banner-price-info mb-1 ls-normal">Get up to
+                                                                <strong
+                                                                    class="text-primary text-uppercase">20%Off</strong>
+                                                            </div>
+                                                            <h3 class="banner-title ls-normal">Hot Sales</h3>
+                                                            <a href="shop-banner-sidebar.html"
+                                                                class="btn btn-dark btn-sm btn-link btn-slide-right btn-icon-right">
+                                                                Shop Now<i class="w-icon-long-arrow-right"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+
+                                        {% endfor %}
+                                        <!--li>
+                                            <a href="shop-banner-sidebar.html"
+                                                class="font-weight-bold text-primary text-uppercase ls-25">
+                                                View All Categories<i class="w-icon-angle-right"></i>
+                                            </a>
+                                        </li-->
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="{% url 'post_requirements' %}" class="d-xl-show mr-6 text-white">Post Your Requirements</a>
+                            {% if request.user.is_authenticated %}
+                            {% if request.user.profile.account_type != 'Retailer' %}
+                            <a href="{% url 'dashboard' %}" class="text-white">My Seller Dashboard</a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                 
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End of Header -->
+
+
+        {% block content %}
+        {% endblock %}
+
+</body>
+
+{% block script %}
+{% endblock %}
+
+</html>

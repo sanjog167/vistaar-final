@@ -7300,3 +7300,9 @@ footer .social-icon::before{
   align-items: center;
   justify-content: center;
 }
+
+.manage-scroll{
+  height: 500px;
+}
+
+.deleteModal{z-index: 9999;}

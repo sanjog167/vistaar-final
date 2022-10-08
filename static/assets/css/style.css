@@ -7306,3 +7306,12 @@ footer .social-icon::before{
 }
 
 .deleteModal{z-index: 9999;}
+
+.product-detail-row .main-content{
+  max-width: 100%;
+  display: flex;
+}
+
+.product-sidebar .sidebar-content {
+  padding: 2rem !important;
+}

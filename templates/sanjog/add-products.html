@@ -7,255 +7,94 @@
 
 <div id="header"></div>
 
-        <main class="main" style="    background-color: #eff7fa;"> 
-            <!-- Start of Breadcrumb -->
-            <nav class="breadcrumb-nav">
-                <div class="container">
-                    <ul class="breadcrumb bb-no">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Categoryasd</li>
-                        <li>{{keyword}}</li>
-                    </ul>
-                </div>
-            </nav>
-            <!-- End of Breadcrumb -->
-
-            <!-- Start of Page Content -->
-            <div class="page-content">
-                <div class="container">
-<!-- Start of Shop Banner -->
-<div class=" banner d-flex align-items-center mb-5 br-xs">
-    <img src="{% static "assets/images/categorybanner.jpg" %}" alt="" class="w-100">
-    </div>
-    <!-- End of Shop Banner -->
-
-            
-
-
-
-                    <!-- Start of Shop Content -->
-                    <div class="shop-content row gutter-lg mb-10">
-                        <!-- Start of Sidebar, Shop Sidebar -->
-                        <aside class="sidebar shop-sidebar sticky-sidebar-wrapper sidebar-fixed">
-                            <!-- Start of Sidebar Overlay -->
-                            <div class="sidebar-overlay"></div>
-                            <a class="sidebar-close" href="#"><i class="close-icon"></i></a>
-
-                            <!-- Start of Sidebar Content -->
-                            <div class="sidebar-content scrollable">
-                                <!-- Start of Sticky Sidebar -->
-                                <div class="sticky-sidebar">
-                                    <div class="filter-actions">
-                                        <label>Filter :</label>
-                                        <a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
-                                    </div>
-                                    <!-- Start of Collapsible widget -->
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>All Categories</label></h3>
-                                        <ul class="widget-body filter-items search-ul">
-                                            <li><a href="#">Accessories</a></li>
-                                            <li><a href="#">Babies</a></li>
-                                            <li><a href="#">Beauty</a></li>
-                                            <li><a href="#">Decoration</a></li>
-                                            <li><a href="#">Electronics</a></li>
-                                            <li><a href="#">Fashion</a></li>
-                                            <li><a href="#">Food</a></li>
-                                            <li><a href="#">Furniture</a></li>
-                                            <li><a href="#">Kitchen</a></li>
-                                            <li><a href="#">Medical</a></li>
-                                            <li><a href="#">Sports</a></li>
-                                            <li><a href="#">Watches</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of Collapsible Widget -->
-
-                                    <!-- Start of Collapsible Widget -->
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>Price</label></h3>
-                                        <div class="widget-body">
-                                            <ul class="filter-items search-ul">
-                                                <li><a href="#">$0.00 - $100.00</a></li>
-                                                <li><a href="#">$100.00 - $200.00</a></li>
-                                                <li><a href="#">$200.00 - $300.00</a></li>
-                                                <li><a href="#">$300.00 - $500.00</a></li>
-                                                <li><a href="#">$500.00+</a></li>
-                                            </ul>
-                                            <form class="price-range">
-                                                <input type="number" name="min_price" class="min_price text-center"
-                                                    placeholder="$min"><span class="delimiter">-</span><input
-                                                    type="number" name="max_price" class="max_price text-center"
-                                                    placeholder="$max"><a href="#"
-                                                    class="btn btn-primary btn-rounded">Go</a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <!-- End of Collapsible Widget -->
-
-                                    <!-- Start of Collapsible Widget -->
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>Suppliers</label></h3>
-                                        <ul class="widget-body filter-items item-check mt-1">
-                                            <li><a href="#">Suppliers 1</a></li>
-                                            <li><a href="#">Suppliers 2</a></li>
-                                            <li><a href="#">Suppliers 3</a></li>
-                                            <li><a href="#">Suppliers 4</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>Tags</label></h3>
-                                        <ul class="widget-body filter-items item-check mt-1">
-                                            <li><a href="#">Tags 1</a></li>
-                                            <li><a href="#">Tags 2</a></li>
-                                            <li><a href="#">Tags 3</a></li>
-                                            <li><a href="#">Tags 4</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of Collapsible Widget -->
-
-                                    <!-- Start of Collapsible Widget -->
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>Brand</label></h3>
-                                        <ul class="widget-body filter-items item-check mt-1">
-                                            <li><a href="#">Elegant Auto Group</a></li>
-                                            <li><a href="#">Green Grass</a></li>
-                                            <li><a href="#">Node Js</a></li>
-                                            <li><a href="#">NS8</a></li>
-                                            <li><a href="#">Red</a></li>
-                                            <li><a href="#">Skysuite Tech</a></li>
-                                            <li><a href="#">Sterling</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of Collapsible Widget -->
-
-                                    <!-- Start of Collapsible Widget -->
-                             
-                                    <!-- End of Collapsible Widget -->
-                                </div>
-                                <!-- End of Sidebar Content -->
-                            </div>
-                            <!-- End of Sidebar Content -->
-                        </aside>
-                        <!-- End of Shop Sidebar -->
-
-                        <!-- Start of Shop Main Content -->
-                        <div class="main-content">
-                            <nav class="toolbox sticky-toolbox sticky-content fix-top w-100 justify-content-between">
-                                <div class="toolbox-left">
-                                   
-
-                                 <h3 class="fs-17">Searching for: "{{keyword}}" <span class="fw-500">({{results|length}} Products)</span></h3>
-                                 
-                                </div>
-                                <div class="toolbox-right">
-
-                                    <a href="#" class="btn btn-primary d-flex align-items-center btn-outline btn-rounded left-sidebar-toggle 
-                                    btn-icon-left d-block d-lg-none">
-                                    <img src="assets/images/edit.png" alt="" class="w-20 r90">
-                                    <span>Filters</span></a>
-                                    
-                                    <div class="toolbox-item toolbox-sort select-box text-dark">
-                                        <label>Sort By :</label>
-                                        <select name="orderby" class="form-control">
-
-                                            <option value="popularity" selected="selected"> Popularity</option>
-                                            <option value="rating"> Average rating</option>
-                                            <option value="date"> Latest</option>
-                                            <option value="price-low"> Price: low to high</option>
-                                            <option value="price-high"> Price: high to low</option>
-                                        </select>
-                                    </div>
-                                    <div class="toolbox-item toolbox-layout d-none">
-                                        <a href="shop-banner-sidebar.html" class="icon-mode-grid btn-layout active">
-                                            <i class="w-icon-grid"></i>
-                                        </a>
-                                        <a href="shop-list.html" class="icon-mode-list btn-layout">
-                                            <i class="w-icon-list"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </nav>
-                            <div class="product-wrapper row cols-md-4 cols-sm-2 cols-2">
-                                {% for p in pag %}
-                                <div class="product-wrap">
-                                    <div class="product text-center">
-                                        <figure class="product-media">
-                                            <a href="{{p.get_absolute_url}}">
-						{% if p.image %}
-                                                <img src="{{p.image.url}}" alt="Product"
-                                                    width="300" height="338">
-                                                <img src="{{p.image.url}}" alt="Product"
-                                                    width="300" height="338">
-						{% else %}
-						<img src="https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?k=20&m=1216251206&s=170667a&w=0&h=A72dFkHkDdSfmT6iWl6eMN9t_JZmqGeMoAycP-LMAw4=" alt="Product"
-                                                    width="300" height="338">
-                                                <img src="https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?k=20&m=1216251206&s=170667a&w=0&h=A72dFkHkDdSfmT6iWl6eMN9t_JZmqGeMoAycP-LMAw4=" alt="Product"
-                                                    width="300" height="338">
-						{% endif %}
-                                            </a>
-                                            <div class="product-action-vertical">
-                                                <a href="{{p.get_absolute_url}}" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                    title="Add to wishlist"></a>
-                                                <a href="{{p.get_absolute_url}}" class="btn-product-icon btn-quickview w-icon-search"
-                                                    title="Quickview"></a>
-                                                <a href="{{p.get_absolute_url}}" class="btn-product-icon btn-compare w-icon-compare"
-                                                    title="Add to Compare"></a>
-                                            </div>
-                                      
-                                        </figure>
-                                        <div class="product-details">
-                                            <h4 class="product-name"><a href="{{p.get_absolute_url}}">{{p}}</a></h4>
-                                            <div class="ratings-container">
-                                                <div class="ratings-full">
-                                                    <span class="ratings" style="width: 100%;"></span>
-                                                    <span class="tooltiptext tooltip-top"></span>
-                                                </div>
-                                                <!--a href="product-default.html" class="rating-reviews">(3 Reviews)</a-->
-                                            </div>
-                                            <div class="product-price mt-4">
-                                            <a href="{{p.get_absolute_url}}" class="btn btn-primary btn-outline-green">Ask For Price</a>
-                                            </div>
-                                        </div>
-                                        <div class="product_verification">
-                                            <p>Verified Seller</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-
-                              
-                            </div>
-
-                            <div class="toolbox toolbox-pagination justify-content-between">
-                                <p class="showing-info mb-2 mb-sm-0">
-                                    Page {{ pag.number }} of {{ pag.paginator.num_pages }} </span>Pages
-                                </p>
-                                <ul class="pagination">
-                                    {% if  pag.has_previous %}
-                                    <li class="prev">
-                                        <a href="?page={{ pag.previous_page_number }}&keyword={{ keyword }}&category={{ scat }}" aria-label="Previous" tabindex="-1" aria-disabled="true">
-                                            <i class="w-icon-long-arrow-left"></i>Prev
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                    {% if pag.has_next %}
-                                    <li class="next">
-                                        <a href="?page={{ pag.next_page_number }}&keyword={{ keyword }}&category={{ scat }}" aria-label="Next">
-                                            Next<i class="w-icon-long-arrow-right"></i>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                            </div>
+<div class="add_products_form mt-5">
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="col-lg-6">
+                  
+                      <div class="form-group">
+                        <label for="inputAddress">Product Name 1</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="">
+                        <small>Do not exceed 20 characters when entering a product name</small>
+                      </div>
+              
+                      <div class="form-row">
+                    
+                        <div class="form-group col-md-6">
+                          <label for="inputState">Category 1</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
                         </div>
-                        <!-- End of Shop Main Content -->
+                        <div class="form-group col-md-6">
+                            <label for="inputState">Sub Category 1</label>
+                            <select id="inputState" class="form-control">
+                              <option selected>Choose...</option>
+                              <option>...</option>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputAddress">Minimum Order Quantity</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="">
+                        
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <small>Do not exceed 100 characters</small>
+
                     </div>
-                    <!-- End of Shop Content -->
                 </div>
+
+                <div class="col-lg-6">
+                    <label class="active">Product Images</label>
+                    <div class="input_images_grid">
+                        <div class="input-field">
+                            <div class="input-images-1" style="padding-top: .5rem;"></div>
+                        </div>
+                        <div class="input-field">
+                            
+                            <div class="input-images-2" style="padding-top: .5rem;"></div>
+                        </div>
+                        <div class="input-field">
+                            
+                            <div class="input-images-3" style="padding-top: .5rem;"></div>
+                        </div>
+                        <div class="input-field">
+                            
+                            <div class="input-images-4" style="padding-top: .5rem;"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row mt-6">
+                    
+                        <div class="form-group col-md-6">
+                          <label for="inputState">Minimum Price</label>
+                          <input type="text" class="form-control" id="inputAddress" placeholder="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputState">Maximum Price</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="">
+                          </div>
+                      </div>
+                 
+                </div>
+
+
             </div>
-            <!-- End of Page Content -->
-        </main>
-        <!-- End of Main -->
+        <div class="d-flex align-items-center">
+            <button type="submit" class="btn btn-primary btn-outline-green b-999">Add Product</button>
+            <a href="#" class="btn btn-outline-green btn-border-green">Save Product</a>
+        </div>
+            
+          </form>
+    </div>
+</div>
+
+
 
  
     </div>
@@ -943,48 +782,145 @@
             </div>
         </div>
     </div>
-    <!-- End of Quick view -->
+    <!-- End of Quick view --> 
+      <!-- Modal -->
+ 
 
+      <div class="modal fade   "  id="popupModal"  tabindex="-1" role="dialog"
+     aria-labelledby="demoModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-lg  " role="document">
+        <div class="modal-content">
+
+            <div class="container-fluid">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+       
+                    <div class="col-md-6 bg-img rounded-left p-40 d-none d-sm-block" style="padding: 0px">
+                      <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <img src="http://vistaartrade.com/media/products/2021/12/30/Clever_Cat_Snail_Bb_Cream.jpg">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="http://vistaartrade.com/media/products/2021/12/29/Keratin_Moisturizing__Smooth_Creamy_Hair_Mask_500ml.jpg">
+                          </div>
+                  
+                          </div>
+                          <div class="swiper-button-next"></div>
+                          <div class="swiper-button-prev"></div>
+                          </div>
+                    </div>
+               
+                   
+                    <div class="col-md-6 px-sm-5 ">
+
+                        <h2 class="pt-sm-3">Product Name</h2>
+                        <p class="text-muted">
+                            <span>Category</span>: Electronics | <span>Sub-Category</span>: Hardware device
+                        </p>
+                        <p class="text-muted">
+                          <span>Minimum Price</span>: NPR 5,000.
+                      </p>
+                      <p class="text-muted">
+                        <span>Maximum Price</span>: NPR 8,000.
+                    </p>
+
+                    <p class="text-muted">
+                      <span>Minimum Order Quantity</span>: 500.
+                  </p>
+
+                  <p class="text-muted">
+                    <span>Description</span>
+                    <p>Websites often use modal windows as call-to-action tools and for pointing out important information. For example, the call-to-action in a modal window might ask the site visitor to subscribe to the site’s newsletter. A study by user experience research firm Nielsen Norman Group revealed that 90% of the study’s participants chose to receive updates from companies via an email newsletter, versus only 10% via Facebook.
+
+                    </p>
+                </p>
+                  
+           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      <!-- Modal Box end -->
   
 
-    <!-- Plugin JS File -->
-    <script src="{% static "assets/vendor/jquery/jquery.min.js" %}"></script>
-    <script src="{% static "assets/vendor/jquery.plugin/jquery.plugin.min.js" %}"></script>
-    <script src="{% static "assets/js/bootstrap.js" %}"></script>
-    <script src="{% static "assets/vendor/imagesloaded/imagesloaded.pkgd.min.js" %}"></script>
-    <script src="{% static "assets/vendor/swiper/swiper-bundle.min.js" %}"></script>
-    <script src="{% static "assets/vendor/jquery.countdown/jquery.countdown.min.js" %}"></script>
-    <script src="{% static "assets/vendor/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
-    <script src="{% static "assets/vendor/floating-parallax/parallax.min.js" %}"></script>
-    <script src="{% static "assets/vendor/zoom/jquery.zoom.js" %}"></script>
-    <script src="{% static "assets/vendor/niceselect.js" %}"></script>
+     <!-- Plugin JS File -->
+     <script src="{% static "assets/vendor/jquery/jquery.min.js" %}"></script>
+     <script src="{% static "assets/vendor/jquery.plugin/jquery.plugin.min.js" %}"></script>
+     <script src="{% static "assets/js/bootstrap.js" %}"></script>
+     <script src="{% static "assets/vendor/imagesloaded/imagesloaded.pkgd.min.js" %}"></script>
+     <script src="{% static "assets/vendor/swiper/swiper-bundle.min.js" %}"></script>
+     <script src="{% static "assets/vendor/jquery.countdown/jquery.countdown.min.js" %}"></script>
+     <script src="{% static "assets/vendor/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
+     <script src="{% static "assets/vendor/floating-parallax/parallax.min.js" %}"></script>
+     <script src="{% static "assets/vendor/zoom/jquery.zoom.js" %}"></script>
+     <script src="{% static "assets/vendor/niceselect.js" %}"></script>
+ 
+     <script src="{% static "assets/js/datatable.js" %}"></script>
+     <script src="{% static "assets/js/apexchart.js" %}"></script>
+     <script src="{% static "assets/js/chartoption.js" %}"></script>
+     <script src="{% static "assets/js/popper.min.js" %}"></script>
+     <script src="{% static "assets/js/lunar.js" %}"></script>
+     <script src="{% static "assets/js/main.js" %}"></script>
+     <script src="{% static "assets/js/iuploader.js" %}"></script>
+ 
+ 
+     <!-- Main Js -->
+     <script src="{% static "assets/js/main.min.js" %}"></script>
+ 
+     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+     
+ 
+         <script>
+         $(document).ready(function() {
+   $('select').niceSelect();
+ });
+     </script>
+ <script> 
+     $(function(){
+       $("#header").load("header.html"); 
+       $("#footer").load("footer.html"); 
+     });
+     </script> 
+ 
+ 
+ <script>
+     var options = {
+ strings: ['Orders.', 'New Orders.', 'More New Orders.'],
+ typeSpeed: 150,
+ backSpeed: 150,
+ loop: true,
+ };
+ 
+ var typed = new Typed('.autotype', options);
+ </script>
 
-    <script src="{% static "assets/js/datatable.js" %}"></script>
-    <script src="{% static "assets/js/apexchart.js" %}"></script>
-    <script src="{% static "assets/js/chartoption.js" %}"></script>
-    <script src="{% static "assets/js/popper.min.js" %}"></script>
-    <script src="{% static "assets/js/lunar.js" %}"></script>
-    <script src="{% static "assets/js/main.js" %}"></script>
+ <script>
+   $('.input-images-1').imageUploader();
+ </script>
+
+<script>
+    $('.input-images-2').imageUploader();
+  </script>
+
+<script>
+    $('.input-images-3').imageUploader();
+  </script>
+
+<script>
+    $('.input-images-4').imageUploader();
+  </script>
+ 
+ {% endblock %}
 
 
-    <!-- Main Js -->
-    <script src="{% static "assets/js/main.min.js" %}"></script>
-
-        <script>
-        $(document).ready(function() {
-  $('select').niceSelect();
-});
-    </script>
-<script> 
-    $(function(){
-      $("#header").load("header.html"); 
-      $("#footer").load("footer.html"); 
-    });
-    </script> 
-
-{% endblock %}
-</body>
-
-
-</html>
-
+ 
+ </body>
+ 
+ 
+ </html>

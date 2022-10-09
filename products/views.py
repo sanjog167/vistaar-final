@@ -328,6 +328,12 @@ def terms_conditions(request):
     success = 1
     
     return render(request, 'sanjog/terms.html',{'success':success,})
+
+def add_products(request):
+    
+    success = 1
+    
+    return render(request, 'sanjog/add-products.html',{'success':success,})
     
     
 

@@ -56,6 +56,7 @@
     <link rel="stylesheet" href="{% static "assets/css/style.css" %}">
     <link rel="stylesheet" href="{% static "assets/css/themify-icons.css" %}">
     <link rel="stylesheet" href="{% static "assets/css/lunar.css" %}">   
+    <link rel="stylesheet" href="{% static "assets/css/iuploader.css" %}">   
     <link
     rel="stylesheet"
     href="https://unpkg.com/swiper/swiper-bundle.min.css"
@@ -400,6 +401,7 @@
                                     <li><a href="#">Product Returns</a></li>
                                     <li><a href="#">Support Center</a></li>
                                     <li><a href="#">Shipping</a></li>
+                                    <li><a href="{% url 'add_products' %}">Add Product</a></li>
                                     <li><a href="{% url 'terms_conditions' %}">Terms and Conditions</a></li>
                                 </ul>
                             </div>

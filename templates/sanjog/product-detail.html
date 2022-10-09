@@ -11,7 +11,7 @@
     <nav class="breadcrumb-nav container">
         <ul class="breadcrumb bb-no">
             <li><a href="demo1.html">Home</a></li>
-            <li>{{product.category}}</li>
+            <li><a href="{% url 'products:category_detail' id=product.category.id slug=product.category.slug %}">{{product.category}}</a></li>
             <li>{{product}}</li>
         </ul>
     
@@ -150,7 +150,7 @@
                                     <div class="product-meta">
                                         <div class="product-categories">
                                             Category:
-                                            <span class="product-category"><a href="#">{{product.category}}</a></span>
+                                            <span class="product-category"><a href="{% url 'products:category_detail' id=product.category.id slug=product.category.slug %}"">{{product.category}}</a></span>
                                         </div>
                                         <div class="product-sku btn-outline-green">
                                         {% if product.available %}

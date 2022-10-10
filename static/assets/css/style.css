@@ -7375,3 +7375,8 @@ justify-content: center;
 .form-control {
   border: 1px solid lightgray !important;
 }
+
+.qr_code img{
+  width: 200px;
+  height: 200px;
+}

@@ -112,7 +112,8 @@
                                         </p>
                                         Drop file here or click to upload
                                     </span>
-                                    <input type="file" name="image3" class="drop-zone__input">
+                                    <input type="file" name="image3" class="drop-zone__input" accept="image/*" onchange="loadFileThree(event)">
+                                    <img id="outputthree"/>
                                 </div>
                                 <div class="drop-zone small mt-1">
                                     <span class="drop-zone__prompt">
@@ -121,7 +122,8 @@
                                         </p>
                                         Drop file here or click to upload
                                     </span>
-                                    <input type="file" name="image4" class="drop-zone__input">
+                                    <input type="file" name="image4" class="drop-zone__input" accept="image/*" onchange="loadFileFour(event)">
+                                    <img id="outputfour"/>
                                 </div>
                             </div>
                         </div>
@@ -988,6 +990,26 @@
 <script>
     var loadFileTwo = function(event) {
       var output = document.getElementById('outputtwo');
+      output.src = URL.createObjectURL(event.target.files[0]);
+      output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+      }
+    };
+  </script>
+
+<script>
+    var loadFileThree = function(event) {
+      var output = document.getElementById('outputthree');
+      output.src = URL.createObjectURL(event.target.files[0]);
+      output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+      }
+    };
+  </script>
+
+<script>
+    var loadFileFour = function(event) {
+      var output = document.getElementById('outputfour');
       output.src = URL.createObjectURL(event.target.files[0]);
       output.onload = function() {
         URL.revokeObjectURL(output.src) // free memory

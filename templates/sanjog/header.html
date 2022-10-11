@@ -288,7 +288,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="{% url 'post_requirements' %}" class="d-xl-show mr-6 text-white">Post Your Requirements</a>
+                            <a href="#" data-toggle="modal" data-target="#demoModaltwo" class="d-xl-show mr-6 text-white postreq">Post Your Requirements</a>
                             {% if request.user.is_authenticated %}
                             {% if request.user.profile.account_type != 'Retailer' %}
                             <a href="{% url 'dashboard' %}" class="text-white">My Seller Dashboard</a>
@@ -302,10 +302,108 @@
         </header>
         <!-- End of Header -->
 
+        <div class="modal fade   "  id="demoModaltwo"  tabindex="-1" role="dialog"
+        aria-labelledby="demoModaltwo" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered  modal-lg  " role="document">
+           <div class="modal-content">
+   
+               <div class="container-fluid">
+                   <button type="button" class="close" data-dismiss="modal"
+                           aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+                   <div class="row">
+                    
+                       <div class="col-md-6 bg-img rounded-left m-h-60 d-none d-sm-block bestprice" >
+                        <div class="margin-auto">
+                        <div class="text-center py-3 rounded-top">
+                            <img src="https://d33wubrfki0l68.cloudfront.net/8a89788da40bbdf795b8520a8d2891f6f7dde38a/53c32/assets/img/onboard.svg" style="width: 200px; margin:auto" alt="">
+                        </div>
+                        <div class="modal-body pb-sm-5 p-0">
+                            <div class=" text-center text-white">
+                                <h4 class="pt-3 text-white" style="font-size:17px;">Couldn't find what you are looking for?</h4>
+                                <h4 class="pt-3 text-white" >We got your back!</h4>
+                                <p class="text-white-50">
+                                    We're the first b2b e-commerce platform in Nepal who've made the entire country available for you to list and sell your products in bulk.
 
 
+                                </p>
+        
+                            </div>
+                        </div>
+                        </div>
+                       </div>
+                       <div class="col-md-6 py-5 px-sm-5 my-auto ">
+   
+                    
+                           <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Product</label>
+                                            <input type="text" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" readonly>
+                                        </div>
+            
+                                    </div>
+                           
+                                    <div class="form-group col-lg-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Quantity</label>
+                                            <input type="text" name='quantity' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        </div>
+            
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Description</label>
+                                            <textarea placeholder="Description" rows="4" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='description'></textarea>
+                                        </div>
+            
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-outline-green" aria-label="Close">Send</button>
+                           </form>
+                  
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>  
+
+
+   <div class="mobile-search-container">
+    <form method="GET" action="{% url 'products:search' %}"
+    class="header-search hs-expanded hs-round d-flex align-items-center">
+
+    <input type="text" class="form-control" name="keyword" id="search"
+        placeholder="What are you looking for..." required />
+    <button class="btn btn-search" type="submit"><i class="fa fa-search"></i>
+    </button> 
+</form>
+</div>
+<!-- End .mobile-menu-container -->
 
         {% block content %} 
+        <script src="{% static "assets/vendor/jquery/jquery.min.js" %} "></script>
+        <script src="{% static "assets/js/bootstrap.js"></script>
+        <script src="{% static "assets/vendor/jquery.plugin/jquery.plugin.min.js" %} "></script>
+        <script src="{% static "assets/vendor/imagesloaded/imagesloaded.pkgd.min.js" %} "></script>
+        <script src="{% static "assets/vendor/swiper/swiper-bundle.min.js" %} "></script>
+        <script src="{% static "assets/vendor/jquery.countdown/jquery.countdown.min.js" %} "></script>
+        <script src="{% static "assets/vendor/magnific-popup/jquery.magnific-popup.min.js" %} "></script>
+        <script src="{% static "assets/vendor/floating-parallax/parallax.min.js" %} "></script>
+        <script src="{% static "assets/vendor/zoom/jquery.zoom.js" %} "></script>
+        <script src="{% static "assets/vendor/niceselect.js" %} "></script>
+    
+        <script src="{% static "assets/js/datatable.js" %} "></script>
+        <script src="{% static "assets/js/apexchart.js" %} "></script>
+        <script src="{% static "assets/js/chartoption.js" %} "></script>
+        <script src="{% static "assets/js/popper.min.js" %} "></script>
+        <script src="{% static "assets/js/lunar.js" %} "></script>
+        <script src="{% static "assets/js/main.js" %} "></script>
         {% endblock %}
 
         <footer class="footer">
@@ -500,6 +598,7 @@
         </footer> 
 
 </body>
+
 
 {% block script %}
 {% endblock %}

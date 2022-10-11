@@ -7380,3 +7380,51 @@ justify-content: center;
   width: 200px;
   height: 200px;
 }
+
+.add_products_dropdown .nice-select.open .list {
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.mobile-search-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--main-color);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  z-index: 9999999999999999999;
+  transform: translateY(-100%);
+  transition: transform 0.25s;
+  overflow-y: auto;
+  height: fit-content;
+}
+
+.search-active .mobile-search-container {
+  transform: translateY(0);
+}
+
+ .search-active .mobile-menu-overlay {
+  opacity: 0.35;
+  visibility: visible;
+}
+
+.mobile-search-container input{
+  background: white !important;
+}
+
+.mobile-search-container form{
+  padding: 10px;
+}
+
+.mobile-search-container .header-search .btn-search {
+  height: 47px;
+  border-radius: 0 !important;
+  background: white;
+}
+
+.mobile-menu-container .nav-item .nav-link.active {
+  color: var(--main-color);
+}

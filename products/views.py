@@ -139,7 +139,8 @@ def submit_product(request):
 
     if request.method == 'POST':
         submit_product_form = SubmitProductForm(request.POST,request.FILES or None)
-
+        print("-------------------------------------------------------------------")
+        print(request.POST)
         if request.POST['category'] != '0':
             cat_id = Category.objects.get(id=request.POST['category'])
         else:
@@ -332,6 +333,10 @@ def terms_conditions(request):
 def add_products(request):
     
     success = 1
+
+    if request.method=='POST':
+        print('---------------------------------------')
+        print(request.FILES)
     
     return render(request, 'sanjog/add-products.html',{'success':success,})
     

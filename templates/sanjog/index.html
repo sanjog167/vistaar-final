@@ -6,6 +6,9 @@
 
 <div id="header"></div>
         <main class="main"> 
+
+            <a href="#" data-toggle="modal" data-target="#demoModaltwo" class="d-xl-show mr-6 text-white postreq">Post Your Requirements</a>
+
           
             <img src="{% static "assets/images/b1.png" %}" alt="">
             <!-- End of .intro-section -->
@@ -55,6 +58,82 @@
                 </div>
 
                 </div>
+
+                <div class="modal fade   "  id="demoModaltwo"  tabindex="-1" role="dialog"
+                aria-labelledby="demoModaltwo" aria-hidden="true">
+               <div class="modal-dialog modal-dialog-centered  modal-lg  " role="document">
+                   <div class="modal-content">
+           
+                       <div class="container-fluid">
+                           <button type="button" class="close" data-dismiss="modal"
+                                   aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                           </button>
+                           <div class="row">
+                            
+                               <div class="col-md-6 bg-img rounded-left m-h-60 d-none d-sm-block bestprice" >
+                                <div class="margin-auto">
+                                <div class="text-center py-3 rounded-top">
+                                    <img src="https://d33wubrfki0l68.cloudfront.net/5bcb06b23f3ed5bfa5bf8585982174a82afb50a9/fe95d/assets/img/mockup.png" class="mw-100" alt="">
+                                </div>
+                                <div class="modal-body pb-sm-5 p-0">
+                                    <div class=" text-center text-white">
+                                        <h3 class="pt-3 text-white">Get Best Price</h3>
+                                        <p class="text-white-50">
+                                            We're the first b2b e-commerce platform in Nepal who've made the entire country available for you to list and sell your products in bulk.
+        
+        
+                                        </p>
+                
+                                    </div>
+                                </div>
+                                </div>
+                               </div>
+                               <div class="col-md-6 py-5 px-sm-5 my-auto ">
+           
+                            
+                                   <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="form-group col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Product</label>
+                                                    <input type="text" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" readonly>
+                                                </div>
+                    
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Category</label>
+                                                    <input type="text" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" readonly>
+                                                </div>
+                    
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Quantity</label>
+                                                    <input type="text" name='quantity' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                </div>
+                    
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Description</label>
+                                                    <textarea placeholder="Message to Seller" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='description'></textarea>
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-outline-green" aria-label="Close">Send</button>
+                                   </form>
+                          
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>  
 
 
                 <div class="container">
@@ -504,7 +583,7 @@
                 </a>
             </li>
               <li data-toggle="modal" data-target="#myModal">
-                  <a href="javascript:void(0)"> 
+                  <a class="mobile-search-toggler"> 
                       <i class="fa fa-search"></i>
                       <p class="m-0">Search</p> 
                   </a>
@@ -564,66 +643,8 @@
                     <ul class="mobile-menu">
                         <li><a href="demo2.html">Home</a></li>
                         <li>
-                            <a href="shop-banner-sidebar.html">Post Your Requirements</a>
-                            <ul>
-                                <li>
-                                    <a href="#">Shop Pages</a>
-                                    <ul>
-                                        <li><a href="shop-banner-sidebar.html">Banner With Sidebar</a></li>
-                                        <li><a href="shop-boxed-banner.html">Boxed Banner</a></li>
-                                        <li><a href="shop-fullwidth-banner.html">Full Width Banner</a></li>
-                                        <li><a href="shop-horizontal-filter.html">Horizontal Filter<span
-                                                    class="tip tip-hot">Hot</span></a></li>
-                                        <li><a href="shop-off-canvas.html">Off Canvas Sidebar<span
-                                                    class="tip tip-new">New</span></a></li>
-                                        <li><a href="shop-infinite-scroll.html">Infinite Ajax Scroll</a></li>
-                                        <li><a href="shop-right-sidebar.html">Right Sidebar</a></li>
-                                        <li><a href="shop-both-sidebar.html">Both Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Shop Layouts</a>
-                                    <ul>
-                                        <li><a href="shop-grid-3cols.html">3 Columns Mode</a></li>
-                                        <li><a href="shop-grid-4cols.html">4 Columns Mode</a></li>
-                                        <li><a href="shop-grid-5cols.html">5 Columns Mode</a></li>
-                                        <li><a href="shop-grid-6cols.html">6 Columns Mode</a></li>
-                                        <li><a href="shop-grid-7cols.html">7 Columns Mode</a></li>
-                                        <li><a href="shop-grid-8cols.html">8 Columns Mode</a></li>
-                                        <li><a href="shop-list.html">List Mode</a></li>
-                                        <li><a href="shop-list-sidebar.html">List Mode With Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Product Pages</a>
-                                    <ul>
-                                        <li><a href="product-variable.html">Variable Product</a></li>
-                                        <li><a href="product-featured.html">Featured &amp; Sale</a></li>
-                                        <li><a href="product-accordion.html">Data In Accordion</a></li>
-                                        <li><a href="product-section.html">Data In Sections</a></li>
-                                        <li><a href="product-swatch.html">Image Swatch</a></li>
-                                        <li><a href="product-extended.html">Extended Info</a>
-                                        </li>
-                                        <li><a href="product-without-sidebar.html">Without Sidebar</a></li>
-                                        <li><a href="product-video.html">360<sup>o</sup> &amp; Video<span
-                                                    class="tip tip-new">New</span></a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Product Layouts</a>
-                                    <ul>
-                                        <li><a href="categorypage.html">Default<span
-                                                    class="tip tip-hot">Hot</span></a></li>
-                                        <li><a href="product-vertical.html">Vertical Thumbs</a></li>
-                                        <li><a href="product-grid.html">Grid Images</a></li>
-                                        <li><a href="product-masonry.html">Masonry</a></li>
-                                        <li><a href="product-gallery.html">Gallery</a></li>
-                                        <li><a href="product-sticky-info.html">Sticky Info</a></li>
-                                        <li><a href="product-sticky-thumb.html">Sticky Thumbs</a></li>
-                                        <li><a href="product-sticky-both.html">Sticky Both</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <a href="#" data-toggle="modal" data-target="#demoModaltwo" class="sidemenupostrequirement">Post Your Requirements</a>
+                      
                         </li>
                         <li>
                             <a href="vendor-dokan-store.html">Tools</a>
@@ -1006,6 +1027,77 @@
         </div>
         <!-- End of Newsletter popup -->
 
+        <div class="modal fade   "  id="demoModaltwo"  tabindex="-1" role="dialog"
+        aria-labelledby="demoModaltwo" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered  modal-lg  " role="document">
+           <div class="modal-content">
+   
+               <div class="container-fluid">
+                   <button type="button" class="close" data-dismiss="modal"
+                           aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+                   <div class="row">
+                    
+                       <div class="col-md-6 bg-img rounded-left m-h-60 d-none d-sm-block bestprice" >
+                        <div class="margin-auto">
+                        <div class="text-center py-3 rounded-top">
+                            <img src="https://d33wubrfki0l68.cloudfront.net/8a89788da40bbdf795b8520a8d2891f6f7dde38a/53c32/assets/img/onboard.svg" style="width: 200px; margin:auto" alt="">
+                        </div>
+                        <div class="modal-body pb-sm-5 p-0">
+                            <div class=" text-center text-white">
+                                <h4 class="pt-3 text-white" style="font-size:17px;">Couldn't find what you are looking for?</h4>
+                                <h4 class="pt-3 text-white" >We got your back!</h4>
+                                <p class="text-white-50">
+                                    We're the first b2b e-commerce platform in Nepal who've made the entire country available for you to list and sell your products in bulk.
+
+
+                                </p>
+        
+                            </div>
+                        </div>
+                        </div>
+                       </div>
+                       <div class="col-md-6 py-5 px-sm-5 my-auto ">
+   
+                    
+                           <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Product</label>
+                                            <input type="text" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" readonly>
+                                        </div>
+            
+                                    </div>
+                           
+                                    <div class="form-group col-lg-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Quantity</label>
+                                            <input type="text" name='quantity' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        </div>
+            
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Description</label>
+                                            <textarea placeholder="Description" rows="4" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='description'></textarea>
+                                        </div>
+            
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-outline-green" aria-label="Close">Send</button>
+                           </form>
+                  
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>  
+
 
 
     <!-- Start of Quick View -->
@@ -1183,25 +1275,23 @@
   
     {% block script %}
     <!-- Plugin JS File -->
-    <script src="{% static "assets/vendor/jquery/jquery.min.js" %} "></script>
-    <script src="{% static "assets/js/bootstrap.js"></script>
-    <script src="{% static "assets/vendor/jquery.plugin/jquery.plugin.min.js" %} "></script>
-    <script src="{% static "assets/vendor/imagesloaded/imagesloaded.pkgd.min.js" %} "></script>
-    <script src="{% static "assets/vendor/swiper/swiper-bundle.min.js" %} "></script>
-    <script src="{% static "assets/vendor/jquery.countdown/jquery.countdown.min.js" %} "></script>
-    <script src="{% static "assets/vendor/magnific-popup/jquery.magnific-popup.min.js" %} "></script>
-    <script src="{% static "assets/vendor/floating-parallax/parallax.min.js" %} "></script>
-    <script src="{% static "assets/vendor/zoom/jquery.zoom.js" %} "></script>
-    <script src="{% static "assets/vendor/niceselect.js" %} "></script>
+    <script src="{% static "assets/vendor/jquery/jquery.min.js" %}"></script>
+    <script src="{% static "assets/vendor/jquery.plugin/jquery.plugin.min.js" %}"></script>
+    <script src="{% static "assets/js/bootstrap.js" %}"></script>
+    <script src="{% static "assets/vendor/imagesloaded/imagesloaded.pkgd.min.js" %}"></script>
+    <script src="{% static "assets/vendor/swiper/swiper-bundle.min.js" %}"></script>
+    <script src="{% static "assets/vendor/jquery.countdown/jquery.countdown.min.js" %}"></script>
+    <script src="{% static "assets/vendor/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
+    <script src="{% static "assets/vendor/floating-parallax/parallax.min.js" %}"></script>
+    <script src="{% static "assets/vendor/zoom/jquery.zoom.js" %}"></script>
+    <script src="{% static "assets/vendor/niceselect.js" %}"></script>
 
-    <script src="{% static "assets/js/datatable.js" %} "></script>
-    <script src="{% static "assets/js/apexchart.js" %} "></script>
-    <script src="{% static "assets/js/chartoption.js" %} "></script>
-    <script src="{% static "assets/js/popper.min.js" %} "></script>
-    <script src="{% static "assets/js/lunar.js" %} "></script>
-    <script src="{% static "assets/js/main.js" %} "></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="{% static "assets/js/datatable.js" %}"></script>
+    <script src="{% static "assets/js/apexchart.js" %}"></script>
+    <script src="{% static "assets/js/chartoption.js" %}"></script>
+    <script src="{% static "assets/js/popper.min.js" %}"></script>
+    <script src="{% static "assets/js/lunar.js" %}"></script>
+    <script src="{% static "assets/js/main.js" %}"></script>
 
 
     <!-- Main Js -->

@@ -9,7 +9,8 @@
 
 <div class="add_products_form mt-5">
     <div class="container">
-        <form>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="row">
                 <div class="col-lg-6">
                   
@@ -21,18 +22,30 @@
               
                       <div class="form-row">
                     
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 add_products_dropdown">
                           <label for="inputState">Category 1</label>
                           <select id="inputState" class="form-control">
                             <option selected>Choose...</option>
-                            <option>...</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>.3..</option>
+                            <option>.4.</option>
+                            <option>.5.</option>
+                            <option>.6.</option>
+                            <option>.7.</option>
                           </select>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 add_products_dropdown">
                             <label for="inputState">Sub Category 1</label>
                             <select id="inputState" class="form-control">
                               <option selected>Choose...</option>
-                              <option>...</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>.3..</option>
+                              <option>.4.</option>
+                              <option>.5.</option>
+                              <option>.6.</option>
+                              <option>.7.</option>
                             </select>
                           </div>
                       </div>
@@ -50,28 +63,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <label class="active d-none">Product Images</label>
-                    <div class="input_images_grid d-none">
-                        <div class="input-field">
-                            <div class="input-images-1" style="padding-top: .5rem;">
-                            
-                            </div>
-                        </div>
-                        <div class="input-field">
-                            
-                            <div class="input-images-2" style="padding-top: .5rem;"></div>
-                        </div>
-                        <div class="input-field">
-                            
-                            <div class="input-images-3" style="padding-top: .5rem;"></div>
-                        </div>
-                        <div class="input-field">
-                            
-                            <div class="input-images-4" style="padding-top: .5rem;"></div>
-                        </div>
-
-                   
-                    </div>
+               
 
 
 
@@ -927,7 +919,7 @@
      <script src="{% static "assets/js/popper.min.js" %}"></script>
      <script src="{% static "assets/js/lunar.js" %}"></script>
      <script src="{% static "assets/js/main.js" %}"></script>
-     <script src="{% static "assets/js/iuploader.js" %}"></script>
+     
  
  
      <!-- Main Js -->

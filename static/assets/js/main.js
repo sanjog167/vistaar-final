@@ -11,6 +11,24 @@
         })
     })
 
+
+    
+    $('.mobile-search-toggler').on('click', function() {
+        $("body").toggleClass("search-active");
+});
+
+
+$('.mobile-menu-overlay').on('click', function() {
+    $("body").removeClass("search-active");
+});
+
+$('.sidemenupostrequirement').on('click', function() {
+    $("body").removeClass("mmenu-active");
+});
+
+
+
+
     $('.select-box').on('click', function() {
         const child = $(this).children('.dropdown-menu')
         if (child.hasClass('active')) {

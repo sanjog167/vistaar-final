@@ -53,7 +53,9 @@
                     <label class="active d-none">Product Images</label>
                     <div class="input_images_grid d-none">
                         <div class="input-field">
-                            <div class="input-images-1" style="padding-top: .5rem;"></div>
+                            <div class="input-images-1" style="padding-top: .5rem;">
+                            
+                            </div>
                         </div>
                         <div class="input-field">
                             
@@ -67,9 +69,13 @@
                             
                             <div class="input-images-4" style="padding-top: .5rem;"></div>
                         </div>
+
+                   
                     </div>
 
-                    <div class="mb-3">
+
+
+                    <div class="mb-3 ">
                         <label for="images" class="form-label">
                             Product Images
                         </label>
@@ -82,7 +88,8 @@
                                         </p>
                                         Drop file here or click to upload
                                     </span>
-                                    <input type="file" name="image1" class="drop-zone__input">
+                                    <input type="file" name="image1" class="drop-zone__input" accept="image/*" onchange="loadFile(event)">
+                                    <img id="output"/>
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -93,7 +100,8 @@
                                         </p>
                                         Drop file here or click to upload
                                     </span>
-                                    <input type="file" name="image2" class="drop-zone__input">
+                                    <input type="file" name="image2" class="drop-zone__input" accept="image/*" onchange="loadFileTwo(event)">
+                                    <img id="outputtwo"/>
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -964,6 +972,27 @@
 
 <script>
     $('.input-images-4').imageUploader();
+  </script>
+  
+
+<script>
+    var loadFile = function(event) {
+      var output = document.getElementById('output');
+      output.src = URL.createObjectURL(event.target.files[0]);
+      output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+      }
+    };
+  </script>
+
+<script>
+    var loadFileTwo = function(event) {
+      var output = document.getElementById('outputtwo');
+      output.src = URL.createObjectURL(event.target.files[0]);
+      output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+      }
+    };
   </script>
  
  {% endblock %}

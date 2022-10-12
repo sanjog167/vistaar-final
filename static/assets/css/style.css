@@ -7603,3 +7603,26 @@ margin-left: 0;
   max-height: 150px;
   overflow: hidden;
 }
+
+.nice-select .current{
+  width: 100%;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.header-left .nice-select .current{
+  width: 90px;
+}
+
+.backtoDashboard{
+  background: #eee;
+    padding: 10px;
+}
+
+.backtoDashboard a{
+  color: var(--main-color);
+  font-weight: 500;
+  font-size: 15px;
+}

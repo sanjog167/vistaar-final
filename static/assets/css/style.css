@@ -7428,3 +7428,37 @@ justify-content: center;
 .mobile-menu-container .nav-item .nav-link.active {
   color: var(--main-color);
 }
+
+.product-detail-row{
+  position: relative;
+}
+
+.product-sidebar{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+
+.productdetailpage .main-content{
+  position: initial;
+}
+
+@media(max-width:600px){
+  .product-sidebar {
+  position: initial;
+}
+
+.product-sidebar .sidebar-content{
+  position: inherit;
+       bottom: initial; 
+     width: initial; 
+     padding: initial; 
+     -webkit-transform: initial; 
+     transform: initial; 
+     overflow: initial; 
+     background-color: initial; 
+     opacity: 1;
+}
+
+}

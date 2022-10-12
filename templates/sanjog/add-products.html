@@ -56,7 +56,8 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="description" rows="5"
+                        aria-describedby="description" name="description"></textarea>
                         <small>Do not exceed 100 characters</small>
 
                     </div>
@@ -81,7 +82,7 @@
                                         Drop file here or click to upload
                                     </span>
                                     <input type="file" name="image1" class="drop-zone__input" accept="image/*" onchange="loadFile(event)">
-                                    <img id="output"/>
+                                 
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -93,7 +94,7 @@
                                         Drop file here or click to upload
                                     </span>
                                     <input type="file" name="image2" class="drop-zone__input" accept="image/*" onchange="loadFileTwo(event)">
-                                    <img id="outputtwo"/>
+                                   
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -105,7 +106,7 @@
                                         Drop file here or click to upload
                                     </span>
                                     <input type="file" name="image3" class="drop-zone__input" accept="image/*" onchange="loadFileThree(event)">
-                                    <img id="outputthree"/>
+                                  
                                 </div>
                                 <div class="drop-zone small mt-1">
                                     <span class="drop-zone__prompt">
@@ -115,7 +116,7 @@
                                         Drop file here or click to upload
                                     </span>
                                     <input type="file" name="image4" class="drop-zone__input" accept="image/*" onchange="loadFileFour(event)">
-                                    <img id="outputfour"/>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -939,6 +940,116 @@
        $("#footer").load("footer.html"); 
      });
      </script> 
+
+<script>
+    document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+        const dropZoneElement = inputElement.closest(".drop-zone");
+
+        dropZoneElement.addEventListener("click", (e) => {
+            inputElement.click();
+        });
+
+        inputElement.addEventListener("change", (e) => {
+            if (inputElement.files.length) {
+                updateThumbnail(dropZoneElement, inputElement.files[0]);
+            }
+        });
+
+        dropZoneElement.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropZoneElement.classList.add("active");
+        });
+
+        ["dragleave", "dragend"].forEach((type) => {
+            dropZoneElement.addEventListener(type, (e) => {
+                dropZoneElement.classList.remove("active");
+            });
+        });
+
+        dropZoneElement.addEventListener("drop", (e) => {
+            e.preventDefault();
+
+            if (e.dataTransfer.files.length) {
+                inputElement.files = e.dataTransfer.files;
+                updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+            }
+
+            dropZoneElement.classList.remove("active");
+        });
+    });
+
+    /**
+     * Updates the thumbnail on a drop zone element.
+     *
+     * @param {HTMLElement} dropZoneElement
+     * @param {File} file
+     */
+    function updateThumbnail(dropZoneElement, file) {
+        let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+
+        // First time - remove the prompt
+        if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+            dropZoneElement.querySelector(".drop-zone__prompt").remove();
+        }
+
+        // First time - there is no thumbnail element, so lets create it
+        if (!thumbnailElement) {
+            thumbnailElement = document.createElement("div");
+            thumbnailElement.classList.add("drop-zone__thumb");
+            dropZoneElement.appendChild(thumbnailElement);
+        }
+
+        thumbnailElement.dataset.label = file.name;
+
+        // Show thumbnail for image files
+        if (file.type.startsWith("image/")) {
+            const reader = new FileReader();
+
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+            };
+        } else {
+            thumbnailElement.style.backgroundImage = null;
+        }
+    }
+
+    // Add Size
+    function addMore() {
+        document.getElementById('error').innerHTML = "";
+        let size = document.getElementById('size').value;
+        if (size == '') {
+            // not value input
+            document.getElementById('error').innerHTML = "Please enter the value";
+        } else {
+
+            let list = document.getElementById('list');//select list
+            let li = document.createElement('li');//create list
+            li.textContent = size;
+            let a = document.createElement('a');//for deleting box
+            a.textContent = "x";
+            a.href = "javascript:void(0)";
+            a.className = "remove";
+
+            // Input Value From This input
+            const ip = document.createElement('input')
+            ip.name = 'sizes[]'
+            ip.value = size;
+            ip.hidden = true;
+            li.appendChild(a);
+            li.appendChild(ip);
+            list.appendChild(li);
+        }
+        document.getElementById('size').value = "";
+    }
+
+    let btn = document.getElementById('list');
+    btn.addEventListener('click', function (e) {
+        let list = document.getElementById('list');
+        let li = e.target.parentNode;
+        list.removeChild(li);
+    });
+</script>
  
  
  <script>
@@ -1008,6 +1119,15 @@
       }
     };
   </script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#description'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
  
  {% endblock %}
 

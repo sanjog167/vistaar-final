@@ -53,18 +53,67 @@
                                     <div class="widget widget-collapsible">
                                         <h3 class="widget-title"><label>All Categories</label></h3>
                                         <ul class="widget-body filter-items search-ul">
-                                            <li><a href="#">Accessories</a></li>
-                                            <li><a href="#">Babies</a></li>
-                                            <li><a href="#">Beauty</a></li>
-                                            <li><a href="#">Decoration</a></li>
-                                            <li><a href="#">Electronics</a></li>
-                                            <li><a href="#">Fashion</a></li>
-                                            <li><a href="#">Food</a></li>
-                                            <li><a href="#">Furniture</a></li>
-                                            <li><a href="#">Kitchen</a></li>
-                                            <li><a href="#">Medical</a></li>
-                                            <li><a href="#">Sports</a></li>
-                                            <li><a href="#">Watches</a></li>
+                                            <form class="d-flex flex-column mt-3 sideFilters">
+                                              
+                                                <label class="aiz-checkbox">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+
+                                                    <span class="aiz-square-check"></span>
+                                                    <span>Accessories</span>
+                                                </label>
+
+                                                <label class="aiz-checkbox">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+
+                                                    <span class="aiz-square-check"></span>
+                                                    <span>Accessories2</span>
+                                                </label>
+
+                                                <label class="aiz-checkbox">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+
+                                                    <span class="aiz-square-check"></span>
+                                                    <span>Accessories3</span>
+                                                </label>
+
+                                                <label class="aiz-checkbox">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+
+                                                    <span class="aiz-square-check"></span>
+                                                    <span>Accessories4</span>
+                                                </label>
+
+                                                <label class="aiz-checkbox">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
+
+                                                    <span class="aiz-square-check"></span>
+                                                    <span>Accessories4</span>
+                                                </label>
+
+                                                <label class="aiz-checkbox">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
+
+                                                    <span class="aiz-square-check"></span>
+                                                    <span>Accessories4</span>
+                                                </label>
+
+                                                <label class="aiz-checkbox">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" checked>
+
+                                                    <span class="aiz-square-check"></span>
+                                                    <span>Accessories4</span>
+                                                </label>
+
+                                                <label class="aiz-checkbox">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8" checked>
+
+                                                    <span class="aiz-square-check"></span>
+                                                    <span>Accessories4</span>
+                                                </label>
+                                            </form>
+
+                                            <a class="readbutton read-more-btn" style="color:var(--main-color); cursor: pointer; text-decoration: underline;">See more</a>
+                                         
                                         </ul>
                                     </div>
                                     <!-- End of Collapsible Widget -->
@@ -981,6 +1030,39 @@
       $("#footer").load("footer.html"); 
     });
     </script> 
+
+<script type="text/javascript">
+    var defaultHeight = 150; // height when "closed"
+    var text = $(".sideFilters");
+    var textHeight = text[0].scrollHeight; // the real height of the element
+    var button = $(".readbutton");
+    var readmorebtn = $(".read-more-btn");
+ 
+ 
+    text.css({
+       "max-height": defaultHeight,
+       "overflow": "hidden"
+    });
+ 
+    button.on("click", function() {
+       var newHeight = 0;
+       if (text.hasClass("newactive")) {
+          newHeight = defaultHeight;
+          text.removeClass("newactive");
+          readmorebtn.text("See more");
+ 
+ 
+ 
+       } else {
+          newHeight = textHeight;
+          text.addClass("newactive");
+          readmorebtn.text("See less");
+       }
+       text.animate({
+          "max-height": newHeight
+       }, 500);
+    });
+ </script>
 
 {% endblock %}
 </body>

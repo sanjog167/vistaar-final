@@ -182,7 +182,7 @@
 
                                 {% if product.price != 0 %}
 
-                                <div class="product-price fs-17">Price: Rs. {{product.price}}{% if product.max_price and product.max_price != 0 %} - Rs. {{ product.max_price }}{% endif %}
+                                <div class="product-price fs-17">Price: Rs. {{product.price}}{% if product.max_price and product.max_price != 0 %} - Rs. {{ product.max_price }}{% endif %}</div>
 
                                 {% endif %}
 
@@ -209,15 +209,15 @@
 
                                 <div class="product_btns">
                                     {% if request.user.is_authenticated %}
-                                    <a href="#" class="btn btn-outline-green"  data-toggle="modal" data-target="#demoModaltwo">Get Best Price</a>
+                                    <a href="#" class="btn btn-outline-green"  data-toggle="modal" data-target="#demoModalproducttwo">Get Best Price</a>
                                     <a href="#" class="btn btn-outline-green btn-border-green" data-toggle="modal" data-target="#demoModalthree">Contact Seller</a>
                                     {% else %}
                                     <a href="{% url 'login' %}" class="btn btn-outline-green btn-border-green">LOGIN TO GET BEST PRICES</a>
                                     {% endif %} 
                                 </div>
 
-                                <div class="modal fade   "  id="demoModaltwo"  tabindex="-1" role="dialog"
-                                aria-labelledby="demoModaltwo" aria-hidden="true">
+                                <div class="modal fade   "  id="demoModalproducttwo"  tabindex="-1" role="dialog"
+                                aria-labelledby="demoModalproducttwo" aria-hidden="true">
                                <div class="modal-dialog modal-dialog-centered  modal-lg  " role="document">
                                    <div class="modal-content">
                            

@@ -85,6 +85,7 @@
 								{% endif %}
 								{% if request.user.is_authenticated %}
 								<li>Hi, {{ request.user.first_name }}</li>
+                                <li class="d-flex "><img src="{% static "assets/images/power.png" %}" class="w-20 mr-2"><a href="{% url 'logout' %}">Logout</a></li>
 								{% else %}
 								<li></i><a href="{% url "register" %}">Sign-up</a></li>
 								{% endif %}    
@@ -95,7 +96,7 @@
                                 <a href="">Call Us +9779846579211</a>
                                 <a href="">Send Feedback</a>
                                 <a href="">Contact Us</a>
-                            	<a href="{% url 'logout' %}">Logout</a>
+                            	
 		            </div>
                         </div>
                     
@@ -107,9 +108,11 @@
             <div class="header-middle">
                 <div class="container">
                     <div class="header-left mr-md-4">
+                        <!-- mobile-menu-here -->
                         <a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
                             <img src="{% static "assets/images/menu (1).png" %}" alt="">
 	                        </a>
+                              <!-- mobile-menu-here -->
                         <a href="{% url 'home' %}" class="logo ml-lg-0">
                             <img src="{% static "assets/images/logo.png" %}" alt="logo" width="144" height="45" />
                         </a>

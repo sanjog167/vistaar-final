@@ -7626,3 +7626,12 @@ margin-left: 0;
   font-weight: 500;
   font-size: 15px;
 }
+
+.login_container .form-group .col-lg-6:nth-child(1) {
+ min-height: initial;
+ display:initial;
+ align-items: initial;
+ justify-content: initial;
+ padding-left: 15px;
+ margin-top: initial;
+}

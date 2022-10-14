@@ -44,6 +44,7 @@
                             <!-- Start of Sidebar Content -->
                             <div class="sidebar-content scrollable">
                                 <!-- Start of Sticky Sidebar -->
+                                <form>
                                 <div class="sticky-sidebar">
                                     <div class="filter-actions">
                                         <label>Filter :</label>
@@ -53,7 +54,7 @@
                                     <div class="widget widget-collapsible">
                                         <h3 class="widget-title"><label>All Categories</label></h3>
                                         <ul class="widget-body filter-items search-ul">
-                                            <form class="d-flex flex-column mt-3 sideFilters">
+                                            <div class="d-flex flex-column mt-3 sideFilters">
                                               
                                                 <label class="aiz-checkbox">
                                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
@@ -110,11 +111,13 @@
                                                     <span class="aiz-square-check"></span>
                                                     <span>Accessories4</span>
                                                 </label>
-                                            </form>
+                                            </div>
 
                                             <a class="readbutton read-more-btn" style="color:var(--main-color); cursor: pointer; text-decoration: underline;">See more</a>
                                          
                                         </ul>
+
+                                     
                                     </div>
                                     <!-- End of Collapsible Widget -->
 
@@ -123,19 +126,69 @@
                                         <h3 class="widget-title"><label>Price</label></h3>
                                         <div class="widget-body">
                                             <ul class="filter-items search-ul">
-                                                <li><a href="#">$0.00 - $100.00</a></li>
-                                                <li><a href="#">$100.00 - $200.00</a></li>
-                                                <li><a href="#">$200.00 - $300.00</a></li>
-                                                <li><a href="#">$300.00 - $500.00</a></li>
-                                                <li><a href="#">$500.00+</a></li>
+                                                <div class="d-flex flex-column mt-3 sideFilters">
+                                              
+                                                    <label class="aiz-checkbox">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+    
+                                                        <span class="aiz-square-check"></span>
+                                                        <span>Accessories</span>
+                                                    </label>
+    
+                                                    <label class="aiz-checkbox">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+    
+                                                        <span class="aiz-square-check"></span>
+                                                        <span>Accessories2</span>
+                                                    </label>
+    
+                                                    <label class="aiz-checkbox">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+    
+                                                        <span class="aiz-square-check"></span>
+                                                        <span>Accessories3</span>
+                                                    </label>
+    
+                                                    <label class="aiz-checkbox">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+    
+                                                        <span class="aiz-square-check"></span>
+                                                        <span>Accessories4</span>
+                                                    </label>
+    
+                                                    <label class="aiz-checkbox">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
+    
+                                                        <span class="aiz-square-check"></span>
+                                                        <span>Accessories4</span>
+                                                    </label>
+    
+                                                    <label class="aiz-checkbox">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
+    
+                                                        <span class="aiz-square-check"></span>
+                                                        <span>Accessories4</span>
+                                                    </label>
+    
+                                                    <label class="aiz-checkbox">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" checked>
+    
+                                                        <span class="aiz-square-check"></span>
+                                                        <span>Accessories4</span>
+                                                    </label>
+    
+                                                    <label class="aiz-checkbox">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8" checked>
+    
+                                                        <span class="aiz-square-check"></span>
+                                                        <span>Accessories4</span>
+                                                    </label>
+                                                </div>
+    
+                                                <a class="readbutton read-more-btn" style="color:var(--main-color); cursor: pointer; text-decoration: underline;">See more</a>
+                                             
                                             </ul>
-                                            <form class="price-range">
-                                                <input type="number" name="min_price" class="min_price text-center"
-                                                    placeholder="$min"><span class="delimiter">-</span><input
-                                                    type="number" name="max_price" class="max_price text-center"
-                                                    placeholder="$max"><a href="#"
-                                                    class="btn btn-primary btn-rounded">Go</a>
-                                            </form>
+                                       
                                         </div>
                                     </div>
                                     <!-- End of Collapsible Widget -->
@@ -181,6 +234,7 @@
                              
                                     <!-- End of Collapsible Widget -->
                                 </div>
+                            </form>
                                 <!-- End of Sidebar Content -->
                             </div>
                             <!-- End of Sidebar Content -->

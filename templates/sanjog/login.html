@@ -12,10 +12,11 @@
                 <h3>Sign in to Vistaar Trade                    </h3>
                 <h3>Get access to your <span class="autotype"></span></h3>
                 <img src="http://brandio.io/envato/iofrm/html/images/graphic1.svg" style="width: 350px">
-            </div>
+                <p class="mt-4">New To Vistaar Trade? <a href="{% url "register" %}" style="color: var(--main-color)">Register</a></p>
+             </div>
             <div class="col-lg-6 d-flex align-items-center flex-column">
                 <div class="loginform">
-                    <form method="post">
+                    <form method="post"> 
                         {% csrf_token %}
                         <h3>Login</h3>
                         <p>Get access to your Orders, Wishlist and Recommendations

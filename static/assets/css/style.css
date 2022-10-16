@@ -7635,3 +7635,10 @@ margin-left: 0;
  padding-left: 15px;
  margin-top: initial;
 }
+
+.widget-body button{
+  width: 100%;
+    padding-left: initial !important;
+    padding-right: initial !important;
+    margin-left: 0;
+}

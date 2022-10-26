@@ -610,7 +610,7 @@
                     <a href="#" class="sidebar-toggle d-flex d-lg-none"><i class="fas fa-chevron-left"></i></a>
                     <div class="sidebar-content scrollable">
                         <div class="sticky-sidebar">
-                            <div class="widget widget-icon-box mb-6 position-relative">
+                            <div class="widget widget-icon-box mb-6 position-relative" style="padding-bottom: 50px;">
                                 <div class="icon-box icon-box-side">
                                     <span class="icon-box-icon text-dark">
                                     <img src="https://s3.eu-west-1.amazonaws.com/backend-prod-media-storage-origin/module-catalog-pim/fba0c6142480f001bed85d4/supplier-company-setting/0090b4923a7334b5977b854ca4aec5fa.jpg" class="avatar" alt="">
@@ -621,8 +621,12 @@
                                     </div>
                                 </div>
                                 <a class="btn btn-outline-green w-100">Contact Seller</a>
-                                <a class="btn btn-outline-green btn-border-green w-100 ml-0 mt-4">Give A Call</a>
+                                <a href="{% url 'suppliers:supplier_detail' id=product.supplier.id %}" class="btn btn-outline-green btn-border-green w-100 ml-0 mt-4">Seller catalogue</a>
+                                <a class="btn btn-outline-green w-100 mt-4 btn-green d-flex align-items-center">
+                                    <img src="{% static "assets/images/whatsapp2.png" %}" class="w-20 mr-2" alt="">
+                                    Chat on Whatsapp</a>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00917c66" fill-opacity="0.4" d="M0,64L48,64C96,64,192,64,288,101.3C384,139,480,213,576,234.7C672,256,768,224,864,186.7C960,149,1056,107,1152,101.3C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+                                
                                 <div class="verification">
                                     <div class="dropdown">
                                         <img src="{% static "assets/images/check-mark.png" %}" class="w-20" alt="">

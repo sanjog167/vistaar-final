@@ -7642,3 +7642,7 @@ margin-left: 0;
     padding-right: initial !important;
     margin-left: 0;
 }
+
+.btn-green{
+  background-color: #15ba53 !important;
+}

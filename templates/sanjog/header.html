@@ -295,6 +295,8 @@
                             {% if request.user.is_authenticated %}
                             {% if request.user.profile.account_type != 'Retailer' %}
                             <a href="{% url 'dashboard' %}" class="text-white">My Seller Dashboard</a>
+                            {% else %}
+                            <a href="{% url 'become_a_seller' %}" class="text-white">Become A Seller</a>
                             {% endif %}
                             {% endif %}
                         </div>

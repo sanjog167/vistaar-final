@@ -339,6 +339,16 @@ def add_products(request):
         print(request.FILES)
     
     return render(request, 'sanjog/add-products.html',{'success':success,})
+
+def become_a_seller(request):
+    
+    success = 1
+
+    if request.method=='POST':
+        print('---------------------------------------')
+        print(request.FILES)
+    
+    return render(request, 'sanjog/become-a-seller.html',{'success':success,})
     
     
 

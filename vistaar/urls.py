@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.urls.conf import re_path
-from products.views import HomeView,category_detail,privacy_policy,terms_conditions,add_products
+from products.views import HomeView,category_detail,privacy_policy,terms_conditions,add_products, become_a_seller
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -33,6 +33,7 @@ urlpatterns = [
     path('privacy-policy', privacy_policy,name='privacy_policy'),
     path('newterms-conditions', terms_conditions,name='terms_conditions'), 
     path('add-products', add_products,name='add_products'), 
+    path('become-a-seller', become_a_seller,name='become_a_seller'), 
     path('terms-conditions', terms_conditions,name='terms_conditions'), 
     
    

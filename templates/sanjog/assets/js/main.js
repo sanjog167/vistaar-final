@@ -26,6 +26,8 @@
         $('.filter-nav a').removeClass('active');
         $(this).addClass('active');
     });
+
+    
     
     
 
